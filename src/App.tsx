@@ -4,6 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import TwinAV from "./pages/TwinAV";
+import TwinHRM from "./pages/TwinHRM";
+import TwinShield from "./pages/TwinShield";
+import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +20,10 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/twinav" element={<TwinAV />} />
+            <Route path="/twinhrm" element={<TwinHRM />} />
+            <Route path="/twinshield" element={<TwinShield />} />
+            <Route path="/careers" element={<Careers />} />
           </Routes>
         </BrowserRouter>
       </div>
