@@ -57,10 +57,10 @@ const Navigation = () => {
 
   return (
     <header
-      className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
+      className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full ${
         isScrolled 
-          ? "h-14 bg-background/90 backdrop-blur-xl border border-border scale-95 w-[90%] max-w-2xl" 
-          : "h-14 bg-card border border-border w-[95%] max-w-3xl"
+          ? "h-14 glass-nav scale-95 w-[90%] max-w-2xl shadow-2xl" 
+          : "h-14 glass-nav w-[95%] max-w-3xl shadow-xl"
       }`}
     >
       <div className="mx-auto h-full px-6">
@@ -120,11 +120,11 @@ const Navigation = () => {
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="glass border-border">
+                <Button variant="outline" size="icon" className="glass border-0">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-background border-border">
+              <SheetContent className="glass-nav border-0">
                 <div className="flex flex-col gap-4 mt-8">
                   {navItems.map((item) => (
                     isHomePage ? (

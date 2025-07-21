@@ -33,7 +33,7 @@ const Careers = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
       {/* Hero Section */}
@@ -52,12 +52,12 @@ const Careers = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight">
-            <span className="text-white font-medium">Careers</span>
+            <span className="text-foreground font-medium">Careers</span>
             <br />
-            <span className="text-gray-200">Build the Future</span>
+            <span className="text-muted-foreground">Build the Future</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
             Join TwinCord Technologies and help us build the next generation of cybersecurity and software solutions. We're looking for passionate individuals who want to make a difference.
           </p>
           
@@ -65,7 +65,7 @@ const Careers = () => {
             <Button size="lg" className="button-gradient">
               View Open Positions
             </Button>
-            <Button size="lg" variant="link" className="text-white">
+            <Button size="lg" variant="link" className="text-foreground">
               Learn About Our Culture
             </Button>
           </div>
@@ -74,7 +74,7 @@ const Careers = () => {
 
       {/* Why Join Us Section */}
       <section className="container px-4 py-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why TwinCord?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">Why TwinCord?</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,8 +83,8 @@ const Careers = () => {
             className="glass p-6 rounded-xl text-center"
           >
             <Users className="w-8 h-8 text-primary mb-4 mx-auto" />
-            <h3 className="text-xl font-semibold mb-2">Innovation-Driven</h3>
-            <p className="text-gray-300">Work on cutting-edge cybersecurity and software solutions that make a real impact.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Innovation-Driven</h3>
+            <p className="text-muted-foreground">Work on cutting-edge cybersecurity and software solutions that make a real impact.</p>
           </motion.div>
           
           <motion.div
@@ -94,8 +94,8 @@ const Careers = () => {
             className="glass p-6 rounded-xl text-center"
           >
             <MapPin className="w-8 h-8 text-primary mb-4 mx-auto" />
-            <h3 className="text-xl font-semibold mb-2">Growth Opportunities</h3>
-            <p className="text-gray-300">Continuous learning and development in a fast-growing startup environment.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Growth Opportunities</h3>
+            <p className="text-muted-foreground">Continuous learning and development in a fast-growing startup environment.</p>
           </motion.div>
           
           <motion.div
@@ -105,15 +105,15 @@ const Careers = () => {
             className="glass p-6 rounded-xl text-center"
           >
             <Clock className="w-8 h-8 text-primary mb-4 mx-auto" />
-            <h3 className="text-xl font-semibold mb-2">Work-Life Balance</h3>
-            <p className="text-gray-300">Flexible working arrangements and a supportive team culture.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Work-Life Balance</h3>
+            <p className="text-muted-foreground">Flexible working arrangements and a supportive team culture.</p>
           </motion.div>
         </div>
       </section>
 
       {/* Open Positions */}
       <section className="container px-4 py-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Open Positions</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">Open Positions</h2>
         <div className="max-w-4xl mx-auto space-y-4">
           {openings.map((job, index) => (
             <motion.div
@@ -124,8 +124,8 @@ const Careers = () => {
               className="glass p-6 rounded-xl flex flex-col md:flex-row md:items-center md:justify-between"
             >
               <div>
-                <h3 className="text-xl font-semibold mb-2">{job.title}</h3>
-                <div className="flex flex-wrap gap-4 text-sm text-gray-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">{job.title}</h3>
+                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
                     {job.type}

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 const TwinAV = () => {
   return (
-    <div className="min-h-screen bg-black text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
       {/* Hero Section */}
@@ -25,12 +25,12 @@ const TwinAV = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight">
-            <span className="text-white font-medium">TwinAV</span>
+            <span className="text-foreground font-medium">TwinAV</span>
             <br />
-            <span className="text-gray-200">Next-Gen Protection</span>
+            <span className="text-muted-foreground">Next-Gen Protection</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
             A smart, lightweight antivirus engine designed for modern threats. Experience real-time protection with minimal system impact.
           </p>
           
@@ -38,7 +38,7 @@ const TwinAV = () => {
             <Button size="lg" className="button-gradient">
               Coming Soon
             </Button>
-            <Button size="lg" variant="link" className="text-white">
+            <Button size="lg" variant="link" className="text-foreground">
               Learn More
             </Button>
           </div>
@@ -55,8 +55,8 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Zap className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Lightning Fast</h3>
-            <p className="text-gray-300">Minimal resource usage with maximum protection efficiency.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Lightning Fast</h3>
+            <p className="text-muted-foreground">Minimal resource usage with maximum protection efficiency.</p>
           </motion.div>
           
           <motion.div
@@ -66,8 +66,8 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Cpu className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">AI-Powered</h3>
-            <p className="text-gray-300">Advanced machine learning algorithms for threat detection.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">AI-Powered</h3>
+            <p className="text-muted-foreground">Advanced machine learning algorithms for threat detection.</p>
           </motion.div>
           
           <motion.div
@@ -77,8 +77,8 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Globe className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Cloud-Enabled</h3>
-            <p className="text-gray-300">Real-time threat intelligence from global security networks.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Cloud-Enabled</h3>
+            <p className="text-muted-foreground">Real-time threat intelligence from global security networks.</p>
           </motion.div>
         </div>
       </section>
