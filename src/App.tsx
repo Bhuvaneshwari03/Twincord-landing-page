@@ -9,6 +9,7 @@ import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
 import Careers from "./pages/Careers";
 import About from "./pages/About";
+import ServicesDetailPage from "./components/ServiceDetails";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/twinhrm" element={<TwinHRM />} />
             <Route path="/twinshield" element={<TwinShield />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/services/details" element={<ServicesDetailPage />} />
           </Routes>
         </BrowserRouter>
       </div>
