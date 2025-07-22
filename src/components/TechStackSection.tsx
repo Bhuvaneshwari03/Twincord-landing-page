@@ -3,7 +3,11 @@ import {
   FaReact, FaNodeJs, FaDocker, FaDatabase, FaGithub, FaHtml5,
   FaCss3Alt, FaGitAlt, FaAws, FaFigma, FaPython, FaCloud,
 } from 'react-icons/fa';
-import { SiMongodb, SiTailwindcss, SiNestjs, SiNextdotjs, SiExpress, SiKubernetes, SiPostgresql, SiMysql, SiFirebase, SiRedis, SiDjango, SiFlask, SiVercel, SiPostman, SiNotion } from 'react-icons/si';
+import {
+  SiMongodb, SiTailwindcss, SiNestjs, SiNextdotjs, SiExpress, SiKubernetes,
+  SiPostgresql, SiMysql, SiFirebase, SiRedis, SiDjango, SiFlask, SiVercel,
+  SiPostman, SiNotion
+} from 'react-icons/si';
 
 const techStack = [
   { name: 'React', icon: <FaReact /> },
@@ -42,8 +46,8 @@ const TechStackSection = () => {
     <section className="py-16 px-4 md:px-12 bg-[#f8f8f8]">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-[#3b3b3b]">
-          <span className="text-[#00bfff]">Tech</span>
-          <span className="text-[#3b3b3b]"> Stack</span>
+          <span className="text-[#00bfff]">Tech</span>{" "}
+          <span className="text-[#3b3b3b]">Stack</span>
         </h2>
       </div>
 
@@ -51,12 +55,15 @@ const TechStackSection = () => {
         {techStack.map((tech, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+            className="w-[150px] h-[150px] bg-white rounded-xl shadow-md flex flex-col items-center justify-center text-center px-4 py-3 transition-all duration-300 group hover:scale-105 relative z-10"
           >
-            <div className="text-3xl text-[#00bfff] mb-2 group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-[#00bfff] opacity-10 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 z-0" />
+            <div className="relative z-20 text-4xl text-[#00bfff] mb-2 group-hover:scale-110 transition-transform">
               {tech.icon}
             </div>
-            <p className="text-sm text-[#3b3b3b] font-medium">{tech.name}</p>
+            <p className="relative z-20 text-sm font-semibold text-[#3b3b3b]">
+              {tech.name}
+            </p>
           </div>
         ))}
       </div>

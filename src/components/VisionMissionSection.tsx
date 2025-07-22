@@ -2,27 +2,19 @@ import React from 'react';
 
 const VisionMissionSection = () => {
   return (
-    <section style={{ backgroundColor: '#f8f8f8', padding: '80px 20px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+    <section style={{ backgroundColor: '#f8f8f8', padding: '100px 20px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '60px' }}>
         <h2
           style={{
-            fontSize: '2.5rem',
+            fontSize: '3rem',
             fontWeight: '700',
-            color: '#3b3b3b',
-            marginBottom: '12px',
+            marginBottom: '14px',
           }}
         >
-          Vision & Mission
+          <span style={{ color: '#3b3b3b' }}>Vision</span>{' '}
+          <span style={{ color: '#00bfff' }}>& </span>
+          <span style={{ color: '#3b3b3b' }}>Mission</span>
         </h2>
-        <div
-          style={{
-            width: '70px',
-            height: '6px',
-            backgroundColor: '#00bfff',
-            margin: '0 auto',
-            borderRadius: '3px',
-          }}
-        />
       </div>
 
       <div
@@ -30,17 +22,17 @@ const VisionMissionSection = () => {
           display: 'flex',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          gap: '50px',
+          gap: '60px',
         }}
       >
         {[
           {
             title: 'Mission',
-            text: 'To innovate and deliver secure, scalable software solutions that empower businesses and individuals in the digital era.',
+            text: 'To innovate and deliver secure, scalable software solutions that empower businesses and individuals to thrive in the digital era.',
           },
           {
             title: 'Vision',
-            text: 'To be a leading technology company known for pioneering cybersecurity products and delivering custom software that redefines innovation.',
+            text: 'To be a pioneering tech force known for cybersecurity, custom-built products, and redefining innovation through digital excellence.',
           },
         ].map((item, index) => (
           <div
@@ -49,29 +41,42 @@ const VisionMissionSection = () => {
               width: '450px',
               height: '450px',
               backgroundColor: 'white',
-              borderRadius: '24px',
-              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)',
-              padding: '35px',
+              borderRadius: '28px',
+              boxShadow: '0 6px 14px rgba(0, 0, 0, 0.05)',
+              padding: '45px',
               transition: 'all 0.3s ease',
               textAlign: 'center',
               position: 'relative',
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-12px)';
+              e.currentTarget.style.transform = 'translateY(-15px)';
               e.currentTarget.style.boxShadow =
-                '0 25px 45px rgba(0, 191, 255, 0.2)';
+                '0 35px 60px rgba(0, 191, 255, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow =
-                '0 4px 10px rgba(0, 0, 0, 0.05)';
+                '0 6px 14px rgba(0, 0, 0, 0.05)';
             }}
           >
-            <h3 style={{ fontSize: '1.4rem', fontWeight: '600', color: '#00bfff' }}>
+            <h3
+              style={{
+                fontSize: '1.8rem',
+                fontWeight: '600',
+                color: '#00bfff',
+              }}
+            >
               {item.title}
             </h3>
-            <p style={{ fontSize: '16px', color: '#444', marginTop: '20px', lineHeight: '1.5' }}>
+            <p
+              style={{
+                fontSize: '18px',
+                color: '#444',
+                marginTop: '28px',
+                lineHeight: '1.7',
+              }}
+            >
               {item.text}
             </p>
           </div>

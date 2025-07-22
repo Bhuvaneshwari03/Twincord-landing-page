@@ -13,11 +13,12 @@ const floatTransition = {
 const AboutUsSection = () => {
   return (
     <motion.section
-      className="bg-gradient-to-r from-[#00bfff] to-[#0088ff] py-20 px-6 flex items-center justify-center relative overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-    >
+  className="mt-20 bg-gradient-to-r from-[#00bfff] to-[#0088ff] py-20 px-6 flex items-center justify-center relative overflow-hidden"
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+>
+
       {/* Floating Background Icons */}
       <motion.div
         animate={{ y: [0, -10, 0] }}

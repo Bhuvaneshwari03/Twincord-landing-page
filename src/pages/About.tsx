@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import TeamSection from '../components/TeamSection';
 import VisionMissionSection from '../components/VisionMissionSection';
 import TechStackSection from '../components/TechStackSection';
+import FounderQuoteSection from '@/components/FounderQuoteSection';
 
 const milestones = [
   {
@@ -66,8 +67,10 @@ export default function AboutPage() {
         </div>
       </div>
 <VisionMissionSection />
+<FounderQuoteSection />
       <TeamSection />
       <TechStackSection/>
+     
     </>
   );
 }
