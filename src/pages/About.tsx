@@ -50,21 +50,39 @@ export default function AboutPage() {
           </p>
         </motion.div>
 
-        <div className="space-y-16 max-w-4xl mx-auto">
-          {milestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              className="relative bg-white shadow-md p-6 rounded-2xl border-l-4 border-[#00bfff]"
-              initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-            >
-              <h3 className="text-xl font-semibold text-[#00bfff] mb-2">{milestone.year}</h3>
-              <p className="text-[#3b3b3b] text-base">{milestone.desc}</p>
-            </motion.div>
-          ))}
+        <div className="relative max-w-5xl mx-auto px-4">
+  {/* Vertical timeline line */}
+  <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#00bfff] to-[#0088ff]"></div>
+
+  {milestones.map((milestone, index) => {
+    const isLeft = index % 2 === 0;
+    return (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className={`relative w-full md:w-1/2 px-4 py-6 ${
+          isLeft ? 'md:pr-10 text-right md:ml-0 md:left-0' : 'md:pl-10 text-left md:ml-auto md:right-0'
+        }`}
+        style={{
+          marginLeft: isLeft ? '0' : 'auto',
+          marginRight: isLeft ? 'auto' : '0',
+        }}
+      >
+        
+
+        {/* Card */}
+        <div className="bg-white shadow-xl border border-[#e6f7ff] p-6 rounded-xl">
+          <h3 className="text-[#00bfff] font-semibold text-lg mb-2">{milestone.year}</h3>
+          <p className="text-[#3b3b3b] text-base leading-relaxed">{milestone.desc}</p>
         </div>
+      </motion.div>
+    );
+  })}
+</div>
+
       </div>
 <VisionMissionSection />
 <FounderQuoteSection />
