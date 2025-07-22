@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import TeamSection from '../components/TeamSection';
 import VisionMissionSection from '../components/VisionMissionSection';
+import TechStackSection from '../components/TechStackSection';
 
 const milestones = [
   {
@@ -66,6 +67,7 @@ export default function AboutPage() {
       </div>
 <VisionMissionSection />
       <TeamSection />
+      <TechStackSection/>
     </>
   );
 }
