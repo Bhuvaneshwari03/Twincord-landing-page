@@ -8,7 +8,7 @@ import TwinAV from "./pages/TwinAV";
 import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
 import Careers from "./pages/Careers";
-
+import About from "./pages/About";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -21,6 +21,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/twinav" element={<TwinAV />} />
+            <Route path="/about" element={<About />} />
             <Route path="/twinhrm" element={<TwinHRM />} />
             <Route path="/twinshield" element={<TwinShield />} />
             <Route path="/careers" element={<Careers />} />
