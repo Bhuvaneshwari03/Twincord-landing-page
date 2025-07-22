@@ -1,6 +1,8 @@
 // pages/about.tsx
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import TeamSection from '../components/TeamSection';
+import VisionMissionSection from '../components/VisionMissionSection';
 
 const milestones = [
   {
@@ -40,7 +42,7 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl font-bold mb-4">Our Journey</h1>
+          <h1 className="text-5xl font-bold mb-4">Our <span className="text-gradient">Journey</span></h1>
           <p className="text-lg max-w-3xl mx-auto">
             We started small but dreamt big. Here’s how Twincord grew into a bold tech company that’s solving real-world problems.
           </p>
@@ -62,6 +64,8 @@ export default function AboutPage() {
           ))}
         </div>
       </div>
+<VisionMissionSection />
+      <TeamSection />
     </>
   );
 }
