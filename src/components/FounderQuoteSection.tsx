@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 const FounderQuoteSection = () => {
   return (
@@ -43,11 +44,14 @@ const FounderQuoteSection = () => {
           whileHover={{ scale: 1.02 }}
           className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border-l-8 border-[#00bfff] transition-all duration-300"
         >
-          <p className="text-xl md:text-2xl font-semibold text-gray-800 mb-6 leading-relaxed">
+          <FaQuoteLeft className="text-4xl text-[#00bfff] mb-4 opacity-150" />
             “Innovation in cybersecurity isn’t about doing what others do better; it’s about doing what others haven’t even imagined yet.”
-          </p>
           <footer className="text-[#3b3b3b] font-medium text-sm md:text-base">
-            – <span className="text-[#00bfff] font-bold">Harrisjayakumar V</span>, Founder & CEO, Twincord Technologies Pvt. Ltd.
+            – <span className="text-[#00bfff] font-bold"><a
+      href="https://www.linkedin.com/in/harrisjayakumar-v?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+      className="text-[#00bfff] font-semibold hover:underline no-underline"
+      target="_blank"
+      rel="noopener noreferrer">Harrisjayakumar V</a></span>, Founder & CEO, Twincord Technologies Pvt. Ltd.
           </footer>
         </motion.blockquote>
       </div>
