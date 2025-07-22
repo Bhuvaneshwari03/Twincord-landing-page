@@ -1,71 +1,71 @@
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ShieldCheck, Lock, Globe } from 'lucide-react';
+import type { Transition } from "framer-motion";
+const floatTransition = {
+  repeat: Infinity,
+  repeatType: "mirror",
+  duration: 6,
+  ease: "easeInOut",
+};
 
 const AboutUsSection = () => {
   return (
-    <section className="container px-4 py-24">
+    <motion.section
+      className="bg-gradient-to-r from-[#00bfff] to-[#0088ff] py-20 px-6 flex items-center justify-center relative overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
+      {/* Floating Background Icons */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto text-center"
+        animate={{ y: [0, -10, 0] }}
+        transition={floatTransition}
+        className="absolute top-16 left-10 pointer-events-none"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-          About <span className="text-gradient">TwinCord Technologies</span>
-        </h2>
-        
-        <div className="prose prose-lg max-w-none text-left space-y-6">
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Twincord Technologies Private Limited is a cybersecurity-focused software startup incubated at Kongu TBI, Tamil Nadu. 
-            We specialize in building secure, modern, and scalable web, mobile, and cloud-based solutions for startups, academic institutions, and growing businesses.
-          </p>
-          
-          <div className="bg-card rounded-lg p-6 border">
-            <h3 className="text-xl font-semibold mb-4 text-foreground">Our in-house innovation includes the development of:</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <strong>TwinAV</strong> – A smart, lightweight antivirus engine (in progress)
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <strong>TwinShield</strong> – A Firewall-as-a-Service platform for small organizations (in progress)
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <strong>TwinHRM</strong> – A Human Resource management tool
-              </li>
-            </ul>
-          </div>
-          
-          <div className="bg-card rounded-lg p-6 border">
-            <h3 className="text-xl font-semibold mb-4 text-foreground">Alongside our products, we offer a range of custom software services, including:</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                Secure website and app development
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                UI/UX design and prototyping
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                Graphic design and motion content
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                Data science automation tools
-              </li>
-            </ul>
-          </div>
-          
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Twincord is also known for its student training and internship programs, bridging industry needs with talent from students. 
-            With a team that values trust, skill, and growth, we are committed to delivering quality-first digital solutions that stay ahead of evolving security threats.
-          </p>
-        </div>
+        <ShieldCheck className="w-16 h-16 text-[#cceeff] opacity-5 blur-[1px]" />
       </motion.div>
-    </section>
+
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={floatTransition}
+        className="absolute bottom-20 right-14 pointer-events-none"
+      >
+        <Lock className="w-14 h-14 text-[#a7dfff] opacity-5 blur-[1px]" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, -8, 0] }}
+        transition={floatTransition}
+        className="absolute top-28 right-24 pointer-events-none"
+      >
+        <Globe className="w-12 h-12 text-[#cceeff] opacity-5 blur-[1px]" />
+      </motion.div>
+
+      {/* Foreground Content */}
+      <div className="max-w-4xl text-center z-10">
+        <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <span className="text-white">Who </span>
+          <span className="text-white">Are We?</span>
+        </h2>
+
+        <p className="text-lg md:text-xl text-white mb-8">
+          From freelance roots to a nationally recognized tech company, our journey is
+          fueled by innovation and impact.
+        </p>
+
+        <Link to="/about">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00bfff] font-semibold rounded-2xl shadow-md hover:bg-gray-100 transition-all"
+          >
+            Explore Our Journey <ArrowRight className="w-4 h-4" />
+          </motion.button>
+        </Link>
+      </div>
+    </motion.section>
   );
 };
 
