@@ -9,6 +9,7 @@ import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
 import Careers from "./pages/Careers";
 import ServicesDetailPage from "./components/ServiceDetails";
+import ScrollToTop from "./components/ScrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/twinav" element={<TwinAV />} />

@@ -107,3 +107,12 @@
 .marquee-text {
   @apply text-muted-foreground uppercase tracking-wider text-sm;
 }
+.product-card {
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.product-card.active {
+  border-left: 4px solid #00bfff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
