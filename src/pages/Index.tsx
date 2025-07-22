@@ -11,6 +11,16 @@ import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const Index = () => {
+  // Scroll to section handler for "Our Products" button
+  const handleScrollToProducts = () => {
+    const element = document.getElementById("products");
+    if (element) {
+      const yOffset = -100; // Adjust for fixed header if needed
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
@@ -64,7 +74,12 @@ const Index = () => {
             <Button size="lg" className="button-gradient">
               Get Started
             </Button>
-            <Button size="lg" variant="link" className="text-foreground">
+            <Button
+              size="lg"
+              variant="link"
+              className="text-foreground"
+              onClick={handleScrollToProducts}
+            >
               Our Products <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>
@@ -75,13 +90,19 @@ const Index = () => {
       <CustomerMarquee />
 
       {/* About Us Section */}
-      <AboutUsSection />
+      <section id="about">
+        <AboutUsSection />
+      </section>
 
       {/* Products Section */}
-      <ProductsSection />
+      <section id="products">
+        <ProductsSection />
+      </section>
 
       {/* Services Section */}
-      <ServicesSection />
+      <section id="services">
+        <ServicesSection />
+      </section>
 
       {/* Contact Us Section */}
       <ContactSection />
