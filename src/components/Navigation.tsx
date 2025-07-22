@@ -19,14 +19,7 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'testimonials') {
-      const testimonialSection = document.querySelector('.animate-marquee');
-      if (testimonialSection) {
-        const yOffset = -100; // Offset to account for the fixed header
-        const y = testimonialSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    } else if (sectionId === 'cta') {
+    if (sectionId === 'cta') {
       const ctaSection = document.querySelector('.button-gradient');
       if (ctaSection) {
         const yOffset = -100;
@@ -36,23 +29,26 @@ const Navigation = () => {
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const yOffset = -100; // Adjust for fixed header
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
   };
 
   const isHomePage = location.pathname === '/';
-  
+
   const navItems = isHomePage ? [
-    { name: "About", href: "#features", onClick: () => scrollToSection('features') },
-    { name: "Services", href: "#pricing", onClick: () => scrollToSection('pricing') },
-    { name: "Products", href: "#testimonials", onClick: () => scrollToSection('testimonials') },
+    { name: "About", href: "#about", onClick: () => scrollToSection('about') },
+    { name: "Products", href: "#products", onClick: () => scrollToSection('products') },
+    { name: "Services", href: "#services", onClick: () => scrollToSection('services') },
+    { name: "Careers", href: "https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html", external: true },
   ] : [
     { name: "Home", href: "/" },
     { name: "TwinAV", href: "/twinav" },
     { name: "TwinHRM", href: "/twinhrm" },
     { name: "TwinShield", href: "/twinshield" },
-    { name: "Careers", href: "/careers" },
+    { name: "Careers", href: "https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html", external: true },
   ];
 
   return (
@@ -74,27 +70,51 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               isHomePage ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (item.onClick) {
-                      item.onClick();
-                    }
-                  }}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
-                >
-                  {item.name}
-                </a>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.onClick) {
+                        item.onClick();
+                      }
+                    }}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                )
               ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                )
               )
             ))}
             {isHomePage ? (
@@ -128,29 +148,55 @@ const Navigation = () => {
                 <div className="flex flex-col gap-4 mt-8">
                   {navItems.map((item) => (
                     isHomePage ? (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setIsMobileMenuOpen(false);
-                          if (item.onClick) {
-                            item.onClick();
-                          }
-                        }}
-                      >
-                        {item.name}
-                      </a>
+                      item.external ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsMobileMenuOpen(false);
+                            if (item.onClick) {
+                              item.onClick();
+                            }
+                          }}
+                        >
+                          {item.name}
+                        </a>
+                      )
                     ) : (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
+                      item.external ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      )
                     )
                   ))}
                   <Button 
