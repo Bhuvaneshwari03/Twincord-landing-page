@@ -60,7 +60,29 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    // Your existing scrollToSection function remains unchanged
+    if (sectionId === "cta") {
+      const ctaSection = document.querySelector(".button-gradient");
+
+      if (ctaSection) {
+        const yOffset = -100;
+
+        const y =
+          ctaSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    } else {
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        const yOffset = -100; // Adjust for fixed header
+
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
   };
 
   const isHomePage = location.pathname === "/";
@@ -94,9 +116,7 @@ const Navigation = () => {
           onClick: () => scrollToSection("contact"),
         },
       ]
-    : [
-        { name: "Products", subItems: productSubItems },
-      ];
+    : [{ name: "Products", subItems: productSubItems }];
 
   return (
     <header
