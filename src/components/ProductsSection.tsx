@@ -101,7 +101,7 @@ const ProductsPage = () => {
                         <AnimatePresence mode="wait">
                             {activeProductIndex === null ? (
                                 <motion.div key="person-image" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="absolute inset-0 w-full h-full">
-                                    <img src="/person.jpg" alt="Person pointing" className="w-full h-full object-cover bg-white" />
+                                    <img src="/person.svg" alt="Person pointing" className="w-full h-full object-cover bg-white" />
                                 </motion.div>
                             ) : (
                                 <motion.div key={activeProductIndex} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="text-center w-full">
