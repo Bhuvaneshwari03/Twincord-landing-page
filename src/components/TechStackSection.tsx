@@ -52,21 +52,29 @@ const TechStackSection = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-        {techStack.map((tech, index) => (
-          <div
-            key={index}
-            className="w-[150px] h-[150px] bg-white rounded-xl shadow-md flex flex-col items-center justify-center text-center px-4 py-3 transition-all duration-300 group hover:scale-105 relative z-10"
-          >
-            <div className="absolute inset-0 bg-[#00bfff] opacity-10 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 z-0" />
-            <div className="relative z-20 text-4xl text-[#00bfff] mb-2 group-hover:scale-110 transition-transform">
-              {tech.icon}
-            </div>
-            <p className="relative z-20 text-sm font-semibold text-[#3b3b3b]">
-              {tech.name}
-            </p>
-          </div>
-        ))}
+  {techStack.map((tech, index) => (
+    <div
+      key={index}
+      className="w-[150px] h-[150px] bg-white rounded-xl shadow-md flex flex-col items-center justify-center text-center px-4 py-3 transition-all duration-300 group relative z-10"
+      onMouseEnter={e => {
+        e.currentTarget.style.transform = 'translateY(-15px)';
+        e.currentTarget.style.boxShadow = '0 35px 60px rgba(0, 191, 255, 0.2)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 6px 14px rgba(0, 0, 0, 0.05)';
+      }}
+      style={{ boxShadow: '0 6px 14px rgba(0, 0, 0, 0.05)' }}
+    >
+      <div className="relative z-20 text-4xl text-[#00bfff] mb-2 group-hover:scale-110 transition-transform">
+        {tech.icon}
       </div>
+      <p className="relative z-20 text-sm font-semibold text-[#3b3b3b]">
+        {tech.name}
+      </p>
+    </div>
+  ))}
+</div>
     </section>
   );
 };
