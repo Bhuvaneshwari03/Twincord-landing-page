@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, Lock, Globe } from 'lucide-react';
-import type { Transition } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight, ShieldCheck, Lock, Globe } from "lucide-react";
+
 const floatTransition = {
   repeat: Infinity,
   repeatType: "mirror",
@@ -13,10 +13,11 @@ const floatTransition = {
 const AboutUsSection = () => {
   return (
     <motion.section
+      id="about-us"
       className="bg-gradient-to-r from-[#00bfff] to-[#0088ff] py-20 px-6 flex items-center justify-center relative overflow-hidden"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       {/* Floating Background Icons */}
       <motion.div
@@ -51,8 +52,8 @@ const AboutUsSection = () => {
         </h2>
 
         <p className="text-lg md:text-xl text-white mb-8">
-          From freelance roots to a nationally recognized tech company, our journey is
-          fueled by innovation and impact.
+          From freelance roots to a nationally recognized tech company, our
+          journey is fueled by innovation and impact.
         </p>
 
         <Link to="/about">
