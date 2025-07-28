@@ -29,26 +29,8 @@ const milestones = [
     ),
   },
   {
-    year: "2023",
-    icon: "📈",
-    dotClass: "growth",
-    title: "Business Evolution",
-    desc: "Transitioned into an individual-led business entity, expanding into web development, app development, and cybersecurity services.",
-    details: (
-      <>
-        <h4>Strategic Expansion:</h4>
-        <ul>
-          <li>Formalized business structure and operations</li>
-          <li>Expanded service portfolio to include cybersecurity</li>
-          <li>Invested in advanced development tools and infrastructure</li>
-          <li>Built specialized expertise in mobile app development</li>
-        </ul>
-        <h4>Service Portfolio:</h4>
-        <p>
-          Comprehensive web development, native and cross-platform mobile applications, and cutting-edge cybersecurity solutions to protect businesses in the digital age.
-        </p>
-      </>
-    ),
+    year: '2023',
+    desc: 'Transitioned into an individual-led business, expanding into web/app development and cybersecurity.',
   },
   {
     year: "Dec 2023",
@@ -135,6 +117,7 @@ export default function AboutPage() {
     window.scrollTo(0, 0);
     document.title = "About Us | Twincord Technologies";
   }, []);
+
 
   return (
     <>
