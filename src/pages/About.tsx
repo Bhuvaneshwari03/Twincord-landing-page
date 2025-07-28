@@ -1,100 +1,135 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaRocket,
-  FaUserTie,
-  FaTrophy,
-  FaLightbulb,
-  FaBuilding,
-  FaChevronDown,
-  FaChevronUp
-} from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import TeamSection from "../components/TeamSection";
+import VisionMissionSection from "../components/VisionMissionSection";
+import TechStackSection from "../components/TechStackSection";
+import FounderQuoteSection from "@/components/FounderQuoteSection";
 
+// Timeline data with details
 const milestones = [
   {
     year: "2022",
+    icon: "🚀",
+    dotClass: "start",
     title: "The Beginning",
-    desc: "Started as a passionate tech team delivering freelance projects in software, design, and digital solutions.",
-    icon: <FaRocket className="text-white" />,
-    color: "#00bfff",
-    details: {
-      foundation: [
-        "Assembled core team",
-        "Built expertise across tech stacks",
-        "Delivered quality projects",
-        "Developed client relationships"
-      ],
-      focus: ["Web Dev", "UI/UX", "Client Comm"]
-    }
+    desc: "Started as a passionate tech team, delivering freelance projects in software development, design, and digital solutions.",
+    details: (
+      <>
+        <h4>Foundation Phase:</h4>
+        <ul>
+          <li>Assembled a core team of passionate developers and designers</li>
+          <li>Focused on building expertise across multiple technology stacks</li>
+          <li>Delivered high-quality freelance projects to establish reputation</li>
+          <li>Developed strong client relationships and project management skills</li>
+        </ul>
+        <h4>Key Focus Areas:</h4>
+        <p>
+          Software development, UI/UX design, and comprehensive digital solutions that helped businesses establish their online presence and streamline operations.
+        </p>
+      </>
+    ),
   },
   {
     year: "2023",
+    icon: "📈",
+    dotClass: "growth",
     title: "Business Evolution",
-    desc: "Transitioned into an individual-led business expanding into web/app development and cybersecurity.",
-    icon: <FaUserTie className="text-white" />,
-    color: "#00bfff",
-    details: {
-      foundation: [
-        "Expanded service offerings",
-        "Built scalable applications",
-        "Standardized processes",
-        "Implemented management systems"
-      ],
-      focus: ["App Dev", "Cybersecurity", "Process Opt"]
-    }
+    desc: "Transitioned into an individual-led business entity, expanding into web development, app development, and cybersecurity services.",
+    details: (
+      <>
+        <h4>Strategic Expansion:</h4>
+        <ul>
+          <li>Formalized business structure and operations</li>
+          <li>Expanded service portfolio to include cybersecurity</li>
+          <li>Invested in advanced development tools and infrastructure</li>
+          <li>Built specialized expertise in mobile app development</li>
+        </ul>
+        <h4>Service Portfolio:</h4>
+        <p>
+          Comprehensive web development, native and cross-platform mobile applications, and cutting-edge cybersecurity solutions to protect businesses in the digital age.
+        </p>
+      </>
+    ),
   },
   {
     year: "Dec 2023",
-    title: "Major Achievement",
-    desc: "Won Smart India Hackathon 2023 - validating our innovation power.",
-    icon: <FaTrophy className="text-white" />,
-    color: "#00bfff",
-    details: {
-      foundation: [
-        "Developed award-winning solution",
-        "Gained industry recognition",
-        "Attracted new talent",
-        "Boosted company reputation"
-      ],
-      focus: ["Innovation", "Team Growth", "Recognition"]
-    }
+    icon: "🎯",
+    dotClass: "achievement",
+    badge: { icon: "🏆", text: "National Recognition", className: "achievement-badge" },
+    title: "Smart India Hackathon 2023 Winners",
+    desc: "Achieved a national-level innovation award, solving real-world problems through technology—this marked a key turning point for our growth.",
+    details: (
+      <>
+        <h4>Competition Highlights:</h4>
+        <ul>
+          <li>Competed against thousands of teams nationwide</li>
+          <li>Developed innovative solution addressing critical societal challenges</li>
+          <li>Demonstrated technical excellence and problem-solving capabilities</li>
+          <li>Gained recognition from industry experts and government officials</li>
+        </ul>
+        <h4>Impact & Recognition:</h4>
+        <p>
+          This victory validated our technical capabilities and innovative approach, opening doors to new opportunities and establishing our reputation as a forward-thinking technology company.
+        </p>
+      </>
+    ),
   },
   {
     year: "Apr 2024",
-    title: "Funding Success",
-    desc: "Secured grant funding via Yukti Innovation Challenge to boost R&D efforts.",
-    icon: <FaLightbulb className="text-white" />,
-    color: "#00bfff",
-    details: {
-      foundation: [
-        "Secured R&D funding",
-        "Expanded capabilities",
-        "Invested in technologies",
-        "Accelerated development"
-      ],
-      focus: ["Research", "Development", "Innovation"]
-    }
+    icon: "💰",
+    dotClass: "funding",
+    badge: { icon: "💡", text: "Grant Secured", className: "funding-badge" },
+    title: "Yukti Innovation Challenge Success",
+    desc: "Recognized for innovative product development and awarded funding to fuel R&D and technology advancement.",
+    details: (
+      <>
+        <h4>Innovation Recognition:</h4>
+        <ul>
+          <li>Presented cutting-edge product concepts to expert panel</li>
+          <li>Secured substantial funding for research and development</li>
+          <li>Gained access to mentorship and industry networks</li>
+          <li>Accelerated product development timeline</li>
+        </ul>
+        <h4>Future Investment:</h4>
+        <p>
+          The grant funding enabled us to invest in advanced R&D capabilities, hire specialized talent, and accelerate the development of innovative cybersecurity and software solutions.
+        </p>
+      </>
+    ),
   },
   {
-    year: "Jun 2025",
-    title: "Corporate Milestone",
-    desc: "Incorporated as Twincord Technologies Private Limited with a global vision.",
-    icon: <FaBuilding className="text-white" />,
-    color: "#00bfff",
-    details: {
-      foundation: [
-        "Established as private limited",
-        "Expanded global reach",
-        "Developed enterprise solutions",
-        "Built strategic partnerships"
-      ],
-      focus: ["Global Expansion", "Enterprise", "Growth"]
-    }
-  }
+    year: "17 June 2025",
+    icon: "🏢",
+    dotClass: "milestone",
+    badge: { icon: "🚀", text: "Major Milestone", className: "milestone-badge" },
+    title: "Twincord Technologies Pvt Ltd",
+    desc: "Officially incorporated as Twincord Technologies Private Limited, with a vision to scale cybersecurity solutions and software products globally.",
+    details: (
+      <>
+        <h4>Corporate Milestone:</h4>
+        <ul>
+          <li>Official incorporation as Private Limited Company</li>
+          <li>Established formal governance and operational structure</li>
+          <li>Positioned for rapid scaling and global expansion</li>
+          <li>Enhanced credibility with enterprise clients and partners</li>
+        </ul>
+        <h4>Global Vision:</h4>
+        <p>
+          With incorporation complete, Twincord Technologies is positioned to scale innovative cybersecurity solutions and software products to markets worldwide, building on our foundation of technical excellence and proven innovation.
+        </p>
+      </>
+    ),
+  },
+];
+
+const stats = [
+  { number: "3+", label: "Years of Innovation" },
+  { number: "2", label: "Major Awards Won" },
+  { number: "1", label: "Grant Secured" },
+  { number: "∞", label: "Future Possibilities" },
 ];
 
 export default function AboutPage() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -102,199 +137,170 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#f8f8f8] min-h-screen py-12 px-4">
-      {/* Hero Section */}
-      <section className="py-12 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="flex justify-center mb-6"
-          >
-            <div className="bg-[#00bfff] rounded-full p-4 shadow-lg inline-block">
-              <FaRocket className="text-white text-4xl" />
-            </div>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-4 text-[#3b3b3b]"
-          >
-            Our Journey
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-base md:text-lg text-[#3b3b3b] max-w-2xl mx-auto"
-          >
-            From humble beginnings to global vision - our story of innovation and growth
-          </motion.p>
-        </motion.div>
-      </section>
+    <>
+      <style>{`
+        /* Paste your CSS here or import a CSS file */
+        .timeline-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          background: rgba(255,255,255,0.98);
+          border-radius: 24px;
+          padding: 50px 40px;
+          /* Removed box-shadow and backdrop-filter for flat look */
+        }
+        .header { text-align: center; margin-bottom: 60px; }
+        .header h1 {
+          font-size: 3.5rem;
+          font-weight: 800;
+          margin-bottom: 15px;
+          letter-spacing: -0.02em;
+        }
+        .header p { font-size: 1.3rem; color: #64748b; font-weight: 500; }
+        .timeline { position: relative; padding: 30px 0; }
+        .timeline-line {
+          position: absolute; left: 50%; top: 0; bottom: 0; width: 4px;
+          background: linear-gradient(to bottom, #00bfff, #00bfff, #00bfff, #00bfff);
+          transform: translateX(-50%);
+          border-radius: 2px;
+          /* Removed box-shadow for flat look */
+        }
+        .timeline-item { position: relative; margin: 80px 0; opacity: 1; }
+        .timeline-item.left { text-align: right; padding-right: calc(50% + 50px); }
+        .timeline-item.right { text-align: left; padding-left: calc(50% + 50px); }
+        .timeline-dot {
+          position: absolute; left: 50%; top: 30px; width: 24px; height: 24px; border-radius: 50%;
+          transform: translateX(-50%); cursor: pointer; transition: all 0.4s ease; z-index: 10;
+          border: 4px solid #fff;
+          /* Removed box-shadow for flat look */
+        }
+        .timeline-dot.start { background: linear-gradient(135deg, #00bfff, #00bfff); }
+        .timeline-dot.growth { background: linear-gradient(135deg, #00bfff, #00bfff); }
+        .timeline-dot.achievement { background: linear-gradient(135deg, #00bfff, #00bfff); }
+        .timeline-dot.funding { background: linear-gradient(135deg, #00bfff, #00bfff); }
+        .timeline-dot.milestone { background: linear-gradient(135deg, #00bfff, #00bfff); }
+        .timeline-dot:hover { transform: translateX(-50%) scale(1.4); /* Removed box-shadow for flat look */}
+        .timeline-content {
+          background: #fff; padding: 35px; border-radius: 20px; /* Removed box-shadow for flat look */
+          cursor: pointer; transition: all 0.4s ease; border: 2px solid transparent; position: relative; overflow: hidden;
+        }
+        .timeline-content::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+          background: linear-gradient(90deg, #00bfff, #00bfff); transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .timeline-content:hover::before { transform: scaleX(1); }
+        .timeline-content:hover {
+          /* Removed pop-up effect */
+        }
+        .timeline-date { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; color: #00bfff; display: flex; align-items: center; gap: 10px; }
+        .timeline-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: #1e293b; line-height: 1.3; }
+        .timeline-description { font-size: 1.1rem; line-height: 1.7; color: #475569; margin-bottom: 20px; }
+        .achievement-badge, .funding-badge, .milestone-badge {
+          display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 25px; font-weight: 600; font-size: 0.95rem; margin-bottom: 15px;
+        }
+        .achievement-badge { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #00bfff; color: #00bfff; }
+        .funding-badge { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: 2px solid #00bfff; color: #00bfff; }
+        .milestone-badge { background: linear-gradient(135deg, #fee2e2, #fecaca); border: 2px solid #00bfff; color: #00bfff; }
+        .expand-btn {
+          background: linear-gradient(135deg, #00bfff, #00bfff); border: none; color: white; font-weight: 600; cursor: pointer;
+          font-size: 1rem; padding: 12px 24px; border-radius: 12px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .expand-btn:hover {
+          background: linear-gradient(135deg, #00bfff, #00bfff); transform: translateY(-2px); /* Removed box-shadow for flat look */
+        }
+        .detailed-info { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; border-top: 2px solid #e2e8f0; margin-top: 20px; }
+        .detailed-info.expanded { max-height: 2000px; padding-top: 20px; }
+        .detailed-content { font-size: 1rem; line-height: 1.8; color: #475569; }
+        .detailed-content h4 { color: #1e293b; margin: 20px 0 12px 0; font-size: 1.2rem; font-weight: 600; }
+        .detailed-content ul { margin-left: 20px; margin-bottom: 15px; }
+        .detailed-content li { margin-bottom: 8px; position: relative; }
+        .detailed-content li::marker { color: #00bfff; }
+        .stats-grid {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; padding: 25px;
+          background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-radius: 16px; border: 1px solid #e2e8f0;
+        }
+        .stat-item { text-align: center; padding: 15px; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: #00bfff; display: block; }
+        .stat-label { font-size: 0.9rem; color: #64748b; font-weight: 500; margin-top: 5px; }
+        @media (max-width: 768px) {
+          .timeline-line { left: 30px; }
+          .timeline-item.left, .timeline-item.right { text-align: left; padding-left: 70px; padding-right: 20px; }
+          .timeline-dot { left: 30px; }
+          .header h1 { font-size: 2.5rem; }
+          .timeline-container { padding: 30px 20px; }
+          .stats-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
 
-      {/* Timeline Section */}
-      <section className="relative max-w-4xl mx-auto px-4 pb-24">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 top-0 h-full w-0.5 bg-[#00bfff] -translate-x-1/2 z-0" />
-
-        <div className="space-y-8 relative z-10">
-          {milestones.map((milestone, idx) => {
-            const isLeft = idx % 2 === 0;
-            return (
-              <div key={idx} className="flex flex-col md:flex-row items-center justify-center w-full relative">
-                {/* Left side */}
-                <div className={`md:w-1/2 flex ${isLeft ? 'justify-end' : 'justify-start'} md:px-4`}>
-                  {isLeft && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-[320px]"
-                    >
-                      <TimelineCard
-                        milestone={milestone}
-                        isExpanded={expandedIndex === idx}
-                        onToggle={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
-                      />
-                    </motion.div>
-                  )}
-                </div>
-
-                {/* Center dot */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="flex flex-col items-center z-10"
-                >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-[#00bfff] shadow-md`}>
-                    <div className="w-3 h-3 rounded-full bg-[#f8f8f8]" />
-                  </div>
-                </motion.div>
-
-                {/* Right side */}
-                <div className={`md:w-1/2 flex ${!isLeft ? 'justify-start' : 'justify-end'} md:px-4`}>
-                  {!isLeft && (
-                    <motion.div
-                      initial={{ opacity: 0, x: 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-[320px]"
-                    >
-                      <TimelineCard
-                        milestone={milestone}
-                        isExpanded={expandedIndex === idx}
-                        onToggle={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
-                      />
-                    </motion.div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+      <div className="timeline-container">
+        <div className="header">
+          <h1>
+            <span style={{ color: '#3b3b3b' }}>Our </span>
+            <span style={{ color: '#00bfff' }}>Journey</span>
+          </h1>
+          <p>From passionate beginnings to industry recognition</p>
         </div>
-      </section>
-    </div>
-  );
-}
-
-function TimelineCard({ milestone, isExpanded, onToggle }: {
-  milestone: any,
-  isExpanded: boolean,
-  onToggle: () => void
-}) {
-  return (
-    <motion.div
-      layout
-      className="bg-white rounded-xl shadow-lg border border-gray-100 w-[320px]"
-      style={{
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-      }}
-    >
-      <div className="p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className={`flex items-center justify-center w-8 h-8 rounded-full`} style={{ backgroundColor: milestone.color }}>
-            {milestone.icon}
-          </div>
-          <div>
-            <h3 className="text-[#00bfff] font-bold text-lg">{milestone.year}</h3>
-            <h2 className="text-xl font-semibold text-[#3b3b3b]">{milestone.title}</h2>
-          </div>
-        </div>
-        <p className="text-[#3b3b3b] mb-4">{milestone.desc}</p>
-
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={onToggle}
-          className="flex items-center justify-center w-full py-2 bg-[#00bfff] hover:bg-[#00a2ff] text-white font-medium rounded-lg transition-colors"
-        >
-          {isExpanded ? (
-            <>
-              <FaChevronUp className="mr-2" /> Show Less
-            </>
-          ) : (
-            <>
-              <FaChevronDown className="mr-2" /> Learn More
-            </>
-          )}
-        </motion.button>
-
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
+        <div className="timeline">
+          <div className="timeline-line"></div>
+          {milestones.map((m, i) => (
+            <div
+              className={`timeline-item ${i % 2 === 0 ? "left" : "right"}`}
+              key={i}
+              onMouseEnter={e => {
+                const card = e.currentTarget.querySelector('.timeline-content') as HTMLElement | null;
+                if (card) {
+                  card.style.transform = 'translateY(-15px)';
+                  card.style.boxShadow = '0 35px 60px rgba(0, 191, 255, 0.2)';
+                }
+              }}
+              onMouseLeave={e => {
+                const card = e.currentTarget.querySelector('.timeline-content') as HTMLElement | null;
+                if (card) {
+                  card.style.transform = 'translateY(0)';
+                  card.style.boxShadow = '0 6px 14px rgba(0, 0, 0, 0.05)';
+                }
+              }}
             >
-              <div className="pt-4 mt-4 border-t border-gray-200">
-                <h4 className="font-semibold text-[#3b3b3b] mb-3">Foundation:</h4>
-                <ul className="space-y-2 mb-4">
-                  {milestone.details.foundation.map((item: string, i: number) => (
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      key={i}
-                      className="flex items-start"
-                    >
-                      <span className="inline-block w-2 h-2 mt-2 mr-2 rounded-full" style={{ backgroundColor: milestone.color }}></span>
-                      <span className="text-[#3b3b3b] text-sm">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <h4 className="font-semibold text-[#3b3b3b] mb-3">Focus Areas:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {milestone.details.focus.map((item: string, i: number) => (
-                    <motion.span
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.1 }}
-                      key={i}
-                      className="px-3 py-1 bg-[#00bfff]/10 text-[#00bfff] text-xs rounded-full"
-                    >
-                      {item}
-                    </motion.span>
-                  ))}
+              <div className={`timeline-dot ${m.dotClass}`}></div>
+              <div className="timeline-content" style={{ boxShadow: '0 6px 14px rgba(0, 0, 0, 0.05)', transition: 'all 0.3s ease' }}>
+                {m.badge && (
+                  <div className={m.badge.className}>
+                    <span>{m.badge.icon}</span>
+                    {m.badge.text}
+                  </div>
+                )}
+                <div className="timeline-date">
+                  <span>{m.icon}</span>
+                  {m.year}
+                </div>
+                <div className="timeline-title">{m.title}</div>
+                <div className="timeline-description">{m.desc}</div>
+                <button
+                  className="expand-btn"
+                  onClick={() => setExpanded(expanded === i ? null : i)}
+                >
+                  <span>{expanded === i ? "Show Less" : "Learn More"}</span>
+                  <span>{expanded === i ? "▲" : "▼"}</span>
+                </button>
+                <div className={`detailed-info${expanded === i ? " expanded" : ""}`}>
+                  <div className="detailed-content">{m.details}</div>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          ))}
+        </div>
+        <div className="stats-grid">
+          {stats.map((stat, i) => (
+            <div className="stat-item" key={i}>
+              <span className="stat-number">{stat.number}</span>
+              <span className="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </motion.div>
+      <VisionMissionSection />
+      <FounderQuoteSection />
+      <TeamSection />
+      <TechStackSection />
+    </>
   );
 }

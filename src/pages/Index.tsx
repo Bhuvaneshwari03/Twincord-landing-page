@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
+
 const Index = () => {
   // Scroll to section handler for "Our Products" button
   const handleScrollToProducts = () => {
