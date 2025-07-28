@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin, ArrowRight, Users } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  Users,
+} from "lucide-react";
 
 const ContactSection = () => {
   return (
@@ -18,7 +30,7 @@ const ContactSection = () => {
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Ready to secure your digital future? Contact us to discuss your cybersecurity and software development needs.
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Card className="border-border h-48 flex flex-col justify-center">
             <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
@@ -31,7 +43,7 @@ const ContactSection = () => {
               </CardDescription>
             </CardHeader>
           </Card>
-          
+
           <Card className="border-border h-48 flex flex-col justify-center">
             <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
               <div className="flex justify-center mb-4">
@@ -43,7 +55,7 @@ const ContactSection = () => {
               </CardDescription>
             </CardHeader>
           </Card>
-          
+
           <Card className="border-border h-48 flex flex-col justify-center">
             <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
               <div className="flex justify-center mb-4">
@@ -55,7 +67,7 @@ const ContactSection = () => {
               </CardDescription>
             </CardHeader>
           </Card>
-          
+
           <Card className="border-border h-48 flex flex-col justify-center">
             <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
               <div className="flex justify-center mb-4">
@@ -71,11 +83,17 @@ const ContactSection = () => {
             </CardHeader>
           </Card>
         </div>
-        
-        <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-          Start Your Project
-          <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
+
+        <a
+          href="https://forms.gle/T5UFx6t7xYg1uuuMA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            Start Your Project
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+        </a>
       </motion.div>
     </section>
   );
