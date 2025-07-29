@@ -9,11 +9,22 @@ import ContactSection from "@/components/ContactSection";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const Index = () => {
-  // Scroll to section handler for "Our Products" button
   const handleScrollToProducts = () => {
     const element = document.getElementById("products");
     if (element) {
-      const yOffset = -100; // Adjust for fixed header
+      const yOffset = -100;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
+  // 1. Create a handler to scroll to the contact section
+  const handleScrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      // Re-using the same offset logic for consistency
+      const yOffset = -100;
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -21,7 +32,6 @@ const Index = () => {
   };
 
   return (
-    // The main wrapper div is replaced with a fragment <> since Layout.tsx handles the main container
     <>
       {/* NO <Navigation /> here */}
 
@@ -38,23 +48,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Column: Text Content */}
             <div className="relative z-10 text-center lg:text-left">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="hidden lg:inline-block mb-4 px-4 py-1.5 rounded-full glass"
-              >
-                <span className="flex items-center text-sm font-medium">
-                  <Shield
-                    color="#00bfff"
-                    size={16}
-                    className="mr-2 flex-shrink-0"
-                  />
-                  <span>Cybersecurity Redefined. Innovation Delivered</span>
-                </span>
-              </motion.div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal mb-4 lg:mb-6 tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal my-4 lg:mb-6 tracking-tight">
                 <span className="text-muted-foreground">
                   <TextGenerateEffect words="Secure software" />
                 </span>
@@ -83,7 +77,12 @@ const Index = () => {
                 transition={{ delay: 0.5 }}
                 className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
               >
-                <Button size="lg" className="button-gradient w-full sm:w-auto">
+                {/* 3. Add the onClick handler to the button */}
+                <Button
+                  size="lg"
+                  className="button-gradient w-full sm:w-auto"
+                  onClick={handleScrollToContact}
+                >
                   Get Started
                 </Button>
                 <Button
@@ -94,6 +93,27 @@ const Index = () => {
                 >
                   Our Products <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
+              </motion.div>
+
+              {/* Working Partners Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-12"
+              >
+                <p className="text-sm text-muted-foreground/80 font-medium text-center lg:text-left mb-4">
+                  Our working partners
+                </p>
+                <div className="flex justify-center lg:justify-start items-center gap-x-8">
+                  <img src="/aws.svg" alt="AWS Logo" className="h-8 w-auto" />
+                  <img
+                    src="/gcp.svg"
+                    alt="Google Cloud Platform Logo"
+                    className="h-8 w-auto"
+                  />
+                  <img src="/zoho.svg" alt="Zoho Logo" className="h-8 w-auto" />
+                </div>
               </motion.div>
             </div>
 
@@ -130,9 +150,10 @@ const Index = () => {
         <ServicesSection />
       </section>
 
-      <ContactSection />
-
-      {/* NO <Footer /> here */}
+      {/* 2. Add an ID to the section wrapping the Contact component */}
+      <section id="contact">
+        <ContactSection />
+      </section>
     </>
   );
 };

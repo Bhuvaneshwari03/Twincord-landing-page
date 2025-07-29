@@ -10,13 +10,9 @@ import {
   Check,
 } from "lucide-react";
 import { useEffect } from "react";
-// --- MODIFICATION 1: Import hooks from react-router-dom ---
+
 import { useParams, useNavigate } from "react-router-dom";
 
-// It's highly recommended to move this data to a separate file (e.g., `servicesData.ts`)
-// and import it here. For this example, it's kept inline.
-
-// --- Type definitions (unchanged) ---
 type ServiceItem = {
   name: string;
   desc: string;
@@ -35,13 +31,11 @@ type ServiceType = {
   stats: Record<string, string>;
 };
 
-// --- Service Card Component (unchanged, but with added scroll-margin) ---
 const ServiceCard: React.FC<{ service: ServiceType; index: number }> = ({
   service,
   index,
 }) => {
   return (
-    // The `scroll-mt-24` class adds a top margin when scrolling, preventing the sticky nav from hiding the title.
     <section
       id={service.id}
       className={`py-20 bg-gradient-to-br ${service.bgGradient} scroll-mt-24 md:scroll-mt-32`}
@@ -161,26 +155,19 @@ const ServiceCard: React.FC<{ service: ServiceType; index: number }> = ({
   );
 };
 
-// --- Main Page Component ---
 const ServicesDetailPage = () => {
-  // --- MODIFICATION 2: Get serviceId from URL and navigate function ---
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
 
-  // --- MODIFICATION 3: Handle scrolling based on URL parameter ---
   useEffect(() => {
-    // If a serviceId exists in the URL, scroll to that element.
     if (serviceId) {
       const element = document.getElementById(serviceId);
       if (element) {
-        // The scrolling is handled smoothly by the browser.
-        // The `scroll-mt` class on the section handles the offset.
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-  }, [serviceId]); // This effect re-runs whenever the serviceId changes.
+  }, [serviceId]);
 
-  // The full services data array
   const services: ServiceType[] = [
     {
       id: "cybersecurity",
@@ -397,7 +384,6 @@ const ServicesDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <section className="relative py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -426,17 +412,14 @@ const ServicesDetailPage = () => {
         </div>
       </section>
 
-      {/* --- MODIFICATION 4: Sticky Navigation updated to use navigate --- */}
       <section className="sticky top-[56px] md:top-[68px] z-40 bg-white/80 backdrop-blur-lg shadow-md mb-8">
         <div className="max-w-7xl mx-auto px-4">
           <nav className="flex space-x-1 overflow-x-auto py-4">
             {services.map((service) => (
               <button
                 key={service.id}
-                // Clicking a button now updates the URL
                 onClick={() => navigate(`/services/${service.id}`)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all duration-300 ${
-                  // Active state is determined by the URL parameter
                   serviceId === service.id
                     ? "text-white shadow-lg"
                     : "text-gray-600 hover:bg-gray-100"
