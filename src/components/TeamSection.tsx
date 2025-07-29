@@ -4,47 +4,47 @@ const teamMembers = [
   {
     name: "Harrisjayakumar V",
     position: "CEO & Managing Director",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Naren Karthik",
     position: "CTO",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Saran Babu B",
     position: "Product and Marketing Lead",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Ragul",
     position: "Head of Security Research",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Harisree L G",
     position: "HR & Operations",
-    image: "/public/girl.png",
+    image: "/girl.png",
   },
   {
     name: "Nivithitha",
     position: "Backend Engineer",
-    image: "/public/girl.png",
+    image: "/girl.png",
   },
   {
     name: "Manoj",
     position: "Frontend Engineer",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Kishore",
     position: "Product Designer",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
   {
     name: "Thejas",
     position: "Product Designer",
-    image: "/public/boy.png",
+    image: "/boy.png",
   },
 ];
 
