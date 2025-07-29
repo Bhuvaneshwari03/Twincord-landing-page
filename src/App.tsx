@@ -37,10 +37,7 @@ const App = () => (
             <Route path="twinhrm" element={<TwinHRM />} />
             <Route path="twinshield" element={<TwinShield />} />
             <Route path="/policies" element={<Policies />} />
-            <Route path="refund-cancellation" element={<RefundCancellation />} />
-
-            {/* --- MODIFIED SERVICE ROUTES --- */}
-            {/* This is the main services page that shows all service cards */}
+         <Route path="/refundCancellation" element={< RefundCancellation/>} />
             {/* --- MODIFIED SERVICE ROUTES --- */}
             
             {/* 1. Route to the services overview page (shows all service cards) */}
