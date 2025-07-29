@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CustomerMarquee from "@/components/CustomerMarquee";
 import AboutUsSection from "@/components/AboutUsSection";
@@ -19,12 +19,10 @@ const Index = () => {
     }
   };
 
-  // 1. Create a handler to scroll to the contact section
   const handleScrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
-      // Re-using the same offset logic for consistency
-      const yOffset = -100;
+      const yOffset = -100; // Consistent offset for sticky nav
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -33,16 +31,14 @@ const Index = () => {
 
   return (
     <>
-      {/* NO <Navigation /> here */}
-
-      {/* This wrapper makes the Hero and Marquee fill the viewport height */}
-      <div className="h-screen flex flex-col">
+      {/* This wrapper now applies h-screen only on large screens (lg) and up */}
+      <div className="lg:h-screen flex flex-col">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative flex-1 flex items-center container p-6"
+          className="relative flex-1 flex items-center container p-6 pt-24 pb-12 lg:pt-6 lg:pb-6"
         >
           {/* The grid is 1 column by default, and 2 on large screens */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -77,7 +73,6 @@ const Index = () => {
                 transition={{ delay: 0.5 }}
                 className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
               >
-                {/* 3. Add the onClick handler to the button */}
                 <Button
                   size="lg"
                   className="button-gradient w-full sm:w-auto"
@@ -95,7 +90,7 @@ const Index = () => {
                 </Button>
               </motion.div>
 
-              {/* Working Partners Section */}
+              {/* Working Partners Section (Mobile Responsive) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -105,14 +100,22 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground/80 font-medium text-center lg:text-left mb-4">
                   Our working partners
                 </p>
-                <div className="flex justify-center lg:justify-start items-center gap-x-8">
-                  <img src="/aws.svg" alt="AWS Logo" className="h-8 w-auto" />
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-8">
+                  <img
+                    src="/aws.svg"
+                    alt="AWS Logo"
+                    className="h-7 w-auto"
+                  />
                   <img
                     src="/gcp.svg"
                     alt="Google Cloud Platform Logo"
-                    className="h-8 w-auto"
+                    className="h-7 w-auto"
                   />
-                  <img src="/zoho.svg" alt="Zoho Logo" className="h-8 w-auto" />
+                  <img
+                    src="/zoho.svg"
+                    alt="Zoho Logo"
+                    className="h-7 w-auto"
+                  />
                 </div>
               </motion.div>
             </div>
@@ -137,7 +140,7 @@ const Index = () => {
         <CustomerMarquee />
       </div>
 
-      {/* The rest of the page sections remain the same */}
+      {/* The rest of the page sections */}
       <section id="about">
         <AboutUsSection />
       </section>
@@ -150,7 +153,6 @@ const Index = () => {
         <ServicesSection />
       </section>
 
-      {/* 2. Add an ID to the section wrapping the Contact component */}
       <section id="contact">
         <ContactSection />
       </section>
