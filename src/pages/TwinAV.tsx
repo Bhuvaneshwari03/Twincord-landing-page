@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 import { Shield, Zap, Cpu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 const TwinAV = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
-      
+    // The main wrapper div is replaced with a fragment, as Layout.tsx handles the page container
+    <>
       {/* Hero Section */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
@@ -82,9 +79,7 @@ const TwinAV = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </>
   );
 };
 

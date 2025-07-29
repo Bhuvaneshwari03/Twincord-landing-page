@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
 import CustomerMarquee from "@/components/CustomerMarquee";
 import AboutUsSection from "@/components/AboutUsSection";
 import ProductsSection from "@/components/ProductsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-
 
 const Index = () => {
   // Scroll to section handler for "Our Products" button
@@ -24,8 +21,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
+    // The main wrapper div is replaced with a fragment <> since Layout.tsx handles the main container
+    <>
+      {/* NO <Navigation /> here */}
 
       {/* This wrapper makes the Hero and Marquee fill the viewport height */}
       <div className="h-screen flex flex-col">
@@ -34,7 +32,6 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          // Use padding for mobile and let the container center it on desktop
           className="relative flex-1 flex items-center container p-6"
         >
           {/* The grid is 1 column by default, and 2 on large screens */}
@@ -45,7 +42,6 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                // Center the tagline on mobile
                 className="hidden lg:inline-block mb-4 px-4 py-1.5 rounded-full glass"
               >
                 <span className="flex items-center text-sm font-medium">
@@ -58,7 +54,6 @@ const Index = () => {
                 </span>
               </motion.div>
 
-              {/* Mobile-first font sizes: start smaller, get larger on bigger screens */}
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal mb-4 lg:mb-6 tracking-tight">
                 <span className="text-muted-foreground">
                   <TextGenerateEffect words="Secure software" />
@@ -73,7 +68,6 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                // Mobile-first paragraph font size and margins
                 className="text-lg lg:text-xl text-muted-foreground mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0"
               >
                 Building secure, modern, and scalable solutions for startups,
@@ -87,7 +81,6 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                // This correctly stacks buttons on mobile and rows on larger screens
                 className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
               >
                 <Button size="lg" className="button-gradient w-full sm:w-auto">
@@ -104,7 +97,7 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Right Column: This is hidden by default and only appears on large screens */}
+            {/* Right Column */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 50 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -139,8 +132,8 @@ const Index = () => {
 
       <ContactSection />
 
-      <Footer />
-    </div>
+      {/* NO <Footer /> here */}
+    </>
   );
 };
 
