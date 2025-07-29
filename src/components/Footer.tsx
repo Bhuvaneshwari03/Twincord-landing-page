@@ -206,6 +206,15 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a
+                  href="#contact"
+                  onClick={handleSmoothScroll}
+                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
                 <Link
                   to="/policies"
                   className="text-sm text-[#b0b0b0] hover:text-[#00bfff] transition-colors"
@@ -216,11 +225,11 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/refund-cancellation"
                   onClick={handleSmoothScroll}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
-                  Contact
+                  Refund & Cancellation
                 </a>
               </li>
             </ul>
