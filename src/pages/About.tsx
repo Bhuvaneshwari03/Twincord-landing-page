@@ -124,9 +124,9 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#f8f8f8] min-h-screen py-12 px-2 sm:px-4">
+    <div className="bg-[#f8f8f8] min-h-screen py-8 sm:py-12 px-2 sm:px-4">
       {/* Hero Section */}
-      <section className="py-12 px-2 sm:px-6 text-center">
+      <section className="py-8 sm:py-12 px-2 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,17 +137,17 @@ export default function AboutPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="flex justify-center mb-6"
+            className="flex justify-center mb-4 sm:mb-6"
           >
-            <div className="bg-[#00bfff] rounded-full p-4 shadow-lg inline-block">
-              <FaRocket className="text-white text-4xl" />
+            <div className="bg-[#00bfff] rounded-full p-3 sm:p-4 shadow-lg inline-block">
+              <FaRocket className="text-white text-3xl sm:text-4xl" />
             </div>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-3xl md:text-5xl font-bold mb-4 text-[#3b3b3b]"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 text-[#3b3b3b] leading-tight"
           >
             <span className="text-[#3a3a3a]">Our </span>
             <span className="text-[#00bfff]">Journey</span>
@@ -156,7 +156,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-base md:text-lg text-[#3b3b3b] max-w-2xl mx-auto"
+            className="text-sm sm:text-base md:text-lg text-[#3b3b3b] max-w-2xl mx-auto"
           >
             From passionate beginnings to industry recognition
           </motion.p>
@@ -165,10 +165,10 @@ export default function AboutPage() {
 
       {/* Timeline Section */}
       <section className="relative max-w-4xl mx-auto px-2 sm:px-4 pb-24">
-        {/* Vertical line only on md+ */}
+        {/* Vertical line for desktop */}
         <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-[#00bfff] -translate-x-1/2 z-0" />
 
-        <div className="space-y-8 relative z-10">
+        <div className="relative z-10">
           {milestones.map((milestone, idx) => {
             const isLeft = idx % 2 === 0;
             return (
@@ -176,17 +176,14 @@ export default function AboutPage() {
                 key={idx}
                 className="flex flex-col md:flex-row items-center justify-center w-full relative"
               >
-                {/* On mobile, always show card centered. On md+, alternate left/right */}
-                <div
-                  className={`w-full md:w-1/2 flex justify-center md:justify-${isLeft ? "end" : "start"} md:px-4 mb-4 md:mb-0`}
-                >
-                  {(isLeft || window.innerWidth < 768) && (
+                <div className={`w-full md:w-1/2 flex justify-center md:${isLeft ? "justify-end" : "justify-start"} md:px-4`}>
+                  {isLeft && (
                     <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-md"
+                      className="w-full max-w-md md:max-w-[370px] mb-8 md:mb-0 z-10"
                     >
                       <TimelineCard
                         milestone={milestone}
@@ -196,39 +193,32 @@ export default function AboutPage() {
                     </motion.div>
                   )}
                 </div>
-
-                {/* Center dot */}
+                {/* Center dot (desktop only) */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="flex flex-col items-center z-10 my-2 md:my-0"
+                  className="hidden md:flex flex-col items-center z-10 my-6"
                 >
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#00bfff] shadow-md">
                     <div className="w-3 h-3 rounded-full bg-[#f8f8f8]" />
                   </div>
                 </motion.div>
-
-                <div
-                  className={`w-full md:w-1/2 flex justify-center md:justify-${!isLeft ? "start" : "end"} md:px-4 mb-4 md:mb-0`}
-                >
-                  {(!isLeft || window.innerWidth < 768) && (
+                <div className={`w-full md:w-1/2 flex justify-center md:${!isLeft ? "justify-start" : "justify-end"} md:px-4`}>
+                  {!isLeft && (
                     <motion.div
                       initial={{ opacity: 0, x: 50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-md md:max-w-[370px]"
+                      className="w-full max-w-md md:max-w-[370px] mb-8 md:mb-0 z-10"
                     >
-                      {/* On mobile, only render the card once per milestone */}
-                      {window.innerWidth >= 768 || !isLeft ? (
-                        <TimelineCard
-                          milestone={milestone}
-                          isExpanded={expandedIndex === idx}
-                          onToggle={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
-                        />
-                      ) : null}
+                      <TimelineCard
+                        milestone={milestone}
+                        isExpanded={expandedIndex === idx}
+                        onToggle={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
+                      />
                     </motion.div>
                   )}
                 </div>
@@ -259,7 +249,7 @@ export default function AboutPage() {
   );
 }
 
-// TimelineCard component with neat blue line
+// TimelineCard component
 function TimelineCard({ milestone, isExpanded, onToggle }) {
   const [hovered, setHovered] = useState(false);
 
