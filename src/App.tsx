@@ -4,14 +4,20 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Layout from "./components/Layout"; 
+import Layout from "./components/Layout";
 
+// Page Imports
 import Index from "./pages/Index";
+import About from "./pages/About";
 import TwinAV from "./pages/TwinAV";
 import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
-import About from "./pages/About";
-import ServicesDetailPage from "./components/ServiceDetails";
+
+// --- UPDATED IMPORTS ---
+// Assuming you have a page that shows all service cards
+import ServicesPage from "./components/ServicesSection"; 
+// Renamed for clarity, this is your page for a single service's details
+import ServicesDetailPage from "./components/ServiceDetails"; 
 
 const queryClient = new QueryClient();
 
@@ -21,16 +27,24 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* 2. Set up the nested routes */}
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* These routes will now render inside the Layout's <Outlet /> */}
+            {/* Standard page routes */}
             <Route index element={<Index />} />
             <Route path="about" element={<About />} />
             <Route path="twinav" element={<TwinAV />} />
             <Route path="twinhrm" element={<TwinHRM />} />
             <Route path="twinshield" element={<TwinShield />} />
-            <Route path="services/details" element={<ServicesDetailPage />} />
+
+            {/* --- MODIFIED SERVICE ROUTES --- */}
+            
+            {/* 1. Route to the services overview page (shows all service cards) */}
+            <Route path="services" element={<ServicesPage />} />
+
+            {/* 2. Dynamic route for individual service details */}
+            {/* This replaces "services/details" and handles all services */}
+            <Route path="services/:serviceId" element={<ServicesDetailPage />} />
+
           </Route>
         </Routes>
       </BrowserRouter>
