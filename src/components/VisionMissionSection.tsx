@@ -55,11 +55,11 @@ const VisionMissionSection = () => {
         {[
           {
             title: 'Mission',
-            text: 'To innovate and deliver secure, scalable software solutions that empower businesses and individuals to thrive in the digital era.',
+            text: 'Our mission is to innovate and deliver secure, scalable, and user-centric software solutions that empower businesses to thrive in the digital era. We are committed to building long-term partnerships with our clients, grounded in trust and mutual success.',
           },
           {
             title: 'Vision',
-            text: 'To be a pioneering tech force known for cybersecurity, custom-built products, and redefining innovation through digital excellence.',
+            text: 'Our vision is to be a globally recognized leader and a pioneering force in technology. We aspire to be the go-to partner for solving complex digital challenges, renowned for our expertise in cybersecurity and transformative custom-built products.',
           },
         ].map((item, index) => (
           <div
