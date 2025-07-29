@@ -42,7 +42,7 @@ const TechStackSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640); // 640px is Tailwind's sm breakpoint
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -58,7 +58,11 @@ const TechStackSection = () => {
           <span className="text-[#3b3b3b]">Stack</span>
         </h2>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+      <div className={`
+        grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6
+        ${isMobile ? "max-w-xs mx-auto" : "max-w-6xl mx-auto"}
+        justify-items-center
+      `}>
         {visibleTechs.map((tech, index) => (
           <div
             key={index}
