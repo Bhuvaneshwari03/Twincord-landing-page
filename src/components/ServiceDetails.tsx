@@ -383,8 +383,8 @@ const ServicesDetailPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative py-16 px-4">
+    <div className="min-h-screen ">
+      <section className="relative py-16 px-4 mt-28">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -392,50 +392,14 @@ const ServicesDetailPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <button
-              // Use navigate for better SPA behavior
-              onClick={() => navigate("/services")}
-              className="inline-flex items-center space-x-2 mb-8 px-4 py-2 rounded-lg text-cyan-600 border-2 border-cyan-500 bg-white transition-all duration-300 hover:shadow-lg hover:bg-cyan-50"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>Back to Services</span>
-            </button>
-
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-800">
-              Our <span className="text-cyan-500">Service</span> Portfolio
+              Our <span className="text-[#00bfff]">Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Comprehensive technology solutions designed to transform your
               business with innovation, security, and excellence.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      <section className="sticky top-[56px] md:top-[68px] z-40 bg-white/80 backdrop-blur-lg shadow-md mb-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <nav className="flex space-x-1 overflow-x-auto py-4">
-            {services.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => navigate(`/services/${service.id}`)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all duration-300 ${
-                  serviceId === service.id
-                    ? "text-white shadow-lg"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-                style={{
-                  backgroundColor:
-                    serviceId === service.id ? service.color : "transparent",
-                }}
-              >
-                <service.icon className="h-4 w-4" />
-                <span className="text-sm font-medium">
-                  {service.title.split(" ")[0]}
-                </span>
-              </button>
-            ))}
-          </nav>
         </div>
       </section>
 
