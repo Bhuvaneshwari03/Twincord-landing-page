@@ -63,7 +63,6 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 // --- Centralized Data for Services ---
-// This should ideally be imported from a shared data file.
 const servicesData: Service[] = [
   { id: "cybersecurity", title: "Cybersecurity" },
   { id: "software-development", title: "Software Development" },
@@ -96,39 +95,66 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const isHomePage = location.pathname === "/";
-
   const productSubItems: SubItem[] = [
     { name: "TwinAV", href: "/twinav" },
     { name: "TwinShield", href: "/twinshield" },
   ];
 
-  // Dynamically create service links with the /services/:serviceId pattern
   const serviceSubItems: SubItem[] = servicesData.map((service) => ({
     name: service.title,
     href: `/services/${service.id}`,
   }));
 
-  const navItems: NavItem[] = isHomePage
-    ? [
-        {
-          name: "About",
-          href: "#about",
-          onClick: () => scrollToSection("about"),
-        },
-        { name: "Products", subItems: productSubItems },
-        { name: "Services", subItems: serviceSubItems },
-        {
-          name: "Contact us",
-          href: "#contact",
-          onClick: () => scrollToSection("contact"),
-        },
-      ]
-    : [
-        { name: "Home", href: "/" },
-        { name: "Products", subItems: productSubItems },
-        { name: "Services", subItems: serviceSubItems },
-      ];
+  // --- NEW DYNAMIC NAVIGATION LOGIC ---
+  let navItems: NavItem[];
+
+  const isHomePage = location.pathname === "/";
+  const isProductsPage = productSubItems.some((item) =>
+    location.pathname.startsWith(item.href)
+  );
+  const isServicesPage = serviceSubItems.some((item) =>
+    location.pathname.startsWith(item.href)
+  );
+
+  if (isProductsPage) {
+    // On a product page, expand the products into top-level links
+    navItems = [
+      ...productSubItems.map((product) => ({
+        name: product.name,
+        href: product.href,
+      })),
+      { name: "Services", subItems: serviceSubItems }, // Keep services as a dropdown
+    ];
+  } else if (isServicesPage) {
+    navItems = [
+      ...productSubItems.map((product) => ({
+        name: product.name,
+        href: product.href,
+      })),
+      { name: "Services", subItems: serviceSubItems },
+    ];
+  } else if (isHomePage) {
+    navItems = [
+      {
+        name: "About",
+        href: "#about",
+        onClick: () => scrollToSection("about"),
+      },
+      { name: "Products", subItems: productSubItems },
+      { name: "Services", subItems: serviceSubItems },
+      {
+        name: "Contact us",
+        href: "#contact",
+        onClick: () => scrollToSection("contact"),
+      },
+    ];
+  } else {
+    // Default navigation for all other pages
+    navItems = [
+      { name: "Products", subItems: productSubItems },
+      { name: "Services", subItems: serviceSubItems },
+    ];
+  }
 
   return (
     <header
@@ -148,7 +174,7 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation (No changes needed here) */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => {
@@ -213,14 +239,14 @@ const Navigation = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation (No changes needed here) */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="glass border-0"
+                  className="glass border-0 shadow-none"
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
