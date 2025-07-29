@@ -24,24 +24,28 @@ const AnimatedIllustration = () => (
 const Section = ({ title, children }) => (
   <section className="mb-16">
     <h2 className="text-2xl md:text-3xl font-bold text-[#00bfff] mb-4">{title}</h2>
-    <div className="text-[#222] text-base md:text-lg leading-relaxed">{children}</div>
+    <div className="text-black text-base md:text-lg leading-relaxed">{children}</div>
     <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
   </section>
 );
 
-const CustomList = ({ children }) => (
-  <ul className="pl-0 mt-4 space-y-3">
+// Reusable blue dot list for all sections
+const BlueDotList = ({ children }) => (
+  <ul className="pl-0 mt-4 space-y-2">
     {React.Children.map(children, (child) => (
-      <li
-        className="relative pl-6 text-[#1a237e] font-medium"
-        style={{
-          borderLeft: "3px dotted #1a237e",
-          marginLeft: 0,
-          paddingLeft: 18,
-        }}
-      >
-        <span className="absolute left-0 top-2 w-2 h-2 bg-[#1a237e] rounded-full"></span>
-        {child}
+      <li className="flex items-start text-black font-normal">
+        <span
+          className="mr-2"
+          style={{
+            color: "#00bfff",
+            fontSize: "1.3em",
+            lineHeight: 1,
+            fontWeight: "bold",
+          }}
+        >
+          •
+        </span>
+        <span>{child}</span>
       </li>
     ))}
   </ul>
@@ -61,31 +65,28 @@ const Policies = () => {
 
         <div className="text-left">
           {/* Merged Introduction & Terminology */}
-         <section className="mb-16">
-  <div className="text-[#222] text-base md:text-lg leading-relaxed">
-    <p className="mb-4">
-      These terms and conditions outline the rules and regulations for the use of Twincord Technologies Private Limited's Website, located at <span className="text-[#00bfff] font-semibold">twincord.com</span>.
-    </p>
-    <p className="mb-6">
-      By accessing this website, we assume you accept these terms and conditions. Do not continue to use <span className="font-semibold">twincord.com</span> if you do not agree to all of the terms and conditions stated on this page.
-    </p>
-    <ul className="list-none space-y-2">
-      <li>
-        <span className="font-bold">Client, You, Your:</span>
-        <span> Refers to you, the person logging on this website and compliant to the Company's terms and conditions.</span>
-      </li>
-      <li>
-        <span className="font-bold">The Company, Ourselves, We, Our, Us:</span>
-        <span> Refers to our Company.</span>
-      </li>
-      <li>
-        <span className="font-bold">Party, Parties, Us:</span>
-        <span> Refers to both the Client and ourselves.</span>
-      </li>
-    </ul>
-  </div>
-  <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
-</section>
+          <section className="mb-16">
+            <div className="text-black text-base md:text-lg leading-relaxed">
+              <p className="mb-4">
+                These terms and conditions outline the rules and regulations for the use of Twincord Technologies Private Limited's Website, located at <span className="text-[#00bfff] font-semibold">twincord.com</span>.
+              </p>
+              <p className="mb-6">
+                By accessing this website, we assume you accept these terms and conditions. Do not continue to use <span className="font-semibold">twincord.com</span> if you do not agree to all of the terms and conditions stated on this page.
+              </p>
+              <BlueDotList>
+                <span>
+                  <span className="font-bold">Client, You, Your:</span> Refers to you, the person logging on this website and compliant to the Company's terms and conditions.
+                </span>
+                <span>
+                  <span className="font-bold">The Company, Ourselves, We, Our, Us:</span> Refers to our Company.
+                </span>
+                <span>
+                  <span className="font-bold">Party, Parties, Us:</span> Refers to both the Client and ourselves.
+                </span>
+              </BlueDotList>
+            </div>
+            <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
+          </section>
 
           <Section title="Cookies">
             <p>
@@ -93,41 +94,46 @@ const Policies = () => {
             </p>
           </Section>
 
-          <Section title="License">
-            <p>
-              Unless otherwise stated, Twincord Technologies Private Limited and/or its licensors own the intellectual property rights for all material on <span className="font-semibold">twincord.com</span>. All intellectual property rights are reserved. You may access this from <span className="font-semibold">twincord.com</span> for your own personal use subjected to restrictions set in these terms and conditions.
-            </p>
-            <CustomList>
-              <span>Republish material from twincord.com</span>
-              <span>Sell, rent or sub-license material from twincord.com</span>
-              <span>Reproduce, duplicate or copy material from twincord.com</span>
-              <span>Redistribute content from twincord.com</span>
-            </CustomList>
-          </Section>
+          {/* License section with blue dot list */}
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#00bfff] mb-4">License</h2>
+            <div className="text-black text-base md:text-lg leading-relaxed">
+              <p>
+                Unless otherwise stated, Twincord Technologies Private Limited and/or its licensors own the intellectual property rights for all material on <span className="font-semibold">twincord.com</span>. All intellectual property rights are reserved. You may access this from <span className="font-semibold">twincord.com</span> for your own personal use subjected to restrictions set in these terms and conditions.
+              </p>
+              <BlueDotList>
+                <span>Republish material from twincord.com</span>
+                <span>Sell, rent or sub-license material from twincord.com</span>
+                <span>Reproduce, duplicate or copy material from twincord.com</span>
+                <span>Redistribute content from twincord.com</span>
+              </BlueDotList>
+            </div>
+            <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
+          </section>
 
           <Section title="User Comments">
             <p>
               Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Twincord Technologies Private Limited does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Twincord Technologies Private Limited, its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions.
             </p>
-            <CustomList>
+            <BlueDotList>
               <span>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</span>
               <span>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</span>
               <span>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy;</span>
               <span>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</span>
-            </CustomList>
+            </BlueDotList>
           </Section>
 
           <Section title="Hyperlinking to our Content">
             <p>
               The following organizations may link to our Website without prior written approval:
             </p>
-            <CustomList>
+            <BlueDotList>
               <span>Government agencies</span>
               <span>Search engines</span>
               <span>News organizations</span>
               <span>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses</span>
               <span>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Website</span>
-            </CustomList>
+            </BlueDotList>
             <p className="mt-2">
               These organizations may link to our home page, to publications or to other Website information so long as the link is not in any way deceptive, does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services, and fits within the context of the linking party's site.
             </p>
@@ -161,12 +167,12 @@ const Policies = () => {
             <p>
               To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:
             </p>
-            <CustomList>
+            <BlueDotList>
               <span>limit or exclude our or your liability for death or personal injury;</span>
               <span>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</span>
               <span>limit any of our or your liabilities in any way that is not permitted under applicable law; or</span>
               <span>exclude any of our or your liabilities that may not be excluded under applicable law.</span>
-            </CustomList>
+            </BlueDotList>
             <p className="mt-2">
               As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
             </p>
