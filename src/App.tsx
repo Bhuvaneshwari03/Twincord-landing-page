@@ -9,10 +9,11 @@ import Layout from "./components/Layout";
 // Page Imports
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Policies from "./pages/Policies";
 import TwinAV from "./pages/TwinAV";
 import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
-
+import RefundCancellation from "./pages/RefundCancellation";
 // --- UPDATED IMPORTS ---
 // Assuming you have a page that shows all service cards
 import ServicesPage from "./components/ServicesSection"; 
@@ -35,7 +36,8 @@ const App = () => (
             <Route path="twinav" element={<TwinAV />} />
             <Route path="twinhrm" element={<TwinHRM />} />
             <Route path="twinshield" element={<TwinShield />} />
-
+            <Route path="/policies" element={<Policies />} />
+         <Route path="/refundCancellation" element={< RefundCancellation/>} />
             {/* --- MODIFIED SERVICE ROUTES --- */}
             
             {/* 1. Route to the services overview page (shows all service cards) */}

@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, Mail, ArrowUp } from "lucide-react";
-
+import { Link, useLocation } from "react-router-dom";
 const Footer = () => {
   // Handler to scroll to a specific element or the top of the page smoothly
   const handleSmoothScroll = (e) => {
@@ -38,7 +38,7 @@ const Footer = () => {
     <footer
       id="footer"
       // Using a softer, more modern dark background
-      className="w-full py-12 lg:py-16 mt-20 bg-neutral-950 text-white"
+      className="w-full py-12 lg:py-16 bg-neutral-950 text-white"
     >
       <div className="container px-4 relative">
         {/* Main content grid */}
@@ -207,20 +207,29 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
-                  onClick={handleSmoothScroll}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
-                >
-                  Policies
-                </a>
-              </li>
-              <li>
-                <a
                   href="#contact"
                   onClick={handleSmoothScroll}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Contact
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/policies"
+                  className="text-sm text-[#b0b0b0] hover:text-[#00bfff] transition-colors"
+                  aria-label="Policies"
+                >
+                  Policies
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="/refundCancellation"
+                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  aria-label="refundCancellation"
+                >
+                  Refund & Cancellation
                 </a>
               </li>
             </ul>
