@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuLink,
-  navigationMenuTriggerStyle, // Import the style utility
+  navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import {
   Accordion,
@@ -20,14 +20,33 @@ import {
 } from "./ui/accordion";
 import { cn } from "@/lib/utils";
 
+// --- Type Definitions for TypeScript ---
+interface SubItem {
+  name: string;
+  href: string;
+}
+
+interface NavItem {
+  name: string;
+  href?: string;
+  onClick?: () => void;
+  subItems?: SubItem[];
+}
+
+interface Service {
+  id: string;
+  title: string;
+}
+
+// --- List Item Component for Dropdowns ---
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link>
+>(({ className, title, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -36,87 +55,80 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
 });
 ListItem.displayName = "ListItem";
 
+// --- Centralized Data for Services ---
+// This should ideally be imported from a shared data file.
+const servicesData: Service[] = [
+  { id: "cybersecurity", title: "Cybersecurity" },
+  { id: "software-development", title: "Software Development" },
+  { id: "ai-data", title: "AI & Data Solutions" },
+  { id: "cloud-infrastructure", title: "Cloud & Infrastructure" },
+  { id: "ui-ux-design", title: "UI/UX & Creative Design" },
+  { id: "training-certification", title: "Training & Certification" },
+];
+
+// --- Main Navigation Component ---
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === "cta") {
-      const ctaSection = document.querySelector(".button-gradient");
-
-      if (ctaSection) {
-        const yOffset = -100;
-
-        const y =
-          ctaSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    } else {
-      const element = document.getElementById(sectionId);
-
-      if (element) {
-        const yOffset = -100; // Adjust for fixed header
-
-        const y =
-          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = -100; // Offset for fixed header
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
+    setIsMobileMenuOpen(false);
   };
 
   const isHomePage = location.pathname === "/";
 
-  const productSubItems = [
+  const productSubItems: SubItem[] = [
     { name: "TwinAV", href: "/twinav" },
     { name: "TwinShield", href: "/twinshield" },
   ];
 
-  const navItems = isHomePage
+  // Dynamically create service links with the /services/:serviceId pattern
+  const serviceSubItems: SubItem[] = servicesData.map((service) => ({
+    name: service.title,
+    href: `/services/${service.id}`,
+  }));
+
+  const navItems: NavItem[] = isHomePage
     ? [
         {
           name: "About",
           href: "#about",
           onClick: () => scrollToSection("about"),
         },
-        {
-          name: "Products",
-          href: "#products",
-          onClick: () => scrollToSection("products"),
-          subItems: productSubItems,
-        },
-        {
-          name: "Services",
-          href: "#services",
-          onClick: () => scrollToSection("services"),
-        },
+        { name: "Products", subItems: productSubItems },
+        { name: "Services", subItems: serviceSubItems },
         {
           name: "Contact us",
           href: "#contact",
           onClick: () => scrollToSection("contact"),
         },
       ]
-    : [{ name: "Products", subItems: productSubItems }];
+    : [
+        { name: "Home", href: "/" },
+        { name: "Products", subItems: productSubItems },
+        { name: "Services", subItems: serviceSubItems },
+      ];
 
   return (
     <header
@@ -136,56 +148,72 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* --- MODIFIED: Desktop Navigation with Consistent Styles --- */}
+          {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.name}>
-                  {item.subItems ? (
-                    <>
-                      <NavigationMenuTrigger className="bg-transparent">
-                        {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[200px] gap-2 p-4 md:w-[250px]">
-                          {item.subItems.map((subItem) => (
-                            <ListItem
-                              key={subItem.name}
-                              href={subItem.href}
-                              title={subItem.name}
-                            />
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    // This now uses NavigationMenuLink for consistent styling
-                    <NavigationMenuLink asChild>
-                      <a
-                        href={item.href || "#"}
+              {navItems.map((item) => {
+                const isActive = item.subItems
+                  ? item.subItems.some((sub) =>
+                      location.pathname.startsWith(sub.href)
+                    )
+                  : location.pathname === item.href;
+
+                return (
+                  <NavigationMenuItem key={item.name}>
+                    {item.subItems ? (
+                      <>
+                        <NavigationMenuTrigger
+                          className={cn(
+                            "bg-transparent",
+                            isActive && "bg-accent/80"
+                          )}
+                        >
+                          {item.name}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid w-[200px] gap-2 p-4 md:w-[250px]">
+                            {item.subItems.map((subItem) => (
+                              <ListItem
+                                key={subItem.name}
+                                to={subItem.href}
+                                title={subItem.name}
+                                className={
+                                  location.pathname === subItem.href
+                                    ? "bg-accent"
+                                    : ""
+                                }
+                              />
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.href || "#"}
                         onClick={
                           item.onClick
                             ? (e) => {
                                 e.preventDefault();
-                                item.onClick();
+                                item.onClick?.();
                               }
                             : undefined
                         }
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "bg-transparent"
+                          "bg-transparent",
+                          isActive && "bg-accent/80"
                         )}
                       >
                         {item.name}
-                      </a>
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              ))}
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                );
+              })}
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* --- MODIFIED: Mobile Navigation with Enhanced Styles --- */}
+          {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -199,8 +227,14 @@ const Navigation = () => {
               </SheetTrigger>
               <SheetContent className="glass-nav border-0">
                 <div className="flex flex-col gap-2 mt-8">
-                  {navItems.map((item) =>
-                    item.subItems ? (
+                  {navItems.map((item) => {
+                    const isActive = item.subItems
+                      ? item.subItems.some((sub) =>
+                          location.pathname.startsWith(sub.href)
+                        )
+                      : location.pathname === item.href;
+
+                    return item.subItems ? (
                       <Accordion
                         key={item.name}
                         type="single"
@@ -208,7 +242,12 @@ const Navigation = () => {
                         className="w-full"
                       >
                         <AccordionItem value={item.name} className="border-b-0">
-                          <AccordionTrigger className="py-3 text-lg text-muted-foreground hover:text-foreground hover:no-underline rounded-md hover:bg-accent px-3">
+                          <AccordionTrigger
+                            className={cn(
+                              "py-3 text-lg text-muted-foreground hover:text-foreground hover:no-underline rounded-md hover:bg-accent px-3",
+                              isActive && "bg-accent text-accent-foreground"
+                            )}
+                          >
                             {item.name}
                           </AccordionTrigger>
                           <AccordionContent>
@@ -217,7 +256,11 @@ const Navigation = () => {
                                 <Link
                                   key={subItem.name}
                                   to={subItem.href}
-                                  className="text-lg text-muted-foreground hover:text-foreground"
+                                  className={cn(
+                                    "text-lg text-muted-foreground hover:text-foreground",
+                                    location.pathname === subItem.href &&
+                                      "text-foreground font-semibold"
+                                  )}
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   {subItem.name}
@@ -228,20 +271,25 @@ const Navigation = () => {
                         </AccordionItem>
                       </Accordion>
                     ) : (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href || "#"}
-                        className="py-3 px-3 text-lg text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
+                        to={item.href || "#"}
+                        className={cn(
+                          "py-3 px-3 text-lg text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors",
+                          isActive && "bg-accent text-accent-foreground"
+                        )}
                         onClick={(e) => {
-                          if (item.onClick) e.preventDefault();
+                          if (item.onClick) {
+                            e.preventDefault();
+                            item.onClick();
+                          }
                           setIsMobileMenuOpen(false);
-                          if (item.onClick) item.onClick();
                         }}
                       >
                         {item.name}
-                      </a>
-                    )
-                  )}
+                      </Link>
+                    );
+                  })}
                 </div>
               </SheetContent>
             </Sheet>
