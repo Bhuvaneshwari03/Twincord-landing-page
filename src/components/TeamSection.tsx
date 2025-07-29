@@ -1,78 +1,157 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+
+const teamMembers = [
+  {
+    name: "Harrisjayakumar V",
+    position: "CEO & Managing Director",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Naren Karthik",
+    position: "CTO",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Saran Babu B",
+    position: "Product and Marketing Lead",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Ragul",
+    position: "Head of Security Research",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Harisree L G",
+    position: "HR & Operations",
+    image: "/public/girl.png",
+  },
+  {
+    name: "Nivithitha",
+    position: "Backend Engineer",
+    image: "/public/girl.png",
+  },
+  {
+    name: "Manoj",
+    position: "Frontend Engineer",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Kishore",
+    position: "Product Designer",
+    image: "/public/boy.png",
+  },
+  {
+    name: "Thejas",
+    position: "Product Designer",
+    image: "/public/boy.png",
+  },
+];
 
 const TeamSection = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const teamMembers = [...Array(14)]; // 24 placeholders + 1 You = 25 = 5x5
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const visibleMembers =
+    isMobile && !showAll ? teamMembers.slice(0, 6) : teamMembers;
 
   return (
-    <section style={{ backgroundColor: '#f8f8f8', padding: '60px 20px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h2 style={{
-          fontSize: '2rem',
-          fontWeight: '700',
-          color: '#3b3b3b',
-          marginBottom: '10px'
-        }}>
-          Team
-        </h2>
-        <div style={{
-          width: '60px',
-          height: '5px',
-          backgroundColor: '#00bfff',
-          margin: '0 auto',
-          borderRadius: '2px'
-        }} />
+    <section className="bg-[#f8f8f8] py-16 px-4">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold text-[#3b3b3b] mb-2">Team</h2>
+        <div className="w-16 h-1.5 bg-[#00bfff] mx-auto rounded" />
       </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gap: '30px',
-        maxWidth: '800px',
-        margin: '0 auto',
-        justifyItems: 'center',
-      }}>
-        {teamMembers.map((_, index) => (
-          <div key={index} style={{
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            backgroundColor: '#e0e0e0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '14px',
-            color: '#7d7d7d',
-          }}>
-            Image
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto justify-items-center">
+        {visibleMembers.map((member, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center min-w-[120px] group"
+          >
+            <div
+              className="
+                w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px]
+                rounded-full bg-[#e0e0e0] overflow-hidden flex items-center justify-center shadow
+                transition-all duration-300
+                group-hover:scale-110 group-hover:rotate-[-6deg]
+                group-hover:shadow-[0_8px_32px_0_rgba(0,191,255,0.15)]
+                group-hover:ring-4 group-hover:ring-[#00bfff]/30
+              "
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover pointer-events-none"
+                draggable={false}
+              />
+            </div>
+            <div className="mt-3 text-center min-w-[120px]">
+              <div className="font-semibold text-[#3b3b3b] text-xs sm:text-sm md:text-base truncate w-full">
+                {member.name}
+              </div>
+              <div className="text-[11px] sm:text-xs text-[#7d7d7d] truncate w-full">
+                {member.position}
+              </div>
+            </div>
           </div>
         ))}
-
         {/* "You" Circle at the end */}
-        <div className="team-member">
-          <a href="https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+        <div className="flex flex-col items-center min-w-[120px] group">
+          <a
+            href="https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline"
+          >
             <div
-              style={{
-                width: '120px',
-                height: '120px',
-                borderRadius: '50%',
-                backgroundColor: '#e6f7ff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                transition: 'transform 0.3s ease',
-                transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-              }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              className="
+                w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px]
+                rounded-full bg-[#e6f7ff] flex items-center justify-center flex-col shadow-md
+                transition-all duration-300
+                group-hover:scale-110 group-hover:rotate-[-6deg]
+                group-hover:shadow-[0_8px_32px_0_rgba(0,191,255,0.15)]
+                group-hover:ring-4 group-hover:ring-[#00bfff]/30
+              "
             >
-              <span style={{ fontSize: '16px', color: '#00bfff', fontWeight: 'bold' }}>You</span>
+              <span className="text-xs sm:text-sm md:text-base text-[#00bfff] font-bold">
+                You
+              </span>
+            </div>
+            <div className="mt-3 text-center min-w-[120px]">
+              <div className="font-semibold text-[#3b3b3b] text-xs sm:text-sm md:text-base">
+                You
+              </div>
+              <div className="text-[11px] sm:text-xs text-[#7d7d7d]">
+                Join Us
+              </div>
             </div>
           </a>
         </div>
+      </div>
+      {/* See More button only on mobile and only if not showing all */}
+      <div className="mt-6 flex justify-center md:hidden">
+        {!showAll && teamMembers.length > 6 && (
+          <button
+            onClick={() => setShowAll(true)}
+            className="px-6 py-2 bg-[#00bfff] text-white rounded-lg font-medium shadow hover:bg-[#0099cc] transition"
+          >
+            See More
+          </button>
+        )}
+        {showAll && teamMembers.length > 6 && (
+          <button
+            onClick={() => setShowAll(false)}
+            className="px-6 py-2 bg-gray-200 text-[#00bfff] rounded-lg font-medium shadow hover:bg-gray-300 transition"
+          >
+            Show Less
+          </button>
+        )}
       </div>
     </section>
   );
