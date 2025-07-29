@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 // Page Imports
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Policies from "./pages/Policies";
 import TwinAV from "./pages/TwinAV";
 import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="twinav" element={<TwinAV />} />
             <Route path="twinhrm" element={<TwinHRM />} />
             <Route path="twinshield" element={<TwinShield />} />
+            <Route path="/policies" element={<Policies />} />
 
             {/* --- MODIFIED SERVICE ROUTES --- */}
             
