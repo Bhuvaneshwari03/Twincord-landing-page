@@ -1,11 +1,47 @@
 import React, { useState, useEffect } from 'react';
 
+const teamMembers = [
+  {
+    name: "Harrisjayakumar V",
+    position: "CEO & Managing Director",
+    image: "/public/Harris.jpeg",
+  },
+  {
+    name: "Saran Babu B",
+    position: "Product and Marketing Lead",
+    image: "/public/saran.jpeg",
+  },
+  {
+    name: "Ragul",
+    position: "Head of Security Research",
+    image: "/public/rahul.jpeg",
+  },
+  {
+    name: "Harisree L G",
+    position: "HR & Operations",
+    image: "/public/harisree.jpeg",
+  },
+  {
+    name: "Nivithitha",
+    position: "Backend Engineer",
+    image: "/public/nivithitha.jpeg",
+  },
+  {
+    name: "Manoj",
+    position: "Frontend Engineer",
+    image: "/public/manoj.jpeg",
+  },
+  {
+    name: "Kishore",
+    position: "Product Designer",
+    image: "/public/kishore.jpeg",
+  },
+];
+
 const TeamSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  const teamMembers = [...Array(14)]; // 14 placeholders
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -14,7 +50,6 @@ const TeamSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Show 6 + "You" on mobile, all on desktop or if showAll
   const visibleMembers = isMobile && !showAll ? teamMembers.slice(0, 6) : teamMembers;
 
   return (
@@ -23,14 +58,28 @@ const TeamSection = () => {
         <h2 className="text-3xl font-bold text-[#3b3b3b] mb-2">Team</h2>
         <div className="w-16 h-1.5 bg-[#00bfff] mx-auto rounded" />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-3xl mx-auto justify-items-center">
-        {visibleMembers.map((_, index) => (
-          <div key={index} className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-full bg-[#e0e0e0] flex items-center justify-center text-xs sm:text-sm text-[#7d7d7d]">
-            Image
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto justify-items-center">
+        {visibleMembers.map((member, index) => (
+          <div key={index} className="flex flex-col items-center min-w-[120px]">
+            <div className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-full bg-[#e0e0e0] overflow-hidden flex items-center justify-center shadow">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="mt-3 text-center min-w-[120px]">
+              <div className="font-semibold text-[#3b3b3b] text-xs sm:text-sm md:text-base truncate w-full">
+                {member.name}
+              </div>
+              <div className="text-[11px] sm:text-xs text-[#7d7d7d] truncate w-full">
+                {member.position}
+              </div>
+            </div>
           </div>
         ))}
         {/* "You" Circle at the end */}
-        <div className="team-member">
+        <div className="flex flex-col items-center min-w-[120px]">
           <a href="https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html" target="_blank" rel="noopener noreferrer" className="no-underline">
             <div
               className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-full bg-[#e6f7ff] flex items-center justify-center flex-col shadow-md transition-transform duration-300"
@@ -39,6 +88,10 @@ const TeamSection = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               <span className="text-xs sm:text-sm md:text-base text-[#00bfff] font-bold">You</span>
+            </div>
+            <div className="mt-3 text-center min-w-[120px]">
+              <div className="font-semibold text-[#3b3b3b] text-xs sm:text-sm md:text-base">You</div>
+              <div className="text-[11px] sm:text-xs text-[#7d7d7d]">Join Us</div>
             </div>
           </a>
         </div>
