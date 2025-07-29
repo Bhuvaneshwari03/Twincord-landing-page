@@ -9,11 +9,11 @@ import ContactSection from "@/components/ContactSection";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const Index = () => {
-  // Scroll to section handler for "Our Products" button
+  
   const handleScrollToProducts = () => {
     const element = document.getElementById("products");
     if (element) {
-      const yOffset = -100; // Adjust for fixed header
+      const yOffset = -100; 
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   return (
-    // The main wrapper div is replaced with a fragment <> since Layout.tsx handles the main container
+    
     <>
       {/* NO <Navigation /> here */}
 
@@ -131,8 +131,6 @@ const Index = () => {
       </section>
 
       <ContactSection />
-
-      {/* NO <Footer /> here */}
     </>
   );
 };
