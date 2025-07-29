@@ -225,9 +225,9 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/refund-cancellation"
-                  onClick={handleSmoothScroll}
+                  href="/refundCancellation"
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  aria-label="refundCancellation"
                 >
                   Refund & Cancellation
                 </a>
