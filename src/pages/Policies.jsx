@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+const COLORS = {
+  primary: "#00bfff",
+  white: "#f8f8f8",
+  black: "#3b3b3b",
+};
 const AnimatedIllustration = () => (
   <div className="flex justify-center mb-1 mt-6">
     <svg
@@ -199,7 +203,25 @@ const Policies = () => {
         <div className="flex justify-center mt-16">
           <Link
             to="/"
-            className="inline-block bg-[#00bfff] text-[#f8f8f8] px-8 py-3 rounded-full font-semibold shadow hover:bg-[#0099cc] transition"
+            className="inline-block px-10 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
+            style={{
+              background: COLORS.primary,
+              color: COLORS.white,
+              fontSize: "1.1rem",
+              letterSpacing: "1px",
+              border: "none",
+              boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
+              cursor: "pointer",
+              transition: "background 0.3s, color 0.3s",
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.background = COLORS.black;
+              e.currentTarget.style.color = COLORS.white;
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.background = COLORS.primary;
+              e.currentTarget.style.color = COLORS.white;
+            }}
           >
             Back to Home
           </Link>
