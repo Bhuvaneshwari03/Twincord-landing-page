@@ -78,11 +78,10 @@ const ProductsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-[#3b3b3b] mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 inline-block"
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-800">
-              Our <span className="text-[#00bfff]">Products</span>
-            </h2>
+            <span className="text-[#3b3b3b] mr-2">Our</span>
+            <span className="text-[#00bfff] ml-2">Products</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -145,19 +144,19 @@ const ProductsPage = () => {
                   </div>
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-100">
-                      <Link
-  to={product.path}
-  onClick={(e) => e.stopPropagation()}
-  className="text-base font-bold text-black group flex items-center gap-2 transition-colors duration-300"
->
-  <span className="transition-colors duration-300 group-hover:text-[#00bfff]">
-    Learn More
-  </span>
-  <ArrowRight
-    className="h-5 w-5 text-black-400 transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1"
-    aria-hidden="true"
-  />
-</Link>
+                  <Link
+                    to={product.path}
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-base font-bold text-black group flex items-center gap-2 transition-colors duration-300"
+                  >
+                    <span className="transition-colors duration-300 group-hover:text-[#00bfff]">
+                      Learn More
+                    </span>
+                    <ArrowRight
+                      className="h-5 w-5 text-black-400 transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -234,14 +233,14 @@ const ProductsPage = () => {
                       {products[activeProductIndex].description}
                     </p>
                     <div className="mt-6">
-  <Link
-    to={products[activeProductIndex].path}
-    className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium shadow-md transition-colors inline-flex items-center"
-  >
-    Learn More
-    <ArrowRight className="ml-2 w-4 h-4 transition-all duration-300" />
-  </Link>
-</div>
+                      <Link
+                        to={products[activeProductIndex].path}
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium shadow-md transition-colors inline-flex items-center"
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 w-4 h-4 transition-all duration-300" />
+                      </Link>
+                    </div>
                   </div>
                 </motion.div>
               )}
