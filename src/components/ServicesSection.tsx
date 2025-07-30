@@ -133,9 +133,7 @@ const services = [
 const ServicesPage = () => {
   const navigate = useNavigate();
 
-  // ✅ FIXED: This function now uses the `Maps` hook to change the route.
   const handleServiceClick = (serviceId) => {
-    // This will navigate to a URL like "/services/cybersecurity"
     navigate(`/services/${serviceId}`);
   };
 
@@ -181,7 +179,7 @@ const ServicesPage = () => {
                   className={`absolute inset-0 bg-gradient-to-br ${service.theme.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 ></div>
 
-                {/* Main content area that grows to fill available space */}
+                {/* Main content area */}
                 <div className="relative z-10 p-8 flex-grow">
                   {/* Icon */}
                   <div
@@ -220,22 +218,49 @@ const ServicesPage = () => {
                   </div>
                 </div>
 
+                {/* Learn More Button */}
                 <div
-                  className="relative z-10 mt-auto px-8 pb-8 pt-6 cursor-pointer"
+                  className="relative z-10 mt-auto px-8 pb-8 pt-6"
                   onClick={() => handleServiceClick(service.id)}
                 >
-                 <div className="flex items-center gap-2 group cursor-pointer">
-  <span className="text-black font-semibold transition-colors duration-300 group-hover:text-[#00bfff]">
-    Learn More
-  </span>
-  <ArrowRight className="h-5 w-5 text-black transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1" />
-</div>
+                  <div className="flex items-center gap-2 group cursor-pointer">
+                    <span className="text-black font-semibold transition-colors duration-300 group-hover:text-[#00bfff]">
+                      Learn More
+                    </span>
+                    <ArrowRight className="h-5 w-5 text-black transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1" />
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* --- NEW: Working Partners Section --- */}
+      <section className="py-12 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <p className="text-sm text-muted-foreground/80 font-medium mb-4">
+              Our working partners
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 md:gap-x-12">
+              <img src="/aws.svg" alt="AWS Logo" className="h-7 w-auto" />
+              <img
+                src="/gcp.svg"
+                alt="Google Cloud Platform Logo"
+                className="h-7 w-auto"
+              />
+              <img src="/zoho.svg" alt="Zoho Logo" className="h-7 w-auto" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      {/* --- End of Working Partners Section --- */}
     </div>
   );
 };
