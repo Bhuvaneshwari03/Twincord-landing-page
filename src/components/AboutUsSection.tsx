@@ -85,7 +85,6 @@ const AboutUsSection = () => {
               loop: true,
               delay: 60,
               deleteSpeed: 30,
-              pauseFor: 2000,
               cursor: "|",
               wrapperClassName: "text-[#2c5282]",
             }}
