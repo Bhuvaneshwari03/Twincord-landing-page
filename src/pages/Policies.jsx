@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const COLORS = {
   primary: "#00bfff",
@@ -33,7 +34,6 @@ const Section = ({ title, children }) => (
   </section>
 );
 
-// Reusable blue dot list for all sections
 const BlueDotList = ({ children }) => (
   <ul className="pl-0 mt-4 space-y-2">
     {React.Children.map(children, (child) => (
@@ -55,27 +55,35 @@ const BlueDotList = ({ children }) => (
   </ul>
 );
 
+// Helper for twincord.com and twincord.in with black "and"
+const TwinCordSites = () => (
+  <>
+    <span className="text-[#00bfff] font-semibold">twincord.com</span>
+    <span className="mx-1 text-[#3b3b3b] font-semibold"> and </span>
+    <span className="text-[#00bfff] font-semibold">twincord.in</span>
+  </>
+);
+
 const Policies = () => {
   return (
     <div className="min-h-screen bg-white py-12 px-4 md:px-16">
       <div className="max-w-5xl mx-auto">
         <AnimatedIllustration />
-        <h1 className="text-4xl md:text-4xl font-extrabold text-center text-[#222] mb-4 mt-8">
-          Terms and Conditions
+        <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
+          <span style={{ color: "#3b3b3b" }}>Terms</span>
+          <span style={{ color: "#00bfff"}}> &amp; </span>
+          <span style={{ color: "#3b3b3b" }}>Conditions</span>
         </h1>
         <p className="text-center text-[#00bfff] font-medium mb-16 text-lg md:text-xl">
           Welcome to Twincord Technologies Private Limited
         </p>
 
         <div className="text-left">
-          {/* Merged Introduction & Terminology */}
+          {/* Merged Introduction & Terminology with Payment Terms moved up */}
           <section className="mb-16">
             <div className="text-black text-base md:text-lg leading-relaxed">
-              <p className="mb-4">
-                These terms and conditions outline the rules and regulations for the use of Twincord Technologies Private Limited's Website, located at <span className="text-[#00bfff] font-semibold">twincord.com</span>.
-              </p>
               <p className="mb-6">
-                By accessing this website, we assume you accept these terms and conditions. Do not continue to use <span className="font-semibold">twincord.com</span> if you do not agree to all of the terms and conditions stated on this page.
+                These terms and conditions outline the rules and regulations for the use of Twincord Technologies Private Limited's Website, located at <TwinCordSites />. By accessing this website, we assume you accept these terms and conditions. Do not continue to use <TwinCordSites /> if you do not agree to all of the terms and conditions stated on this page.
               </p>
               <BlueDotList>
                 <span>
@@ -88,13 +96,19 @@ const Policies = () => {
                   <span className="font-bold">Party, Parties, Us:</span> Refers to both the Client and ourselves.
                 </span>
               </BlueDotList>
+              {/* Payment Terms moved here */}
+              <div className="bg-[#e6f7ff] border-l-8 border-[#00bfff] p-6 rounded-lg mb-2 mt-8 animate-fadeIn shadow-sm">
+                <p className="font-semibold text-[#3b3b3b]">
+                  For all service projects, <span className="text-[#00bfff]">50% advance payment</span> is required before project initiation. The remaining <span className="text-[#00bfff]">50% payment</span> must be completed upon project delivery, prior to handover. Project work will commence only after the advance is received.
+                </p>
+              </div>
             </div>
             <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
           </section>
 
           <Section title="Cookies">
             <p>
-              We employ the use of cookies. By accessing <span className="font-semibold">twincord.com</span>, you agreed to use cookies in agreement with the Twincord Technologies Private Limited's Privacy Policy. Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.
+              We employ the use of cookies. By accessing <TwinCordSites />, you agreed to use cookies in agreement with the Twincord Technologies Private Limited's Privacy Policy. Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.
             </p>
           </Section>
 
@@ -103,13 +117,13 @@ const Policies = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#00bfff] mb-4">License</h2>
             <div className="text-black text-base md:text-lg leading-relaxed">
               <p>
-                Unless otherwise stated, Twincord Technologies Private Limited and/or its licensors own the intellectual property rights for all material on <span className="font-semibold">twincord.com</span>. All intellectual property rights are reserved. You may access this from <span className="font-semibold">twincord.com</span> for your own personal use subjected to restrictions set in these terms and conditions.
+                Unless otherwise stated, Twincord Technologies Private Limited and/or its licensors own the intellectual property rights for all material on <TwinCordSites />. All intellectual property rights are reserved. You may access this from <TwinCordSites /> for your own personal use subjected to restrictions set in these terms and conditions.
               </p>
               <BlueDotList>
-                <span>Republish material from twincord.com</span>
-                <span>Sell, rent or sub-license material from twincord.com</span>
-                <span>Reproduce, duplicate or copy material from twincord.com</span>
-                <span>Redistribute content from twincord.com</span>
+                <span>Republish material from <TwinCordSites /></span>
+                <span>Sell, rent or sub-license material from <TwinCordSites /></span>
+                <span>Reproduce, duplicate or copy material from <TwinCordSites /></span>
+                <span>Redistribute content from <TwinCordSites /></span>
               </BlueDotList>
             </div>
             <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
@@ -182,17 +196,6 @@ const Policies = () => {
             </p>
           </Section>
 
-          {/* Payment Terms with blue left border */}
-          <section className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#00bfff] mb-4">Payment Terms</h2>
-            <div className="bg-[#e6f7ff] border-l-8 border-[#00bfff] p-6 rounded-lg mb-2 animate-fadeIn shadow-sm">
-              <p className="font-semibold text-[#3b3b3b]">
-                For all service projects, <span className="text-[#00bfff]">50% advance payment</span> is required before project initiation. The remaining <span className="text-[#00bfff]">50% payment</span> must be completed upon project delivery, prior to handover. Project work will commence only after the advance is received.
-              </p>
-            </div>
-            <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
-          </section>
-
           <Section title="Contact Us">
             <p>
               For any questions about our terms, please contact us at <a href="mailto:info@twincord.com" className="text-[#00bfff] underline">info@twincord.com</a>.
@@ -201,30 +204,13 @@ const Policies = () => {
         </div>
 
         <div className="flex justify-center mt-16">
-          <Link
-            to="/"
-            className="inline-block px-10 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
-            style={{
-              background: COLORS.primary,
-              color: COLORS.white,
-              fontSize: "1.1rem",
-              letterSpacing: "1px",
-              border: "none",
-              boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
-              cursor: "pointer",
-              transition: "background 0.3s, color 0.3s",
-            }}
-            onMouseOver={e => {
-              e.currentTarget.style.background = COLORS.black;
-              e.currentTarget.style.color = COLORS.white;
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.background = COLORS.primary;
-              e.currentTarget.style.color = COLORS.white;
-            }}
-          >
-            Back to Home
-          </Link>
+   <Link
+  to="/"
+  className="inline-flex items-center gap-2 px-10 py-3 rounded-full font-semibold shadow-lg bg-[#00bfff] text-white text-[1.1rem] tracking-wide transition-all duration-300 hover:bg-[#33ccff]"
+>
+  Back to Home
+  <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
+</Link>
         </div>
       </div>
 
