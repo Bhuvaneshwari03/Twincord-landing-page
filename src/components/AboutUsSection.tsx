@@ -76,9 +76,9 @@ const AboutUsSection = () => {
           <Typewriter
             options={{
               strings: [
-                "From freelance roots to a nationally recognized tech company 🚀",
-                "We transform ideas into secure, scalable solutions 💡",
-                "Our team of experts delivers cutting-edge technology ⚡"
+                "From freelance roots to a nationally recognized tech company",
+                "We transform ideas into secure, scalable solutions",
+                "Our team of experts delivers cutting-edge technology"
               ],
               autoStart: true,
               loop: true,
