@@ -13,6 +13,16 @@ import {
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import {
+  Shield,
+  Code,
+  Brain,
+  Cloud,
+  Palette,
+  GraduationCap,
+  ArrowLeft,
+  Check,
+} from "lucide-react";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -24,6 +34,7 @@ import { cn } from "@/lib/utils";
 interface SubItem {
   name: string;
   href: string;
+  icon?: React.ElementType;
 }
 
 interface NavItem {
@@ -36,24 +47,26 @@ interface NavItem {
 interface Service {
   id: string;
   title: string;
+  icon: React.ElementType;
 }
 
-// --- List Item Component for Dropdowns ---
+// --- MODIFIED: List Item Component for Dropdowns ---
 const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
-  React.ComponentPropsWithoutRef<typeof Link>
->(({ className, title, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof Link> & { icon?: React.ElementType }
+>(({ className, title, icon: Icon, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "flex select-none items-center gap-3 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
+          {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
           <div className="text-sm font-medium leading-none">{title}</div>
         </Link>
       </NavigationMenuLink>
@@ -62,21 +75,29 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-// --- Centralized Data for Services ---
-const servicesData: Service[] = [
-  { id: "cybersecurity", title: "Cybersecurity" },
-  { id: "software-development", title: "Software Development" },
-  { id: "ai-data", title: "AI & Data Solutions" },
-  { id: "cloud-infrastructure", title: "Cloud & Infrastructure" },
-  { id: "ui-ux-design", title: "UI/UX & Creative Design" },
-  { id: "training-certification", title: "Training & Certification" },
-];
-
 // --- Main Navigation Component ---
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  // --- MODIFIED: Centralized Data for Services ---
+  const servicesData: Service[] = [
+    { id: "cybersecurity", title: "Cybersecurity", icon: Shield },
+    { id: "software-development", title: "Software Development", icon: Code },
+    { id: "ai-data", title: "AI & Data Solutions", icon: Brain },
+    {
+      id: "cloud-infrastructure",
+      title: "Cloud & Infrastructure",
+      icon: Cloud,
+    },
+    { id: "ui-ux-design", title: "UI/UX & Creative Design", icon: Palette },
+    {
+      id: "training-certification",
+      title: "Training & Certification",
+      icon: GraduationCap,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -100,9 +121,11 @@ const Navigation = () => {
     { name: "TwinShield", href: "/twinshield" },
   ];
 
+  // --- MODIFIED: Service sub-items now include icons ---
   const serviceSubItems: SubItem[] = servicesData.map((service) => ({
     name: service.title,
     href: `/services/${service.id}`,
+    icon: service.icon,
   }));
 
   // --- NEW DYNAMIC NAVIGATION LOGIC ---
@@ -119,18 +142,12 @@ const Navigation = () => {
   if (isProductsPage) {
     // On a product page, expand the products into top-level links
     navItems = [
-      ...productSubItems.map((product) => ({
-        name: product.name,
-        href: product.href,
-      })),
-      { name: "Services", subItems: serviceSubItems }, // Keep services as a dropdown
+      { name: "Products", subItems: productSubItems },
+      { name: "Services", subItems: serviceSubItems },
     ];
   } else if (isServicesPage) {
     navItems = [
-      ...productSubItems.map((product) => ({
-        name: product.name,
-        href: product.href,
-      })),
+      { name: "Products", subItems: productSubItems },
       { name: "Services", subItems: serviceSubItems },
     ];
   } else if (isHomePage) {
@@ -174,7 +191,7 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Desktop Navigation (No changes needed here) */}
+          {/* --- MODIFIED: Desktop Navigation --- */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => {
@@ -203,6 +220,7 @@ const Navigation = () => {
                                 key={subItem.name}
                                 to={subItem.href}
                                 title={subItem.name}
+                                icon={subItem.icon} // <-- Pass icon prop
                                 className={
                                   location.pathname === subItem.href
                                     ? "bg-accent"
@@ -239,7 +257,7 @@ const Navigation = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Mobile Navigation (No changes needed here) */}
+          {/* --- MODIFIED: Mobile Navigation --- */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -289,7 +307,12 @@ const Navigation = () => {
                                   )}
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                  {subItem.name}
+                                  <div className="flex items-center gap-3">
+                                    {subItem.icon && (
+                                      <subItem.icon className="h-4 w-4" />
+                                    )}
+                                    <span>{subItem.name}</span>
+                                  </div>
                                 </Link>
                               ))}
                             </div>
