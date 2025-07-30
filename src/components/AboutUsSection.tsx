@@ -17,7 +17,7 @@ const AboutUsSection = () => {
   return (
     <motion.section
       id="about-section"
-      className="mt-20 bg-[#eef7ff] py-20 px-6 flex items-center justify-center relative overflow-hidden min-h-[600px]"
+      className="mt-0 bg-[#eef7ff] py-20 px-6 flex items-center justify-center relative overflow-hidden min-h-[600px]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2 }}
@@ -46,25 +46,21 @@ const AboutUsSection = () => {
         >
           {["W", "h", "o", " ", "A", "r", "e", " ", "W", "e", "?"].map((letter, index) => (
             <motion.span
-              key={index}
-              className="inline-block"
-              style={{ 
-                color: index <= 2 ? "#3b3b3b" : "#00bfff" // First 3 letters (Who) are #3b3b3b, rest are #00bfff
-              }}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05,
-                type: "spring",
-                stiffness: 100
-              }}
-              whileHover={{ 
-                scale: 1.2,
-                color: index <= 2 ? "#00bfff" : "#3b3b3b", // Reverse colors on hover
-                transition: { duration: 0.2 }
-              }}
-            >
+  key={index}
+  className="inline-block"
+  style={{ 
+    color: index <= 2 ? "#3b3b3b" : "#00bfff"
+  }}
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.5,
+    delay: index * 0.05,
+    type: "spring",
+    stiffness: 100
+  }}
+>
+
               {letter === " " ? "\u00A0" : letter}
             </motion.span>
           ))}
