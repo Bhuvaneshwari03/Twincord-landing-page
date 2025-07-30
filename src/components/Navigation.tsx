@@ -119,18 +119,12 @@ const Navigation = () => {
   if (isProductsPage) {
     // On a product page, expand the products into top-level links
     navItems = [
-      ...productSubItems.map((product) => ({
-        name: product.name,
-        href: product.href,
-      })),
-      { name: "Services", subItems: serviceSubItems }, // Keep services as a dropdown
+      { name: "Products", subItems: productSubItems },
+      { name: "Services", subItems: serviceSubItems },
     ];
   } else if (isServicesPage) {
     navItems = [
-      ...productSubItems.map((product) => ({
-        name: product.name,
-        href: product.href,
-      })),
+      { name: "Products", subItems: productSubItems },
       { name: "Services", subItems: serviceSubItems },
     ];
   } else if (isHomePage) {
