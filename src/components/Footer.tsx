@@ -44,13 +44,13 @@ const Footer = () => {
         {/* Main content grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Logo, Corporate Info, and Social Icons */}
-          <div className="space-y-4">
+          <div className="-mt-5">
             <a href="/" aria-label="Go to homepage">
               <img
-                src="/twincord-logo.png"
+                src="/logo-black.png"
                 alt="Twincord Logo"
                 // Corrected height class to a valid Tailwind value
-                className="h-16 w-auto transition-opacity hover:opacity-80"
+                className="h-22 w-32 transition-opacity hover:opacity-80"
               />
             </a>
 

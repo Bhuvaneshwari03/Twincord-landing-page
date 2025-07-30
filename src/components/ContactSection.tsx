@@ -25,7 +25,7 @@ const ContactSection = () => {
         className="max-w-4xl mx-auto text-center"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-          Get In <span className="text-gradient">Touch</span>
+          Get In <span className="text-[#00bfff]">Touch</span>
         </h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Ready to secure your digital future? Contact us to discuss your cybersecurity and software development needs.
@@ -75,10 +75,10 @@ const ContactSection = () => {
               </div>
               <CardTitle className="text-lg mb-2">Visit Us</CardTitle>
               <CardDescription className="text-xs leading-relaxed">
-                <div>Madhavi Street Extension,</div>
-                <div>Punjai Puliampatti, Erode,</div>
-                <div>Sathyamangalam,</div>
-                <div>Tamil Nadu, India - 638459</div>
+                <div>Technology Buisness Incubator,</div>
+                <div>@Kongu Engineering College,</div>
+                <div>Perundurai, Erode - 638 060,</div>
+                <div>Tamil Nadu, India.</div>
               </CardDescription>
             </CardHeader>
           </Card>
