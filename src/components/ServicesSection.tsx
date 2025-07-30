@@ -152,7 +152,7 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-800">
-              Our <span className="text-cyan-500">Services</span>
+              Our <span className="text-[#00bfff]">Services</span>
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Comprehensive technology solutions designed to accelerate your
@@ -206,14 +206,14 @@ const ServicesPage = () => {
                   <div className="space-y-2">
                     {service.list.slice(0, 3).map((item, idx) => (
                       <div key={idx} className="flex items-center space-x-3">
-                        <ChevronRight className="h-4 w-4 text-cyan-500 group-hover:text-[var(--hover-color)] transition-colors duration-300 flex-shrink-0" />
+                        <ChevronRight className="h-4 w-4 text-[#00bfff] group-hover:text-[var(--hover-color)] transition-colors duration-300 flex-shrink-0" />
                         <span className="text-sm text-gray-600 group-hover:text-[var(--hover-color-muted)] transition-colors duration-300">
                           {item}
                         </span>
                       </div>
                     ))}
                     {service.list.length > 3 && (
-                      <div className="text-sm text-cyan-500 group-hover:text-[var(--hover-color)] font-medium pt-1">
+                      <div className="text-sm text-[#00bfff] group-hover:text-[var(--hover-color)] font-medium pt-1">
                         +{service.list.length - 3} more services
                       </div>
                     )}
@@ -224,12 +224,12 @@ const ServicesPage = () => {
                   className="relative z-10 mt-auto px-8 pb-8 pt-6 cursor-pointer"
                   onClick={() => handleServiceClick(service.id)}
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="text-cyan-500 group-hover:text-[var(--hover-color)] font-semibold transition-colors duration-300">
-                      Learn More
-                    </span>
-                    <ArrowRight className="h-5 w-5 text-cyan-500 group-hover:text-[var(--hover-color)] group-hover:translate-x-1 transition-all duration-300" />
-                  </div>
+                 <div className="flex items-center gap-2 group cursor-pointer">
+  <span className="text-black font-semibold transition-colors duration-300 group-hover:text-[#00bfff]">
+    Learn More
+  </span>
+  <ArrowRight className="h-5 w-5 text-black transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1" />
+</div>
                 </div>
               </motion.div>
             ))}

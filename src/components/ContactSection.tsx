@@ -89,10 +89,15 @@ const ContactSection = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Start Your Project
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+<Button
+  size="lg"
+  className="group bg-[#00bfff] hover:bg-[#33ccff] rounded-full px-6 py-3 font-semibold inline-flex items-center transition-colors duration-300 shadow-md"
+>
+  <span className="text-white transition-colors duration-300">
+    Start Your Project
+  </span>
+  <ArrowRight className="ml-2 w-5 h-5 text-white transition-all duration-300 group-hover:translate-x-1" />
+</Button>
         </a>
       </motion.div>
     </section>
