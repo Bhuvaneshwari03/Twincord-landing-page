@@ -75,10 +75,10 @@ const ContactSection = () => {
               </div>
               <CardTitle className="text-lg mb-2">Visit Us</CardTitle>
               <CardDescription className="text-xs leading-relaxed">
-                <div>Madhavi Street Extension,</div>
-                <div>Punjai Puliampatti, Erode,</div>
-                <div>Sathyamangalam,</div>
-                <div>Tamil Nadu, India - 638459</div>
+                <div>Technology Buisness Incubator,</div>
+                <div>@Kongu Engineering College,</div>
+                <div>Perundurai, Erode - 638 060,</div>
+                <div>Tamil Nadu, India.</div>
               </CardDescription>
             </CardHeader>
           </Card>

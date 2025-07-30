@@ -147,7 +147,7 @@ const ProductsPage = () => {
                   <Link
                     to={product.path}
                     onClick={(e) => e.stopPropagation()}
-                    className="text-sm font-semibold text-black hover:text-[#00BFFF] transition-colors group"
+                    className="text-sm font-semibold text-black gradient-button group"
                   >
                     Learn More{" "}
                     <span
