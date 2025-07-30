@@ -1,70 +1,233 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Lock, Globe } from "lucide-react";
-
-const floatTransition = {
-  repeat: Infinity,
-  repeatType: "mirror",
-  duration: 6,
-  ease: "easeInOut",
-};
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Sparkles, Rocket, Zap, Globe } from 'lucide-react';
+import Typewriter from 'typewriter-effect';
 
 const AboutUsSection = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const milestones = [
+    { year: "2015", description: "Freelance beginnings", icon: Sparkles },
+    { year: "2018", description: "First enterprise client", icon: Rocket },
+    { year: "2020", description: "National recognition", icon: Zap },
+    { year: "2023", description: "Expanding globally", icon: Globe }
+  ];
+
   return (
     <motion.section
-      id="about-us"
-      className="bg-gradient-to-r from-[#00bfff] to-[#0088ff] py-20 px-6 flex items-center justify-center relative overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      id="about-section"
+      className="mt-0 bg-[#eef7ff] py-20 px-6 flex items-center justify-center relative overflow-hidden min-h-[600px]"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1.2 }}
     >
-      {/* Floating Background Icons */}
+      {/* Animated gradient background - subtle blue tones */}
       <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={floatTransition}
-        className="absolute top-16 left-10 pointer-events-none"
-      >
-        <ShieldCheck className="w-16 h-16 text-[#cceeff] opacity-5 blur-[1px]" />
-      </motion.div>
+        className="absolute inset-0 opacity-20"
+        animate={{
+          background: [
+            'radial-gradient(circle at 20% 50%, rgba(0,191,255,0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 80% 50%, rgba(0,136,255,0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 20% 50%, rgba(0,191,255,0.15) 0%, transparent 50%)',
+          ]
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
 
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={floatTransition}
-        className="absolute bottom-20 right-14 pointer-events-none"
-      >
-        <Lock className="w-14 h-14 text-[#a7dfff] opacity-5 blur-[1px]" />
-      </motion.div>
+      {/* Main content */}
+      <div className="max-w-4xl text-center z-10 relative">
+        {/* Animated heading with wave effect - split colors */}
+        <motion.h2
+          className="text-5xl md:text-7xl font-bold mb-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {["W", "h", "o", " ", "A", "r", "e", " ", "W", "e", "?"].map((letter, index) => (
+            <motion.span
+  key={index}
+  className="inline-block"
+  style={{ 
+    color: index <= 2 ? "#3b3b3b" : "#00bfff"
+  }}
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.5,
+    delay: index * 0.05,
+    type: "spring",
+    stiffness: 100
+  }}
+>
 
-      <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={floatTransition}
-        className="absolute top-28 right-24 pointer-events-none"
-      >
-        <Globe className="w-12 h-12 text-[#cceeff] opacity-5 blur-[1px]" />
-      </motion.div>
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
+        </motion.h2>
 
-      {/* Foreground Content */}
-      <div className="max-w-4xl text-center z-10">
-        <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-          <span className="text-white">Who </span>
-          <span className="text-white">Are We?</span>
-        </h2>
+        {/* Enhanced typing animation container - dark blue text */}
+        <motion.div 
+          className="text-lg md:text-xl text-[#2c5282] mb-12 max-w-2xl mx-auto h-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          <Typewriter
+            options={{
+              strings: [
+                "From freelance roots to a nationally recognized tech company 🚀",
+                "We transform ideas into secure, scalable solutions 💡",
+                "Our team of experts delivers cutting-edge technology ⚡"
+              ],
+              autoStart: true,
+              loop: true,
+              delay: 60,
+              deleteSpeed: 30,
+              pauseFor: 2000,
+              cursor: "|",
+              wrapperClassName: "text-[#2c5282]"
+            }}
+          />
+        </motion.div>
 
-        <p className="text-lg md:text-xl text-white mb-8">
-          From freelance roots to a nationally recognized tech company, our
-          journey is fueled by innovation and impact.
-        </p>
+        {/* Enhanced milestones with better hover animation */}
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+        >
+          {milestones.map((milestone, index) => (
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.8 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }
+                }
+              }}
+              whileHover={{ 
+                scale: 1.1,
+                y: -10,
+                transition: { duration: 0.3, type: "spring", stiffness: 300 }
+              }}
+              className="relative group"
+            >
+              <motion.div 
+                className="flex flex-col items-center p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-[#00bfff]/30 h-full transform-gpu shadow-sm"
+                whileHover={{ 
+                  backgroundColor: "rgba(255,255,255,0.9)",
+                  borderColor: "rgba(0,191,255,0.5)",
+                  boxShadow: "0 10px 30px rgba(0,136,255,0.2)"
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div 
+                  className="w-14 h-14 rounded-full bg-gradient-to-br from-[#00bfff] to-[#0088ff] flex items-center justify-center mb-3 shadow-lg"
+                  whileHover={{ 
+                    scale: 1.2,
+                    rotate: 360,
+                    transition: { duration: 0.6 }
+                  }}
+                >
+                  <milestone.icon className="w-7 h-7 text-white" />
+                </motion.div>
+                <motion.div 
+                  className="text-[#1a365d] font-bold text-lg"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {milestone.year}
+                </motion.div>
+                <div className="text-[#2c5282] text-sm mt-1">{milestone.description}</div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        <Link to="/about">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00bfff] font-semibold rounded-2xl shadow-md hover:bg-gray-100 transition-all"
+        {/* Ultra enhanced CTA button */}
+        <motion.div className="inline-block">
+          <Link 
+            to="/about" 
+            style={{ textDecoration: 'none', display: 'inline-block' }}
           >
-            Explore Our Journey <ArrowRight className="w-4 h-4" />
-          </motion.button>
-        </Link>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onHoverStart={() => setIsHovered(true)}
+              onHoverEnd={() => setIsHovered(false)}
+              className="relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#00bfff] to-[#0088ff] text-white font-bold text-lg rounded-full overflow-hidden"
+              style={{ 
+                border: 'none',
+                outline: 'none',
+                boxShadow: '0 4px 15px rgba(0, 191, 255, 0.3)'
+              }}
+            >
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20"
+                style={{ zIndex: 1 }}
+                animate={{
+                  x: isHovered ? ['-100%', '100%'] : '-100%'
+                }}
+                transition={{ duration: 0.6 }}
+              />
+              
+              {/* Ripple effect on hover */}
+              <AnimatePresence>
+                {isHovered && (
+                  <motion.span
+                    className="absolute inset-0 bg-white/20 rounded-full"
+                    style={{ zIndex: 1 }}
+                    initial={{ scale: 0, opacity: 0.5 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    exit={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                )}
+              </AnimatePresence>
+
+              {/* Button text with animation */}
+              <motion.span
+                className="relative"
+                style={{ zIndex: 2 }}
+                animate={{ x: isHovered ? -5 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                Explore Our Journey
+              </motion.span>
+              
+              {/* Animated arrow */}
+              <motion.div
+                animate={{ 
+                  x: isHovered ? 5 : 0,
+                  rotate: isHovered ? 45 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+                style={{ zIndex: 2 }}
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.div>
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </motion.section>
   );

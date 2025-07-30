@@ -80,8 +80,9 @@ const ProductsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-[#3b3b3b] mb-6"
           >
-            <span className="text-[#3a3a3a]">Our </span>
-            <span className="text-[#00bfff]">Products</span>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-800">
+              Our <span className="text-[#00bfff]">Products</span>
+            </h2>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
