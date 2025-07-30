@@ -25,7 +25,7 @@ const ContactSection = () => {
         className="max-w-4xl mx-auto text-center"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-          Get In <span className="text-gradient">Touch</span>
+          Get In <span className="text-[#00bfff]">Touch</span>
         </h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Ready to secure your digital future? Contact us to discuss your cybersecurity and software development needs.

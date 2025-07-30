@@ -152,7 +152,7 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-800">
-              Our <span className="text-cyan-500">Services</span>
+              Our <span className="text-[#00bfff]">Services</span>
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Comprehensive technology solutions designed to accelerate your
