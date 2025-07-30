@@ -144,19 +144,19 @@ const ProductsPage = () => {
                   </div>
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-100">
-                  <Link
-                    to={product.path}
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-sm font-semibold text-black gradient-button group"
-                  >
-                    Learn More{" "}
-                    <span
-                      className="inline-block transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  </Link>
+                      <Link
+  to={product.path}
+  onClick={(e) => e.stopPropagation()}
+  className="text-base font-bold text-black group flex items-center gap-2 transition-colors duration-300"
+>
+  <span className="transition-colors duration-300 group-hover:text-[#00bfff]">
+    Learn More
+  </span>
+  <ArrowRight
+    className="h-5 w-5 text-black-400 transition-all duration-300 group-hover:text-[#00bfff] group-hover:translate-x-1"
+    aria-hidden="true"
+  />
+</Link>
                 </div>
               </motion.div>
             ))}
