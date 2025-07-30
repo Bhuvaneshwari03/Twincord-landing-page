@@ -24,9 +24,16 @@ const ContactSection = () => {
         transition={{ duration: 0.5 }}
         className="max-w-4xl mx-auto text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-          Get In <span className="text-[#00bfff]">Touch</span>
-        </h2>
+        <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-5xl md:text-7xl font-bold mb-6 inline-block"
+                  >
+                    <span className="text-[#3b3b3b] mr-2">Get In</span>
+                    <span className="text-[#00bfff] ml-2">Touch</span>
+                  </motion.h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Ready to secure your digital future? Contact us to discuss your cybersecurity and software development needs.
         </p>
