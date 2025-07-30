@@ -117,9 +117,9 @@ const ProductsPage = () => {
                 transition={{ duration: 0.4, delay: 0.1 * index }}
               >
                 <div className="flex items-start flex-grow">
-                  <div className="w-14 h-14 rounded-xl bg-[#00bfff]/10 flex items-center justify-center mr-6 flex-shrink-0">
-                    <div className="w-4 h-4 rounded-full bg-[#00bfff]"></div>
-                  </div>
+                  <div className="w-14 h-14 rounded-xl bg-[#00bfff]/10 flex items-center justify-center mr-6 flex-shrink-0 hidden sm:flex">
+  <div className="w-4 h-4 rounded-full bg-[#00bfff]"></div>
+</div>
                   <div>
                     <h3 className="text-xl font-bold text-[#3b3b3b] mb-2">
                       <Link
