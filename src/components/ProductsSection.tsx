@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-
+import { ArrowRight } from "lucide-react";
 const ProductsPage = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [lockedProduct, setLockedProduct] = useState(null);
@@ -233,13 +233,14 @@ const ProductsPage = () => {
                       {products[activeProductIndex].description}
                     </p>
                     <div className="mt-6">
-                      <Link
-                        to={products[activeProductIndex].path}
-                        className="bg-[#00bfff] text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-[#00a3d9] transition-colors inline-block"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
+  <Link
+    to={products[activeProductIndex].path}
+    className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium shadow-md transition-colors inline-flex items-center"
+  >
+    Learn More
+    <ArrowRight className="ml-2 w-4 h-4 transition-all duration-300" />
+  </Link>
+</div>
                   </div>
                 </motion.div>
               )}
