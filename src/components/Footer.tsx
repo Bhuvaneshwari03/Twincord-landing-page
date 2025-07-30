@@ -217,7 +217,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/policies"
-                  className="text-sm text-[#b0b0b0] hover:text-[#00bfff] transition-colors"
+                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                   aria-label="Policies"
                 >
                   Policies
