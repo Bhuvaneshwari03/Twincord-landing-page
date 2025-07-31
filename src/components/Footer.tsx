@@ -29,6 +29,17 @@ const Footer = () => {
     }
   };
 
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (isHomePage) {
+      // If we're on the homepage, just scroll to the top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If we're on a different page, navigate to the homepage
+      navigate("/");
+    }
+  };
+
   // Reusable component for social media links
   const SocialLink = ({ href, "aria-label": ariaLabel, icon: Icon }) => (
     <a
@@ -74,8 +85,16 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-3 pt-2">
-              <SocialLink href="https://github.com/twincord-technologies" aria-label="Github" icon={Github} />
-              <SocialLink href="https://www.instagram.com/twincord_technologies/" aria-label="Instagram" icon={Instagram} />
+              <SocialLink
+                href="https://github.com/twincord-technologies"
+                aria-label="Github"
+                icon={Github}
+              />
+              <SocialLink
+                href="https://www.instagram.com/twincord_technologies/"
+                aria-label="Instagram"
+                icon={Instagram}
+              />
               <SocialLink
                 href="https://www.linkedin.com/company/twincord"
                 aria-label="LinkedIn"
@@ -95,7 +114,8 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/#hero"
+                  to="/"
+                  onClick={handleHomeClick}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Home
