@@ -89,35 +89,6 @@ const Index = () => {
                   Our Products <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </motion.div>
-
-              {/* Working Partners Section (Mobile Responsive) */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="mt-12"
-              >
-                <p className="text-sm text-muted-foreground/80 font-medium text-center lg:text-left mb-4">
-                  Our working partners
-                </p>
-                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-8">
-                  <img
-                    src="/aws.svg"
-                    alt="AWS Logo"
-                    className="h-7 w-auto"
-                  />
-                  <img
-                    src="/gcp.svg"
-                    alt="Google Cloud Platform Logo"
-                    className="h-7 w-auto"
-                  />
-                  <img
-                    src="/zoho.svg"
-                    alt="Zoho Logo"
-                    className="h-7 w-auto"
-                  />
-                </div>
-              </motion.div>
             </div>
 
             {/* Right Column */}
