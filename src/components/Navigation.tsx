@@ -50,11 +50,14 @@ interface Service {
   icon: React.ElementType;
 }
 
-// --- MODIFIED: List Item Component for Dropdowns ---
+// --- UPDATED: List Item Component for Dropdowns ---
 const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
-  React.ComponentPropsWithoutRef<typeof Link> & { icon?: React.ElementType }
->(({ className, title, icon: Icon, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof Link> & {
+    icon?: React.ElementType;
+    iconClassName?: string;
+  }
+>(({ className, title, icon: Icon, iconClassName, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -66,7 +69,11 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
+          {Icon && (
+            <Icon
+              className={cn("h-4 w-4 text-muted-foreground", iconClassName)}
+            />
+          )}
           <div className="text-sm font-medium leading-none">{title}</div>
         </Link>
       </NavigationMenuLink>
@@ -193,7 +200,12 @@ const Navigation = () => {
                                 key={subItem.name}
                                 to={subItem.href}
                                 title={subItem.name}
-                                icon={subItem.icon} // <-- Pass icon prop
+                                icon={subItem.icon}
+                                iconClassName={
+                                  item.name === "Services"
+                                    ? "!text-[#00bfff]"
+                                    : ""
+                                }
                                 className={
                                   location.pathname === subItem.href
                                     ? "bg-accent"
@@ -282,7 +294,13 @@ const Navigation = () => {
                                 >
                                   <div className="flex items-center gap-3">
                                     {subItem.icon && (
-                                      <subItem.icon className="h-4 w-4" />
+                                      <subItem.icon
+                                        className={cn(
+                                          "h-4 w-4",
+                                          item.name === "Services" &&
+                                            "text-[#00bfff]"
+                                        )}
+                                      />
                                     )}
                                     <span>{subItem.name}</span>
                                   </div>
