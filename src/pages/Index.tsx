@@ -32,7 +32,7 @@ const Index = () => {
   return (
     <>
       {/* This wrapper now applies h-screen only on large screens (lg) and up */}
-      <div className="lg:h-screen flex flex-col">
+      <div className="lg:h-screen flex flex-col" id="hero">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
