@@ -106,19 +106,28 @@ const ContactSection = () => {
               }}
             />
             <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
-              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
-                <div className="flex justify-center mb-4">
-                  <MapPin className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-lg mb-2">Visit Us</CardTitle>
-                <CardDescription className="text-xs leading-relaxed">
-                  <div>Technology Buisness Incubator,</div>
-                  <div>@Kongu Engineering College,</div>
-                  <div>Perundurai, Erode - 638 060,</div>
-                  <div>Tamil Nadu, India.</div>
-                </CardDescription>
-              </CardHeader>
-            </Card>
+  <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
+    <div className="flex justify-center mb-4">
+      <MapPin className="h-8 w-8 text-primary" />
+    </div>
+    <CardTitle className="text-lg mb-2">
+      <a 
+        href="https://www.google.com/maps/search/Technology+Buisness+Incubator,+@Kongu+Engineering+College,+Perundurai,+Erode+-+638+060,+Tamil+Nadu,+India./@11.2735687,77.6046673,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDcyOC4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer"
+      >
+        Visit Us
+      </a>
+    </CardTitle>
+    <CardDescription className="text-xs leading-relaxed">
+      <div>Technology Buisness Incubator,</div>
+      <div>@Kongu Engineering College,</div>
+      <div>Perundurai, Erode - 638 060,</div>
+      <div>Tamil Nadu, India.</div>
+    </CardDescription>
+  </CardHeader>
+</Card>
           </div>
         </div>
         <a
