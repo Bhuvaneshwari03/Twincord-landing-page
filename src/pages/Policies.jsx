@@ -79,7 +79,11 @@ const Policies = () => {
     <div className="min-h-screen bg-white py-12 px-4 md:px-16">
       <div className="max-w-5xl mx-auto">
         <AnimatedIllustration />
-  
+    <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
+          <span style={{ color: "#3b3b3b" }}>Terms</span>
+          <span style={{ color: "#00bfff" }}> &amp; </span>
+          <span style={{ color: "#3b3b3b" }}>Conditions</span>
+        </h1>
         <p className="text-center text-[#00bfff] font-medium mb-16 text-lg md:text-xl">
           Welcome to Twincord Technologies Private Limited
         </p>
