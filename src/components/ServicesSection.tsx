@@ -256,6 +256,7 @@ const ServicesPage = () => {
                 className="h-7 w-auto"
               />
               <img src="/zoho.svg" alt="Zoho Logo" className="h-7 w-auto" />
+              <img src="/hostinger.svg" alt="hostinger Logo" className="h-7 w-auto" />
             </div>
           </motion.div>
         </div>
