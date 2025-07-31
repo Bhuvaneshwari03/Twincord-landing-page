@@ -1,9 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Simple Header
-
-// Simple Footer
 
 const AcademicPage = () => {
   return (
