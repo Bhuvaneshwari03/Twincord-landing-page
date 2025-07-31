@@ -121,16 +121,13 @@ const Policies = () => {
               </BlueDotList>
               {/* Payment Terms moved here */}
               <div className="bg-[#e6f7ff] border-l-8 border-[#00bfff] p-6 rounded-lg mb-2 mt-8 animate-fadeIn shadow-sm">
-                <p className="font-semibold text-[#3b3b3b]">
-                  For all service projects, we kindly request a{" "}
-                  <span className="text-[#00bfff]">50% advance payment</span> to
-                  initiate your project. The remaining{" "}
-                  <span className="text-[#00bfff]">50% balance</span> will be
-                  due upon project completion, prior to handover. We appreciate
-                  your understanding and will begin work promptly upon receiving
-                  the advance payment.
-                </p>
-              </div>
+  <p className="font-semibold text-[#3b3b3b]">
+    To get started on any service project, we require a{" "}
+    <span className="text-[#00bfff]">50% advance payment</span>. The remaining{" "}
+    <span className="text-[#00bfff]">50%</span> will be collected upon project completion, before final delivery. We appreciate your cooperation and will begin work as soon as the advance is received.{" "}
+    This ensures smooth execution and mutual commitment throughout the project.
+  </p>
+</div>
             </div>
             <div className="w-full border-b-2 border-dotted border-[#00bfff] mt-10 mb-2 opacity-30"></div>
           </section>
