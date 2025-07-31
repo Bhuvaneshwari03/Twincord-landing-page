@@ -153,20 +153,29 @@ const ServiceCard: React.FC<{ service: ServiceType; index: number; onAcademicCli
           {/* Academic Button ONLY for Training & Certification */}
           {isTraining && (
             <div className="flex justify-center mt-4 mb-8">
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "#00bfff",
-                  color: "#fff",
-                  boxShadow: "0 8px 32px 0 rgba(0,191,255,0.15)",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-indigo-600 border-2 border-indigo-500 bg-white shadow-lg transition-all duration-300 hover:bg-[#00bfff] hover:text-white"
-                onClick={onAcademicClick}
-              >
-                Explore Twincord Academic
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </motion.button>
+        <motion.button
+  whileHover={{
+    scale: 1.05,
+    backgroundColor: "#fffffe",
+    color: "#4f46e5",
+    boxShadow: "0 8px 32px 0 rgba(0,191,255,0.15)",
+  }}
+  whileTap={{ scale: 0.97 }}
+  className="
+    flex items-center gap-1
+    px-3 py-1.5 text-xs
+    rounded-full font-semibold text-indigo-600 border-2 border-indigo-500 bg-white shadow-lg
+    transition-all duration-300
+    hover:bg-[#00bfff] hover:text-white
+
+    sm:gap-2 sm:px-4 sm:py-2 sm:text-sm
+    md:px-5 md:py-2.5 md:text-base
+  "
+  onClick={onAcademicClick}
+>
+  Explore Twincord Academic
+  <ArrowRight className="ml-1 h-4 w-4 sm:ml-2 sm:h-5 sm:w-5" />
+</motion.button>
             </div>
           )}
         </motion.div>
