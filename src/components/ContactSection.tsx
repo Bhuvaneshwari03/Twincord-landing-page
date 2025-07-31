@@ -47,7 +47,7 @@ const ContactSection = () => {
                 <div className="flex justify-center mb-4">
                   <Mail className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-lg mb-2">Email Us</CardTitle>
+                <CardTitle className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer text-lg mb-2">Email Us</CardTitle>
                 <CardDescription className="text-sm">
                   info@twincord.in
                 </CardDescription>
@@ -56,24 +56,32 @@ const ContactSection = () => {
           </div>
 
           <div className="relative group">
-            <div
-              className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
-              style={{
-                backgroundColor: "rgba(0,191,255,0.1)",
-                boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
-              }}
-            />
-            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
-              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
-                <div className="flex justify-center mb-4">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-lg mb-2">Careers</CardTitle>
-                <CardDescription className="text-sm">
-                  careers@twincord.in
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            <a
+              href="mailto:careers@twincord.tech?subject=Application%20for%20Job%20at%20Twincord&body=Dear%20Twincord%20Team%2C%0D%0A%0D%0AI%20am%20excited%20to%20apply%20for%20a%20position%20at%20your%20company.%20Please%20find%20my%20details%20below.%0D%0A%0D%0AName%3A%0D%0ARole%20applying%20for%3A%0D%0AResume%20link%3A%0D%0AGithub%2FPortfolio%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D"
+              className="block"
+            >
+              <div
+                className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+                style={{
+                  backgroundColor: "rgba(0,191,255,0.1)",
+                  boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+                }}
+              />
+              <Card
+                className="relative z-10 h-48 flex flex-col justify-center transition-transform duration-300 group-hover:-translate-y-1 cursor-pointer"
+                style={{ borderColor: "rgba(0,191,255,0.5)" }}
+              >
+                <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
+                  <div className="flex justify-center mb-4">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer text-lg mb-2">Careers</CardTitle>
+                  <CardDescription className="text-sm">
+                    careers@twincord.tech
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </a>
           </div>
 
           <div className="relative group">
@@ -106,28 +114,28 @@ const ContactSection = () => {
               }}
             />
             <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
-  <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
-    <div className="flex justify-center mb-4">
-      <MapPin className="h-8 w-8 text-primary" />
-    </div>
-    <CardTitle className="text-lg mb-2">
-      <a 
-        href="https://www.google.com/maps/search/Technology+Buisness+Incubator,+@Kongu+Engineering+College,+Perundurai,+Erode+-+638+060,+Tamil+Nadu,+India./@11.2735687,77.6046673,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDcyOC4wIKXMDSoASAFQAw%3D%3D"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer"
-      >
-        Visit Us
-      </a>
-    </CardTitle>
-    <CardDescription className="text-xs leading-relaxed">
-      <div>Technology Buisness Incubator,</div>
-      <div>@Kongu Engineering College,</div>
-      <div>Perundurai, Erode - 638 060,</div>
-      <div>Tamil Nadu, India.</div>
-    </CardDescription>
-  </CardHeader>
-</Card>
+              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
+                <div className="flex justify-center mb-4">
+                  <MapPin className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-lg mb-2">
+                  <a
+                    href="https://www.google.com/maps/search/Technology+Buisness+Incubator,+@Kongu+Engineering+College,+Perundurai,+Erode+-+638+060,+Tamil+Nadu,+India./@11.2735687,77.6046673,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDcyOC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer"
+                  >
+                    Visit Us
+                  </a>
+                </CardTitle>
+                <CardDescription className="text-xs leading-relaxed">
+                  <div>Technology Buisness Incubator,</div>
+                  <div>@Kongu Engineering College,</div>
+                  <div>Perundurai, Erode - 638 060,</div>
+                  <div>Tamil Nadu, India.</div>
+                </CardDescription>
+              </CardHeader>
+            </Card>
           </div>
         </div>
         <a
