@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { ArrowRight } from "lucide-react";
 const COLORS = {
   primary: "#00bfff",
   white: "#f8f8f8",
@@ -80,11 +80,10 @@ const RefundCancellation = () => {
     >
       <div className="max-w-5xl mx-auto">
         <AnimatedIllustration />
-        <h1
-          className="text-4xl md:text-5xl font-extrabold text-center mb-4 mt-8"
-          style={{ color: COLORS.black }}
-        >
-          Refund & Cancellation Policy
+        <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
+          <span style={{ color: "#3b3b3b" }}>Refund</span>
+          <span style={{ color: "#00bfff" }}> &amp; </span>
+          <span style={{ color: "#3b3b3b" }}>Cancellation</span>
         </h1>
         <p
           className="text-center font-medium mb-16 text-lg md:text-xl"
@@ -141,32 +140,15 @@ const RefundCancellation = () => {
           </Section>
         </div>
 
-        <div className="flex justify-center mt-16">
-          <Link
-            to="/"
-            className="inline-block px-10 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
-            style={{
-              background: COLORS.primary,
-              color: COLORS.white,
-              fontSize: "1.1rem",
-              letterSpacing: "1px",
-              border: "none",
-              boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
-              cursor: "pointer",
-              transition: "background 0.3s, color 0.3s",
-            }}
-            onMouseOver={e => {
-              e.currentTarget.style.background = COLORS.black;
-              e.currentTarget.style.color = COLORS.white;
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.background = COLORS.primary;
-              e.currentTarget.style.color = COLORS.white;
-            }}
-          >
-            Back to Home
-          </Link>
-        </div>
+       <div className="flex justify-center mt-16">
+                 <Link
+                   to="/"
+                   className="inline-flex items-center gap-2 px-10 py-3 rounded-full font-semibold shadow-lg bg-[#00bfff] text-white text-[1.1rem] tracking-wide transition-all duration-300 hover:bg-[#33ccff]"
+                 >
+                   Back to Home
+                   <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
+                 </Link>
+               </div>
       </div>
 
       {/* Animation keyframes */}

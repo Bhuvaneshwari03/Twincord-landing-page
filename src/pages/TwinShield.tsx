@@ -3,8 +3,10 @@ import { Shield, Cloud, Lock, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TwinShield = () => {
+  // Gmail compose link for beta request
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=info@twincord.in&su=Request%20for%20TwinShield%20Beta%20Access&body=Hello%20TwinCord%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20beta%20access%20for%20the%20TwinShield%20product.%0D%0A%0D%0AThank%20you!`;
+
   return (
-    // The main wrapper div is replaced with a fragment, as Layout.tsx handles the page container
     <>
       {/* Hero Section */}
       <motion.section
@@ -36,9 +38,15 @@ const TwinShield = () => {
             <Button size="lg" className="button-gradient">
               Coming Soon
             </Button>
-            <Button size="lg" variant="link" className="text-foreground">
-              Request Beta Access
-            </Button>
+            <a
+              href={gmailLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" variant="link" className="text-foreground">
+                Request Beta Access
+              </Button>
+            </a>
           </div>
         </div>
       </motion.section>
