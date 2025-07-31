@@ -111,22 +111,22 @@ const AboutUsSection = () => {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.8 },
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
+                    type: "tween",
+                    ease: "easeOut",
+                    duration: 0.6,
                   },
                 },
               }}
               whileHover={{
-                scale: 1.1,
-                y: -10,
-                transition: { duration: 0.3, type: "spring", stiffness: 300 },
+                scale: 1.015,
+                y: -2,
+                transition: { duration: 0.25, ease: "easeOut" },
               }}
               className="relative group"
             >
@@ -169,64 +169,13 @@ const AboutUsSection = () => {
             to="/about"
             style={{ textDecoration: "none", display: "inline-block" }}
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setIsHovered(true)}
-              onHoverEnd={() => setIsHovered(false)}
-              className="relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#00bfff] to-[#0088ff] text-white font-bold text-lg rounded-full overflow-hidden"
-              style={{
-                border: "none",
-                outline: "none",
-                boxShadow: "0 4px 15px rgba(0, 191, 255, 0.3)",
-              }}
-            >
-              {/* Animated background gradient */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20"
-                style={{ zIndex: 1 }}
-                animate={{
-                  x: isHovered ? ["-100%", "100%"] : "-100%",
-                }}
-                transition={{ duration: 0.6 }}
-              />
-
-              {/* Ripple effect on hover */}
-              <AnimatePresence>
-                {isHovered && (
-                  <motion.span
-                    className="absolute inset-0 bg-white/20 rounded-full"
-                    style={{ zIndex: 1 }}
-                    initial={{ scale: 0, opacity: 0.5 }}
-                    animate={{ scale: 2, opacity: 0 }}
-                    exit={{ scale: 2, opacity: 0 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                )}
-              </AnimatePresence>
-
-              {/* Button text with animation */}
-              <motion.span
-                className="relative"
-                style={{ zIndex: 2 }}
-                animate={{ x: isHovered ? -5 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
+            <motion.button className="group bg-gradient-to-r from-[#00bfff] to-[#0088ff] hover:from-[#00cfff] hover:to-[#3399ff] rounded-full px-8 py-4 text-white font-bold text-lg inline-flex items-center gap-3 shadow-md transition-colors duration-300">
+               {" "}
+              <span className="transition-colors duration-300">
                 Explore Our Journey
-              </motion.span>
-
-              {/* Animated arrow */}
-              <motion.div
-                animate={{
-                  x: isHovered ? 5 : 0,
-                  rotate: isHovered ? 45 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                className="relative"
-                style={{ zIndex: 2 }}
-              >
-                <ArrowRight className="w-5 h-5" />
-              </motion.div>
+              </span>
+               {" "}
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
           </Link>
         </motion.div>
