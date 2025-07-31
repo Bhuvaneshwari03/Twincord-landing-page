@@ -50,11 +50,14 @@ interface Service {
   icon: React.ElementType;
 }
 
-// --- MODIFIED: List Item Component for Dropdowns ---
+// --- UPDATED: List Item Component for Dropdowns ---
 const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
-  React.ComponentPropsWithoutRef<typeof Link> & { icon?: React.ElementType }
->(({ className, title, icon: Icon, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof Link> & {
+    icon?: React.ElementType;
+    iconClassName?: string;
+  }
+>(({ className, title, icon: Icon, iconClassName, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -66,7 +69,11 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
+          {Icon && (
+            <Icon
+              className={cn("h-4 w-4 text-muted-foreground", iconClassName)}
+            />
+          )}
           <div className="text-sm font-medium leading-none">{title}</div>
         </Link>
       </NavigationMenuLink>
@@ -128,50 +135,23 @@ const Navigation = () => {
     icon: service.icon,
   }));
 
-  // --- NEW DYNAMIC NAVIGATION LOGIC ---
-  let navItems: NavItem[];
-
   const isHomePage = location.pathname === "/";
-  const isProductsPage = productSubItems.some((item) =>
-    location.pathname.startsWith(item.href)
-  );
-  const isServicesPage = serviceSubItems.some((item) =>
-    location.pathname.startsWith(item.href)
-  );
 
-  if (isProductsPage) {
-    // On a product page, expand the products into top-level links
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  } else if (isServicesPage) {
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  } else if (isHomePage) {
-    navItems = [
-      {
-        name: "About",
-        href: "#about",
-        onClick: () => scrollToSection("about"),
-      },
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-      {
-        name: "Contact us",
-        href: "#contact",
-        onClick: () => scrollToSection("contact"),
-      },
-    ];
-  } else {
-    // Default navigation for all other pages
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  }
+  // --- UPDATED: Unified Navigation Logic for Consistency ---
+  const navItems: NavItem[] = [
+    { name: "Products", subItems: productSubItems },
+    { name: "Services", subItems: serviceSubItems },
+    {
+      name: "About",
+      href: "/about",
+    },
+    {
+      name: "Contact us",
+      href: "/#contact",
+      // Use smooth scroll on homepage, navigate from other pages
+      onClick: isHomePage ? () => scrollToSection("contact") : undefined,
+    },
+  ];
 
   return (
     <header
@@ -191,7 +171,7 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* --- MODIFIED: Desktop Navigation --- */}
+          {/* Desktop Navigation --- */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => {
@@ -220,7 +200,12 @@ const Navigation = () => {
                                 key={subItem.name}
                                 to={subItem.href}
                                 title={subItem.name}
-                                icon={subItem.icon} // <-- Pass icon prop
+                                icon={subItem.icon}
+                                iconClassName={
+                                  item.name === "Services"
+                                    ? "!text-[#00bfff]"
+                                    : ""
+                                }
                                 className={
                                   location.pathname === subItem.href
                                     ? "bg-accent"
@@ -257,7 +242,7 @@ const Navigation = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* --- MODIFIED: Mobile Navigation --- */}
+          {/* --- Mobile Navigation --- */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -309,7 +294,13 @@ const Navigation = () => {
                                 >
                                   <div className="flex items-center gap-3">
                                     {subItem.icon && (
-                                      <subItem.icon className="h-4 w-4" />
+                                      <subItem.icon
+                                        className={cn(
+                                          "h-4 w-4",
+                                          item.name === "Services" &&
+                                            "text-[#00bfff]"
+                                        )}
+                                      />
                                     )}
                                     <span>{subItem.name}</span>
                                   </div>
