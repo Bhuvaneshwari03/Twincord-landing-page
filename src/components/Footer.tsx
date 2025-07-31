@@ -23,9 +23,18 @@ const Footer = () => {
         window.scrollTo({ top: y, behavior: "smooth" });
       }
     } else {
-      // If on another page, navigate to the homepage with the hash
-      // The ScrollToHashElement component will then handle the scrolling
       navigate(`/${hash}`);
+    }
+  };
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (isHomePage) {
+      // If we're on the homepage, just scroll to the top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If we're on a different page, navigate to the homepage
+      navigate("/");
     }
   };
 
@@ -50,15 +59,15 @@ const Footer = () => {
       <div className="container px-4 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Logo and Info */}
-          <div className="-mt-5">
+          <div className="-mt-12">
             <Link to="/" aria-label="Go to homepage">
               <img
                 src="/logo-black.png"
                 alt="Twincord Logo"
-                className="h-22 w-32 transition-opacity hover:opacity-80"
+                className="h-22 w-44 transition-opacity hover:opacity-80"
               />
             </Link>
-            <div className="pt-2 text-xs text-neutral-500 space-y-3 leading-relaxed">
+            <div className="pt-2 text-xs text-neutral-500 space-y-3 leading-relaxed -mt-12">
               <p>
                 <strong className="text-neutral-400">
                   Twincord Technologies Private Limited
@@ -74,8 +83,16 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-3 pt-2">
-              <SocialLink href="https://github.com/twincord-technologies" aria-label="Github" icon={Github} />
-              <SocialLink href="https://www.instagram.com/twincord_technologies/" aria-label="Instagram" icon={Instagram} />
+              <SocialLink
+                href="https://github.com/twincord-technologies"
+                aria-label="Github"
+                icon={Github}
+              />
+              <SocialLink
+                href="https://www.instagram.com/twincord_technologies/"
+                aria-label="Instagram"
+                icon={Instagram}
+              />
               <SocialLink
                 href="https://www.linkedin.com/company/twincord"
                 aria-label="LinkedIn"
@@ -95,8 +112,9 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/#hero"
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  to="/"
+                  onClick={handleHomeClick}
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Home
                 </Link>
@@ -105,7 +123,7 @@ const Footer = () => {
                 <a
                   href="/#about-us"
                   onClick={(e) => handleHashLinkClick(e, "#about-us")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   About
                 </a>
@@ -114,7 +132,7 @@ const Footer = () => {
                 <a
                   href="/#products"
                   onClick={(e) => handleHashLinkClick(e, "#products")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Products
                 </a>
@@ -123,7 +141,7 @@ const Footer = () => {
                 <a
                   href="/#contact"
                   onClick={(e) => handleHashLinkClick(e, "#contact")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Contact us
                 </a>
@@ -139,7 +157,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Cybersecurity
                 </a>
@@ -148,7 +166,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Software Development
                 </a>
@@ -157,7 +175,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   AI & Data Solutions
                 </a>
@@ -166,7 +184,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Cloud Services
                 </a>
@@ -175,7 +193,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Creative Design
                 </a>
@@ -184,7 +202,7 @@ const Footer = () => {
                 <a
                   href="/#services"
                   onClick={(e) => handleHashLinkClick(e, "#services")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Training Programs
                 </a>
@@ -201,7 +219,7 @@ const Footer = () => {
                   href="https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Careers
                 </a>
@@ -210,7 +228,7 @@ const Footer = () => {
                 <a
                   href="/#contact"
                   onClick={(e) => handleHashLinkClick(e, "#contact")}
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Contact
                 </a>
@@ -218,7 +236,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/policies"
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Policies
                 </Link>
@@ -226,7 +244,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/refundCancellation"
-                  className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#00bfff] transition-colors"
                 >
                   Refund & Cancellation
                 </Link>
@@ -240,6 +258,35 @@ const Footer = () => {
           <p className="text-sm text-neutral-500">
             Copyright © {new Date().getFullYear()} Twincord Technologies Pvt.
             Ltd.
+          </p>
+          <p className="credits text-sm text-neutral-500">
+            Designed & Developed by 
+            <a
+              href="https://www.linkedin.com/in/bhuvaneshwari-g-51675724b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#00bfff]"
+            >
+              {" "}Bhuvaneshwari G
+            </a>
+            ,{" "}
+            <a
+              href="https://www.linkedin.com/in/jeevastudent/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#00bfff]"
+            >
+              Jeeva A
+            </a>{" "}
+            &
+            <a
+              href="https://www.linkedin.com/in/iamjabastin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#00bfff]"
+            >
+              {" "}Jabastin A
+            </a>
           </p>
           <p className="text-sm text-neutral-500 mt-2 md:mt-0">
             All rights reserved.
