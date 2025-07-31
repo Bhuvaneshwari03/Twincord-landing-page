@@ -42,12 +42,17 @@ const ContactSection = () => {
                 boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
               }}
             />
-            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
+            <Card
+              className="relative z-10 border-border h-48 flex flex-col justify-center transition-all 
+            duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]"
+            >
               <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
                 <div className="flex justify-center mb-4">
                   <Mail className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer text-lg mb-2">Email Us</CardTitle>
+                <CardTitle className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer text-lg mb-2">
+                  Email Us
+                </CardTitle>
                 <CardDescription className="text-sm">
                   info@twincord.in
                 </CardDescription>
@@ -67,15 +72,14 @@ const ContactSection = () => {
                   boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
                 }}
               />
-              <Card
-                className="relative z-10 h-48 flex flex-col justify-center transition-transform duration-300 group-hover:-translate-y-1 cursor-pointer"
-                style={{ borderColor: "rgba(0,191,255,0.5)" }}
-              >
+              <Card className="relative z-10 h-48 flex flex-col justify-center border transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)] cursor-pointer">
                 <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
                   <div className="flex justify-center mb-4">
                     <Users className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200 cursor-pointer text-lg mb-2">Careers</CardTitle>
+                  <CardTitle className="text-lg mb-2 hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200">
+                    Careers
+                  </CardTitle>
                   <CardDescription className="text-sm">
                     careers@twincord.tech
                   </CardDescription>
