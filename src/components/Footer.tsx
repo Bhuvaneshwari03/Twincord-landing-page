@@ -1,6 +1,6 @@
 // src/components/Footer.jsx
 
-import { Facebook, Instagram, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -74,15 +74,15 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-3 pt-2">
-              <SocialLink href="#" aria-label="Facebook" icon={Facebook} />
-              <SocialLink href="#" aria-label="Instagram" icon={Instagram} />
+              <SocialLink href="https://github.com/twincord-technologies" aria-label="Github" icon={Github} />
+              <SocialLink href="https://www.instagram.com/twincord_technologies/" aria-label="Instagram" icon={Instagram} />
               <SocialLink
                 href="https://www.linkedin.com/company/twincord"
                 aria-label="LinkedIn"
                 icon={Linkedin}
               />
               <SocialLink
-                href="mailto:info@twincord.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@twincord.com&su=Enquiry%20About%20Your%20Products"
                 aria-label="Email"
                 icon={Mail}
               />
