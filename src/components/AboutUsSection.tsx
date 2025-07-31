@@ -111,22 +111,22 @@ const AboutUsSection = () => {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.8 },
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
+                    type: "tween",
+                    ease: "easeOut",
+                    duration: 0.6,
                   },
                 },
               }}
               whileHover={{
-                scale: 1.1,
-                y: -10,
-                transition: { duration: 0.3, type: "spring", stiffness: 300 },
+                scale: 1.015,
+                y: -2,
+                transition: { duration: 0.25, ease: "easeOut" },
               }}
               className="relative group"
             >
@@ -169,12 +169,13 @@ const AboutUsSection = () => {
             to="/about"
             style={{ textDecoration: "none", display: "inline-block" }}
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="button-gradient px-8 py-4 text-white font-bold text-lg rounded-full inline-flex items-center gap-3"
-            >
-                Explore Our Journey   <ArrowRight className="w-5 h-5" />
+            <motion.button className="group bg-gradient-to-r from-[#00bfff] to-[#0088ff] hover:from-[#00cfff] hover:to-[#3399ff] rounded-full px-8 py-4 text-white font-bold text-lg inline-flex items-center gap-3 shadow-md transition-colors duration-300">
+               {" "}
+              <span className="transition-colors duration-300">
+                Explore Our Journey
+              </span>
+               {" "}
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
           </Link>
         </motion.div>
