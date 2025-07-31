@@ -143,24 +143,30 @@ const ServicesPage = () => {
       id="services"
     >
       <section className="relative overflow-hidden py-10 px-4">
+         {" "}
         <div className="relative max-w-7xl mx-auto text-center">
+             {" "}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-800">
-              Our <span className="text-[#00bfff]">Services</span>
+                 {" "}
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">
+                      <span className="text-[#3b3b3b]">Our</span>{" "}
+              <span className="text-[#00bfff]">Services</span>     {" "}
             </h2>
+            {" "}
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive technology solutions designed to accelerate your
-              business growth with security, innovation, and excellence at the
-              core.
+              Comprehensive technology solutions designed to accelerate
+              your         business growth with security, innovation, and
+              excellence at the         core.      {" "}
             </p>
+               {" "}
           </motion.div>
+           {" "}
         </div>
       </section>
-
       {/* Services Grid */}
       <section id="services-grid" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
