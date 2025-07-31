@@ -128,50 +128,23 @@ const Navigation = () => {
     icon: service.icon,
   }));
 
-  // --- NEW DYNAMIC NAVIGATION LOGIC ---
-  let navItems: NavItem[];
-
   const isHomePage = location.pathname === "/";
-  const isProductsPage = productSubItems.some((item) =>
-    location.pathname.startsWith(item.href)
-  );
-  const isServicesPage = serviceSubItems.some((item) =>
-    location.pathname.startsWith(item.href)
-  );
 
-  if (isProductsPage) {
-    // On a product page, expand the products into top-level links
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  } else if (isServicesPage) {
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  } else if (isHomePage) {
-    navItems = [
-      {
-        name: "About",
-        href: "#about",
-        onClick: () => scrollToSection("about"),
-      },
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-      {
-        name: "Contact us",
-        href: "#contact",
-        onClick: () => scrollToSection("contact"),
-      },
-    ];
-  } else {
-    // Default navigation for all other pages
-    navItems = [
-      { name: "Products", subItems: productSubItems },
-      { name: "Services", subItems: serviceSubItems },
-    ];
-  }
+  // --- UPDATED: Unified Navigation Logic for Consistency ---
+  const navItems: NavItem[] = [
+    { name: "Products", subItems: productSubItems },
+    { name: "Services", subItems: serviceSubItems },
+    {
+      name: "About",
+      href: "/about",
+    },
+    {
+      name: "Contact us",
+      href: "/#contact",
+      // Use smooth scroll on homepage, navigate from other pages
+      onClick: isHomePage ? () => scrollToSection("contact") : undefined,
+    },
+  ];
 
   return (
     <header
@@ -191,7 +164,7 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* --- MODIFIED: Desktop Navigation --- */}
+          {/* Desktop Navigation --- */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => {
@@ -257,7 +230,7 @@ const Navigation = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* --- MODIFIED: Mobile Navigation --- */}
+          {/* --- Mobile Navigation --- */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
