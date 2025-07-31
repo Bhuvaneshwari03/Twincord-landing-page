@@ -34,58 +34,93 @@ const ContactSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card className="border-border h-48 flex flex-col justify-center">
-            <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
-              <div className="flex justify-center mb-4">
-                <Mail className="h-8 w-8 text-primary" />
-              </div>
-              <CardTitle className="text-lg mb-2">Email Us</CardTitle>
-              <CardDescription className="text-sm">
-                info@twincord.in
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="relative group">
+            <div
+              className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+              style={{
+                backgroundColor: "rgba(0,191,255,0.1)",
+                boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+              }}
+            />
+            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
+              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
+                <div className="flex justify-center mb-4">
+                  <Mail className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-lg mb-2">Email Us</CardTitle>
+                <CardDescription className="text-sm">
+                  info@twincord.in
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
 
-          <Card className="border-border h-48 flex flex-col justify-center">
-            <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
-              <div className="flex justify-center mb-4">
-                <Users className="h-8 w-8 text-primary" />
-              </div>
-              <CardTitle className="text-lg mb-2">Careers</CardTitle>
-              <CardDescription className="text-sm">
-                careers@twincord.in
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="relative group">
+            <div
+              className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+              style={{
+                backgroundColor: "rgba(0,191,255,0.1)",
+                boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+              }}
+            />
+            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
+              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
+                <div className="flex justify-center mb-4">
+                  <Users className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-lg mb-2">Careers</CardTitle>
+                <CardDescription className="text-sm">
+                  careers@twincord.in
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
 
-          <Card className="border-border h-48 flex flex-col justify-center">
-            <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
-              <div className="flex justify-center mb-4">
-                <Phone className="h-8 w-8 text-primary" />
-              </div>
-              <CardTitle className="text-lg mb-2">Call Us</CardTitle>
-              <CardDescription className="text-sm">
-                +91 6383 43 6383
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="relative group">
+            <div
+              className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+              style={{
+                backgroundColor: "rgba(0,191,255,0.1)",
+                boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+              }}
+            />
+            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
+              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
+                <div className="flex justify-center mb-4">
+                  <Phone className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-lg mb-2">Call Us</CardTitle>
+                <CardDescription className="text-sm">
+                  +91 6383 43 6383
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
 
-          <Card className="border-border h-48 flex flex-col justify-center">
-            <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
-              <div className="flex justify-center mb-4">
-                <MapPin className="h-8 w-8 text-primary" />
-              </div>
-              <CardTitle className="text-lg mb-2">Visit Us</CardTitle>
-              <CardDescription className="text-xs leading-relaxed">
-                <div>Technology Buisness Incubator,</div>
-                <div>@Kongu Engineering College,</div>
-                <div>Perundurai, Erode - 638 060,</div>
-                <div>Tamil Nadu, India.</div>
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="relative group">
+            <div
+              className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+              style={{
+                backgroundColor: "rgba(0,191,255,0.1)",
+                boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+              }}
+            />
+            <Card className="relative z-10 border-border h-48 flex flex-col justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)]">
+              <CardHeader className="text-center flex-1 flex flex-col justify-center py-6 px-4">
+                <div className="flex justify-center mb-4">
+                  <MapPin className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-lg mb-2">Visit Us</CardTitle>
+                <CardDescription className="text-xs leading-relaxed">
+                  <div>Technology Buisness Incubator,</div>
+                  <div>@Kongu Engineering College,</div>
+                  <div>Perundurai, Erode - 638 060,</div>
+                  <div>Tamil Nadu, India.</div>
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
         </div>
-
         <a
           href="https://forms.gle/T5UFx6t7xYg1uuuMA"
           target="_blank"
