@@ -14,11 +14,11 @@ import TwinAV from "./pages/TwinAV";
 import TwinHRM from "./pages/TwinHRM";
 import TwinShield from "./pages/TwinShield";
 import RefundCancellation from "./pages/RefundCancellation";
-// --- UPDATED IMPORTS ---
-// Assuming you have a page that shows all service cards
-import ServicesPage from "./components/ServicesSection"; 
-// Renamed for clarity, this is your page for a single service's details
-import ServicesDetailPage from "./components/ServiceDetails"; 
+import ServicesPage from "./components/ServicesSection";
+import ServicesDetailPage from "./components/ServiceDetails";
+
+// 1. Import the new helper component
+import ScrollToHashElement from "./components/ScrollToHashElement";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +28,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        {/* 2. Add the component here to enable scroll-to-hash */}
+        <ScrollToHashElement />
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* Standard page routes */}
@@ -37,16 +39,10 @@ const App = () => (
             <Route path="twinhrm" element={<TwinHRM />} />
             <Route path="twinshield" element={<TwinShield />} />
             <Route path="/policies" element={<Policies />} />
-         <Route path="/refundCancellation" element={< RefundCancellation/>} />
-            {/* --- MODIFIED SERVICE ROUTES --- */}
-            
-            {/* 1. Route to the services overview page (shows all service cards) */}
+            <Route path="/refundCancellation" element={<RefundCancellation />} />
+            {/* Service Routes */}
             <Route path="services" element={<ServicesPage />} />
-
-            {/* 2. Dynamic route for individual service details */}
-            {/* This replaces "services/details" and handles all services */}
             <Route path="services/:serviceId" element={<ServicesDetailPage />} />
-
           </Route>
         </Routes>
       </BrowserRouter>

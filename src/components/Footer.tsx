@@ -1,27 +1,35 @@
+// src/components/Footer.jsx
+
 import { Facebook, Instagram, Linkedin, Mail, ArrowUp } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 const Footer = () => {
-  // Handler to scroll to a specific element or the top of the page smoothly
-  const handleSmoothScroll = (e) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
+
+  // This function handles clicks on hash links (e.g., /#about-us)
+  const handleHashLinkClick = (e, hash) => {
     e.preventDefault();
-    const href = e.currentTarget.getAttribute("href");
 
-    // If the href is just "#", scroll to the top.
-    if (href === "#") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    // Otherwise, scroll to the element with the corresponding ID.
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+    // If we are already on the homepage, scroll manually
+    if (isHomePage) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        const yOffset = -100; // Your header's height
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    } else {
+      // If on another page, navigate to the homepage with the hash
+      // The ScrollToHashElement component will then handle the scrolling
+      navigate(`/${hash}`);
     }
   };
 
-  // Reusable component for social media links for cleaner code
+  // Reusable component for social media links
   const SocialLink = ({ href, "aria-label": ariaLabel, icon: Icon }) => (
     <a
       href={href}
@@ -37,24 +45,19 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      // Using a softer, more modern dark background
       className="w-full py-12 lg:py-16 bg-neutral-950 text-white"
     >
       <div className="container px-4 relative">
-        {/* Main content grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Column 1: Logo, Corporate Info, and Social Icons */}
+          {/* Column 1: Logo and Info */}
           <div className="-mt-5">
-            <a href="/" aria-label="Go to homepage">
+            <Link to="/" aria-label="Go to homepage">
               <img
                 src="/logo-black.png"
                 alt="Twincord Logo"
-                // Corrected height class to a valid Tailwind value
                 className="h-22 w-32 transition-opacity hover:opacity-80"
               />
-            </a>
-
-            {/* Corporate and Registered Office Information */}
+            </Link>
             <div className="pt-2 text-xs text-neutral-500 space-y-3 leading-relaxed">
               <p>
                 <strong className="text-neutral-400">
@@ -70,7 +73,6 @@ const Footer = () => {
                 Puliampatti, Erode, Tamil Nadu, 638459
               </p>
             </div>
-
             <div className="flex space-x-3 pt-2">
               <SocialLink href="#" aria-label="Facebook" icon={Facebook} />
               <SocialLink href="#" aria-label="Instagram" icon={Instagram} />
@@ -92,18 +94,17 @@ const Footer = () => {
             <h4 className="font-semibold text-lg text-white">Company</h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  onClick={handleSmoothScroll}
+                <Link
+                  to="/#hero"
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#about-us"
-                  onClick={handleSmoothScroll}
+                  href="/#about-us"
+                  onClick={(e) => handleHashLinkClick(e, "#about-us")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   About
@@ -111,8 +112,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#products"
-                  onClick={handleSmoothScroll}
+                  href="/#products"
+                  onClick={(e) => handleHashLinkClick(e, "#products")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Products
@@ -120,8 +121,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
-                  onClick={handleSmoothScroll}
+                  href="/#contact"
+                  onClick={(e) => handleHashLinkClick(e, "#contact")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Contact us
@@ -130,14 +131,14 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Our Services Links */}
+          {/* Column 3: Services Links */}
           <div className="space-y-4">
             <h4 className="font-semibold text-lg text-white">Our Services</h4>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Cybersecurity
@@ -145,8 +146,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Software Development
@@ -154,8 +155,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   AI & Data Solutions
@@ -163,8 +164,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Cloud Services
@@ -172,8 +173,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Creative Design
@@ -181,8 +182,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={handleSmoothScroll}
+                  href="/#services"
+                  onClick={(e) => handleHashLinkClick(e, "#services")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Training Programs
@@ -207,8 +208,8 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
-                  onClick={handleSmoothScroll}
+                  href="/#contact"
+                  onClick={(e) => handleHashLinkClick(e, "#contact")}
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
                 >
                   Contact
@@ -218,25 +219,23 @@ const Footer = () => {
                 <Link
                   to="/policies"
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
-                  aria-label="Policies"
                 >
                   Policies
                 </Link>
               </li>
               <li>
-                <a
-                  href="/refundCancellation"
+                <Link
+                  to="/refundCancellation"
                   className="text-sm text-neutral-400 hover:text-cyan-400 transition-colors"
-                  aria-label="refundCancellation"
                 >
                   Refund & Cancellation
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Sub-footer with Copyright notice and horizontal line */}
+        {/* Sub-footer */}
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-sm text-neutral-500">
             Copyright © {new Date().getFullYear()} Twincord Technologies Pvt.
