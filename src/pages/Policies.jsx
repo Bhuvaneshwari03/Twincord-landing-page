@@ -345,7 +345,7 @@ const Policies = () => {
                 href="mailto:info@twincord.com"
                 className="text-[#00bfff] underline"
               >
-                info@twincord.com
+                info@twincord.in 
               </a>
               .
             </p>
