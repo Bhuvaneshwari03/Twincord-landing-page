@@ -1,5 +1,3 @@
-
-
 import { motion } from "framer-motion";
 import { Shield, Zap, Cpu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +9,7 @@ const TwinAV = () => {
   return (
     <>
       {/* Hero Section */}
+      {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +19,8 @@ const TwinAV = () => {
         <div className="max-w-4xl relative z-10">
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full glass">
             <span className="text-sm font-medium">
-              <Shield className="w-4 h-4 inline-block mr-2" /> Smart Antivirus Engine
+              <Shield className="w-4 h-4 inline-block mr-2" /> Smart Antivirus
+              Engine
             </span>
           </div>
 
@@ -31,18 +31,16 @@ const TwinAV = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
-            A smart, lightweight antivirus engine designed for modern threats. Experience real-time protection with minimal system impact.
+            A smart, lightweight antivirus engine designed for modern threats.
+            Experience real-time protection with minimal system impact.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
+          {/* --- MODIFIED LINE BELOW --- */}
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
             <Button size="lg" className="button-gradient">
               Coming Soon
             </Button>
-            <a
-              href={gmailLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={gmailLink} target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="link" className="text-foreground">
                 Request Beta Access
               </Button>
@@ -61,8 +59,12 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Zap className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2 text-foreground">Lightning Fast</h3>
-            <p className="text-muted-foreground">Minimal resource usage with maximum protection efficiency.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">
+              Lightning Fast
+            </h3>
+            <p className="text-muted-foreground">
+              Minimal resource usage with maximum protection efficiency.
+            </p>
           </motion.div>
 
           <motion.div
@@ -72,8 +74,12 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Cpu className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2 text-foreground">AI-Powered</h3>
-            <p className="text-muted-foreground">Advanced machine learning algorithms for threat detection.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">
+              AI-Powered
+            </h3>
+            <p className="text-muted-foreground">
+              Advanced machine learning algorithms for threat detection.
+            </p>
           </motion.div>
 
           <motion.div
@@ -83,8 +89,12 @@ const TwinAV = () => {
             className="glass p-6 rounded-xl"
           >
             <Globe className="w-8 h-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2 text-foreground">Cloud-Enabled</h3>
-            <p className="text-muted-foreground">Real-time threat intelligence from global security networks.</p>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">
+              Cloud-Enabled
+            </h3>
+            <p className="text-muted-foreground">
+              Real-time threat intelligence from global security networks.
+            </p>
           </motion.div>
         </div>
       </section>

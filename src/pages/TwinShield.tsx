@@ -34,7 +34,7 @@ const TwinShield = () => {
             Advanced protection without the complexity of traditional firewalls.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
             <Button size="lg" className="button-gradient">
               Coming Soon
             </Button>
