@@ -79,7 +79,7 @@ const Policies = () => {
     <div className="min-h-screen bg-white py-12 px-4 md:px-16">
       <div className="max-w-5xl mx-auto">
         <AnimatedIllustration />
-    <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
+        <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
           <span style={{ color: "#3b3b3b" }}>Terms</span>
           <span style={{ color: "#00bfff" }}> &amp; </span>
           <span style={{ color: "#3b3b3b" }}>Conditions</span>
@@ -122,13 +122,13 @@ const Policies = () => {
               {/* Payment Terms moved here */}
               <div className="bg-[#e6f7ff] border-l-8 border-[#00bfff] p-6 rounded-lg mb-2 mt-8 animate-fadeIn shadow-sm">
                 <p className="font-semibold text-[#3b3b3b]">
-                  For all service projects, we kindly request a{" "}
-                  <span className="text-[#00bfff]">50% advance payment</span> to
-                  initiate your project. The remaining{" "}
-                  <span className="text-[#00bfff]">50% balance</span> will be
-                  due upon project completion, prior to handover. We appreciate
-                  your understanding and will begin work promptly upon receiving
-                  the advance payment.
+                  To get started on any service project, we require a{" "}
+                  <span className="text-[#00bfff]">50% advance payment</span>.
+                  The remaining <span className="text-[#00bfff]">50%</span> will
+                  be collected upon project completion, before final delivery.
+                  We appreciate your cooperation and will begin work as soon as
+                  the advance is received. This ensures smooth execution and
+                  mutual commitment throughout the project.
                 </p>
               </div>
             </div>
