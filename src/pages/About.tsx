@@ -124,9 +124,9 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#f8f8f8] min-h-screen py-8 sm:py-12 px-2 sm:px-4">
+    <div className="bg-[#f8f8f8] min-h-screen py-8 sm:py-12 px-2 sm:px-4 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-8 sm:py-12 px-2 sm:px-6 text-center">
+      <section className="pt-16 sm:pt-20 pb-8 sm:py-12 px-2 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -164,7 +164,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="relative max-w-4xl mx-auto px-2 sm:px-4 pb-24">
+      <section className="relative max-w-4xl mx-auto px-1 sm:px-4 pb-24">
         {/* Vertical line for desktop */}
         <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-[#00bfff] -translate-x-1/2 z-0" />
 
@@ -183,7 +183,7 @@ export default function AboutPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-md md:max-w-[370px] mb-8 md:mb-0 z-10"
+                      className="w-full max-w-full md:max-w-[370px] mb-6 sm:mb-8 md:mb-0 z-10 px-1"
                     >
                       <TimelineCard
                         milestone={milestone}
@@ -212,7 +212,7 @@ export default function AboutPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="w-full max-w-md md:max-w-[370px] mb-8 md:mb-0 z-10"
+                      className="w-full max-w-full md:max-w-[370px] mb-6 sm:mb-8 md:mb-0 z-10 px-1"
                     >
                       <TimelineCard
                         milestone={milestone}
@@ -256,7 +256,7 @@ function TimelineCard({ milestone, isExpanded, onToggle }) {
   return (
     <motion.div
       layout
-      className="bg-white rounded-xl shadow-lg border border-gray-100 w-full max-w-md md:max-w-[370px]"
+      className="bg-white rounded-xl shadow-lg border border-gray-100 w-full max-w-full md:max-w-[370px]"
       style={{
         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         position: "relative",
