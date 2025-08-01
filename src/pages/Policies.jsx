@@ -69,9 +69,14 @@ const BlueDotList = ({ children }) => (
 
 // Helper for twincord.com and twincord.in with black "and"
 const TwinCordSites = () => (
-  <>
-    <span className="text-[#00bfff] font-semibold">twincord.in</span>
-  </>
+  <a
+    href="https://twincord.in"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-[#00bfff] font-semibold underline hover:text-[#0099cc] transition-colors"
+  >
+    twincord.in
+  </a>
 );
 
 const Policies = () => {
@@ -98,7 +103,15 @@ const Policies = () => {
                 located at <TwinCordSites />. By accessing this website, we
                 assume you accept these terms and conditions. Do not continue to
                 use <TwinCordSites /> and{" "}
-                <span className="text-[#00bfff] font-bold">twincord.com </span>
+                <a
+                  href="https://twincord.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#00bfff] font-semibold underline hover:text-[#0099cc] transition-colors"
+                >
+                  {" "}
+                  twincord.com{" "}
+                </a>{" "}
                 if you do not agree to all of the terms and conditions stated on
                 this page.
               </p>
@@ -138,8 +151,16 @@ const Policies = () => {
           <Section title="Cookies">
             <p>
               We employ the use of cookies. By accessing <TwinCordSites /> and{" "}
-              <span className="text-[#00bfff] font-bold">twincord.com </span>,
-              you agreed to use cookies in agreement with the Twincord
+              <a
+                href="https://twincord.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00bfff] font-semibold underline hover:text-[#0099cc] transition-colors"
+              >
+                {" "}
+                twincord.com{" "}
+              </a>{" "}
+              , you agreed to use cookies in agreement with the Twincord
               Technologies Private Limited's Privacy Policy. Most interactive
               websites use cookies to let us retrieve the user's details for
               each visit. Cookies are used by our website to enable the
