@@ -6,11 +6,10 @@ import {
   Cloud,
   Palette,
   GraduationCap,
-  ArrowLeft,
+  ArrowRight,
   Check,
 } from "lucide-react";
 import { useEffect } from "react";
-
 import { useParams, useNavigate } from "react-router-dom";
 
 type ServiceItem = {
@@ -31,10 +30,12 @@ type ServiceType = {
   stats: Record<string, string>;
 };
 
-const ServiceCard: React.FC<{ service: ServiceType; index: number }> = ({
+const ServiceCard: React.FC<{ service: ServiceType; index: number; onAcademicClick?: () => void }> = ({
   service,
   index,
+  onAcademicClick,
 }) => {
+  const isTraining = service.id === "training-certification";
   return (
     <section
       id={service.id}
@@ -48,7 +49,6 @@ const ServiceCard: React.FC<{ service: ServiceType; index: number }> = ({
           viewport={{ once: true }}
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
-          {/* Card content remains the same */}
           <div className="relative p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
               <div
@@ -149,6 +149,35 @@ const ServiceCard: React.FC<{ service: ServiceType; index: number }> = ({
               ))}
             </div>
           </div>
+
+          {/* Academic Button ONLY for Training & Certification */}
+          {isTraining && (
+            <div className="flex justify-center mt-4 mb-8">
+        <motion.button
+  whileHover={{
+    scale: 1.05,
+    backgroundColor: "#fffffe",
+    color: "#4f46e5",
+    boxShadow: "0 8px 32px 0 rgba(0,191,255,0.15)",
+  }}
+  whileTap={{ scale: 0.97 }}
+  className="
+    flex items-center gap-1
+    px-3 py-1.5 text-xs
+    rounded-full font-semibold text-indigo-600 border-2 border-indigo-500 bg-white shadow-lg
+    transition-all duration-300
+    hover:bg-[#00bfff] hover:text-white
+
+    sm:gap-2 sm:px-4 sm:py-2 sm:text-sm
+    md:px-5 md:py-2.5 md:text-base
+  "
+  onClick={onAcademicClick}
+>
+  Explore Twincord Academic
+  <ArrowRight className="ml-1 h-4 w-4 sm:ml-2 sm:h-5 sm:w-5" />
+</motion.button>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
@@ -169,6 +198,8 @@ const ServicesDetailPage = () => {
   }, [serviceId]);
 
   const services: ServiceType[] = [
+    // ... your services array as before ...
+    // (no changes needed here)
     {
       id: "cybersecurity",
       title: "Cybersecurity Services",
@@ -208,7 +239,6 @@ const ServicesDetailPage = () => {
       ],
       stats: { projects: "500+", clients: "150+", uptime: "99.9%" },
     },
-    // ... include all other service objects here ...
     {
       id: "software-development",
       title: "Software Development Services",
@@ -405,7 +435,16 @@ const ServicesDetailPage = () => {
 
       {/* Services Sections */}
       {services.map((service, index) => (
-        <ServiceCard key={service.id} service={service} index={index} />
+        <ServiceCard
+          key={service.id}
+          service={service}
+          index={index}
+          onAcademicClick={
+            service.id === "training-certification"
+              ? () => navigate("/academic")
+              : undefined
+          }
+        />
       ))}
     </div>
   );

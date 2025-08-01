@@ -16,7 +16,7 @@ import TwinShield from "./pages/TwinShield";
 import RefundCancellation from "./pages/RefundCancellation";
 import ServicesPage from "./components/ServicesSection";
 import ServicesDetailPage from "./components/ServiceDetails";
-
+import AcademicPage from "./pages/AcademicPage";
 // 1. Import the new helper component
 import ScrollToHashElement from "./components/ScrollToHashElement";
 
@@ -40,6 +40,7 @@ const App = () => (
             <Route path="twinshield" element={<TwinShield />} />
             <Route path="/policies" element={<Policies />} />
             <Route path="/refundCancellation" element={<RefundCancellation />} />
+             <Route path="/academic" element={<AcademicPage />} />
             {/* Service Routes */}
             <Route path="services" element={<ServicesPage />} />
             <Route path="services/:serviceId" element={<ServicesDetailPage />} />
