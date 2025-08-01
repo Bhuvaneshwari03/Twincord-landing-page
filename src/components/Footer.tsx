@@ -99,7 +99,7 @@ const Footer = () => {
                 icon={Linkedin}
               />
               <SocialLink
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@twincord.com&su=Enquiry%20About%20Your%20Products"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@twincord.in&su=Enquiry%20About%20Your%20Products"
                 aria-label="Email"
                 icon={Mail}
               />
