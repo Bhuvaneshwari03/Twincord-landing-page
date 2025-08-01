@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,8 +19,6 @@ import {
   Cloud,
   Palette,
   GraduationCap,
-  ArrowLeft,
-  Check,
 } from "lucide-react";
 import {
   Accordion,
@@ -153,6 +151,19 @@ const Navigation = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (isHomePage) {
+      // If we're on the homepage, just scroll to the top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If we're on a different page, navigate to the homepage
+      navigate("/");
+    }
+  };
+
   return (
     <header
       className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full ${
@@ -165,9 +176,10 @@ const Navigation = () => {
         <nav className="flex items-center justify-between h-full">
           <Link to="/" className="flex items-center">
             <img
-              src="/Twincord.svg"
+              src="/twincord-logo.png"
               alt="Twincord Logo"
-              className="h-8 w-auto"
+              className="h-36 w-auto"
+              onClick={handleHomeClick}
             />
           </Link>
 
