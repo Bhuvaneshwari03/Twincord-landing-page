@@ -72,28 +72,28 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen bg-[#f8f8f8] font-sans">
       <div className="container mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl md:text-7xl font-bold mb-6 inline-block"
-          >
-            <span className="text-[#3b3b3b] mr-2">Our</span>
-            <span className="text-[#00bfff] ml-2">Products</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-xl text-[#666] max-w-3xl mx-auto"
-          >
-            Discover our innovative security solutions designed to protect your
-            organization from modern threats.
-          </motion.p>
-        </div>
+       <div className="text-center mb-16 px-4 sm:px-6">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+    className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 inline-block"
+  >
+    <span className="text-[#3b3b3b] mr-2">Our</span>
+    <span className="text-[#00bfff] ml-2">Products</span>
+  </motion.h2>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="text-base sm:text-xl text-[#666] max-w-3xl mx-auto"
+  >
+    Discover our innovative security solutions designed to protect your
+    organization from modern threats.
+  </motion.p>
+</div>
 
         <div
           ref={containerRef}
