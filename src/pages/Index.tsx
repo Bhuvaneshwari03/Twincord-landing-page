@@ -38,7 +38,7 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative flex-1 flex items-center container p-6 pt-24 pb-12 lg:pt-6 lg:pb-6"
+          className="relative flex-1 flex items-center container p-6 pt-24 mt-6 pb-12 lg:pt-6 lg:pb-6"
         >
           {/* The grid is 1 column by default, and 2 on large screens */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">

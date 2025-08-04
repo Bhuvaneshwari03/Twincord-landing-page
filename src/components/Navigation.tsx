@@ -178,7 +178,7 @@ const Navigation = () => {
             <img
               src="/twincord-logo.png"
               alt="Twincord Logo"
-              className="h-36 w-auto"
+              className="h-40 w-auto"
               onClick={handleHomeClick}
             />
           </Link>

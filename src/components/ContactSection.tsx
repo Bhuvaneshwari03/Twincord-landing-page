@@ -68,34 +68,34 @@ const ContactSection = () => {
           </div>
 
           <div className="relative group">
-  <a
-    href="https://mail.google.com/mail/?view=cm&fs=1&to=careers@twincord.tech&su=Application%20for%20Job%20at%20Twincord&body=Dear%20Twincord%20Team%2C%0A%0AI%20am%20excited%20to%20apply%20for%20a%20position%20at%20your%20company.%20Please%20find%20my%20details%20below.%0A%0AName%3A%0ARole%20applying%20for%3A%0AResume%20link%3A%0AGithub%2FPortfolio%3A%0A%0AThank%20you%2C%0A%5BYour%20Name%5D"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block"
-  >
-    <div
-      className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
-      style={{
-        backgroundColor: "rgba(0,191,255,0.1)",
-        boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
-      }}
-    />
-    <Card className="relative z-10 h-48 flex flex-col justify-center border transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)] cursor-pointer">
-      <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
-        <div className="flex justify-center mb-4">
-          <Users className="h-8 w-8 text-primary" />
-        </div>
-        <CardTitle className="text-lg mb-2 hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200">
-          Careers
-        </CardTitle>
-        <CardDescription className="text-sm">
-          careers@twincord.tech
-        </CardDescription>
-      </CardHeader>
-    </Card>
-  </a>
-</div>
+            <a
+              href="https://hrm.twincord.in/web/index.php/recruitmentApply/jobs.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div
+                className="absolute inset-0 bg-blue-500/10 rounded-lg scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+                style={{
+                  backgroundColor: "rgba(0,191,255,0.1)",
+                  boxShadow: "0 10px 30px rgba(0,136,255,0.2)",
+                }}
+              />
+              <Card className="relative z-10 h-48 flex flex-col justify-center border transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(0,191,255,0.5)] cursor-pointer">
+                <CardHeader className="text-center flex-1 flex flex-col justify-center py-6">
+                  <div className="flex justify-center mb-4">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-lg mb-2 hover:text-[rgba(0,191,255,0.8)] transition-colors duration-200">
+                    Careers
+                  </CardTitle>
+                  <CardDescription className="text-sm">
+                    careers@twincord.in
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </a>
+          </div>
 
           <div className="relative group">
             <div
@@ -142,10 +142,10 @@ const ContactSection = () => {
                   </a>
                 </CardTitle>
                 <CardDescription className="text-xs leading-relaxed">
-                  <div>Technology Buisness Incubator,</div>
-                  <div>@Kongu Engineering College,</div>
-                  <div>Perundurai, Erode - 638 060,</div>
-                  <div>Tamil Nadu, India.</div>
+                  <div>TBI @ KEC, Perundurai, Erode,</div>
+                  <div>Tamil Nadu, 638 060</div>
+                  <div className="font-extrabold">Mon - Sat</div>
+                  <div className="font-extrabold">9.00 AM to 6.00 PM</div>
                 </CardDescription>
               </CardHeader>
             </Card>
