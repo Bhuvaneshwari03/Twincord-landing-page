@@ -64,10 +64,10 @@ const Footer = () => {
               <img
                 src="/logo-black.png"
                 alt="Twincord Logo"
-                className="h-22 w-44 transition-opacity hover:opacity-80"
+                className="h-22 w-62 transition-opacity hover:opacity-80 -ml-8 -mt-16"
               />
             </Link>
-            <div className="pt-2 text-xs text-neutral-500 space-y-3 leading-relaxed -mt-12">
+            <div className="pt-2 text-xs text-neutral-500 space-y-3 leading-relaxed -mt-24">
               <p>
                 <strong className="text-neutral-400">
                   Twincord Technologies Private Limited
