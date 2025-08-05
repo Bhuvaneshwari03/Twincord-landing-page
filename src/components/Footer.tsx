@@ -72,17 +72,9 @@ const Footer = () => {
                 <strong className="text-neutral-400">
                   Twincord Technologies Private Limited
                 </strong>
-                <br />
-                CIN: U62020TZ2025PTC035053
-              </p>
-              <p>
-                <strong className="text-neutral-400">Registered Office:</strong>
-                <br />
-                2/397-4. Subburayar Kadu, Madhavi Street Extension, Punjai
-                Puliampatti, Erode, Tamil Nadu, 638459
               </p>
             </div>
-            <div className="flex space-x-3 pt-2">
+            <div className="flex space-x-3 pt-2 mt-10">
               <SocialLink
                 href="https://github.com/twincord-technologies"
                 aria-label="Github"

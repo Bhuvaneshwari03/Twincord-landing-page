@@ -173,7 +173,7 @@ const ServiceCard: React.FC<{ service: ServiceType; index: number; onAcademicCli
   "
   onClick={onAcademicClick}
 >
-  Explore Twincord Academic
+  Explore Twincord Academy
   <ArrowRight className="ml-1 h-4 w-4 sm:ml-2 sm:h-5 sm:w-5" />
 </motion.button>
             </div>

@@ -42,10 +42,10 @@ const AcademicPage = () => {
             {/* You can add icons here if needed */}
           </motion.div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-[#00bfff]">
-            Welcome to Twincord Academic
+            Welcome to Twincord Academy
           </h2>
           <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
-            <span className="font-semibold text-cyan-600">Academic</span> is your gateway to learning, creativity, and skill-building. Explore our unique programs, from technology to culinary arts!
+            <span className="font-semibold text-cyan-600">Academy</span> is your gateway to learning, creativity, and skill-building. Explore our unique programs, from technology to culinary arts!
           </p>
         </motion.div>
       </main>
