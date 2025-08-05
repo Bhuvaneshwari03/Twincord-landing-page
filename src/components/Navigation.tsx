@@ -180,8 +180,8 @@ const Navigation = () => {
               alt="Twincord Logo"
               className={
                 isScrolled
-                  ? "h-12 w-auto transition-all duration-300" 
-                  : "h-40 w-auto transition-all duration-300" 
+                  ? "h-12 w-auto " 
+                  : "h-40 w-auto " 
               }
             />
           </Link>
