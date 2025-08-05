@@ -174,12 +174,15 @@ const Navigation = () => {
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center" onClick={handleHomeClick}>
             <img
-              src="/twincord-logo.png"
+              src={isScrolled ? "/twincord-logo.ico" : "/twincord-logo.png"}
               alt="Twincord Logo"
-              className="h-40 w-auto"
-              onClick={handleHomeClick}
+              className={
+                isScrolled
+                  ? "h-12 w-auto transition-all duration-300" // Perfect size for the small icon
+                  : "h-40 w-auto transition-all duration-300" // New h-40 size for the large logo
+              }
             />
           </Link>
 
