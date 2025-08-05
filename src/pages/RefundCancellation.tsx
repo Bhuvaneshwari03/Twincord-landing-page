@@ -82,8 +82,9 @@ const RefundCancellation = () => {
         <AnimatedIllustration />
         <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
           <span style={{ color: "#3b3b3b" }}>Refund</span>
-          <span style={{ color: "#00bfff" }}> &amp; </span>
-          <span style={{ color: "#3b3b3b" }}>Cancellation</span>
+          <span style={{ color: "#00bfff" }}> and </span>
+          <span style={{ color: "#3b3b3b" }}> Cancellation</span>
+          <span style={{ color: "#3b3b3b" }}> Policy</span>
         </h1>
         <p
           className="text-center font-medium mb-16 text-lg md:text-xl"
@@ -93,10 +94,15 @@ const RefundCancellation = () => {
         </p>
 
         <div className="text-left">
-          <Section title="Design Policy">
-            <p>
-              We provide demo websites to our clients so that they can check our quality of work and become comfortable before working with us. Before making a payment for our services, feel free to contact us if you have any queries.
-            </p>
+          <Section title="Before You Begin">
+            <div>
+              <p>
+                We provide demo websites to our clients so that they can check our quality of work and become comfortable before working with us. Before making a payment for our services, feel free to contact us if you have any queries.
+              </p>
+              <div className="text-gray-500 text-sm mt-6">
+                Last updated on 05/08/2025
+              </div>
+            </div>
           </Section>
 
           <Section title="Eligibility for Refund">
@@ -108,10 +114,10 @@ const RefundCancellation = () => {
           <Section title="Advance Payment Policy">
             <BlueDotList>
               <span>
-                When you are comfortable with taking our service, you have to make a <Highlight>30% payment in advance</Highlight> for hiring us for any kind of services which we provide.
+                When you are comfortable with taking our service, you are required to make a <Highlight>30% payment in advance</Highlight> for hiring us for any of the services we provide.
               </span>
               <span>
-                If you want to cancel the project <Highlight>within 2 days</Highlight> of advance payment, then this 30% payment is fully refundable.
+                If you want to cancel the project <Highlight>within 2 days</Highlight> of making the advance payment, this 30% payment is fully refundable.
               </span>
               <span>
                 <Highlight>After 2 days</Highlight> of advance payment, if you cancel the project, then this advance money will <Highlight>not be refundable</Highlight>.
@@ -122,33 +128,33 @@ const RefundCancellation = () => {
           <Section title="Delivery Time & Payment">
             <BlueDotList>
               <span>
-                <Highlight>Full Refund:</Highlight> In case the project has not been started or has not been delivered according to the deal.
+                <Highlight>Full Refund:</Highlight> If the project has not been started or has not been delivered according to the agreed terms.
               </span>
               <span>
-                <Highlight>Partial Refund:</Highlight> If the project work has already been started and the client wants to cancel the project in between, then the total advance money (25%) will not be refundable.
+                <Highlight>Partial Refund:</Highlight> If the project work has already been started and the client wants to cancel the project in between, the advance payment (30%) will not be refundable.
               </span>
               <span>
-                <Highlight>No Refund:</Highlight> When full payment is received after successful delivery of the project and then if a client wants to cancel the project, the whole money will be non-refundable.
+                <Highlight>No Refund:</Highlight> Once full payment is received after successful delivery of the project, if a client wishes to cancel, the entire amount will be non-refundable.
               </span>
             </BlueDotList>
           </Section>
 
           <Section title="Change in Policy">
             <p>
-              We can change this policy from time to time without any prior notice. We request you to review this policy periodically. If any changes occur in our policy, then our existing as well as new clients will be agreed with our new policy.
+              We may update this policy at any time without prior notice. Please review it periodically. If any changes occur in our policy, all existing and new clients will be deemed to have agreed to the updated policy.
             </p>
           </Section>
         </div>
 
-       <div className="flex justify-center mt-16">
-                 <Link
-                   to="/"
-                   className="inline-flex items-center gap-2 px-10 py-3 rounded-full font-semibold shadow-lg bg-[#00bfff] text-white text-[1.1rem] tracking-wide transition-all duration-300 hover:bg-[#33ccff]"
-                 >
-                   Back to Home
-                   <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
-                 </Link>
-               </div>
+        <div className="flex justify-center mt-16">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-10 py-3 rounded-full font-semibold shadow-lg bg-[#00bfff] text-white text-[1.1rem] tracking-wide transition-all duration-300 hover:bg-[#33ccff]"
+          >
+            Back to Home
+            <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
 
       {/* Animation keyframes */}
