@@ -76,7 +76,7 @@ const Policies = () => {
         <AnimatedIllustration />
         <h1 className="text-4xl md:text-4xl font-extrabold text-center mb-4 mt-8">
           <span style={{ color: "#3b3b3b" }}>Terms</span>
-          <span style={{ color: "#00bfff" }}> & </span>
+          <span style={{ color: "#00bfff" }}> and </span>
           <span style={{ color: "#3b3b3b" }}>Conditions</span>
         </h1>
         <p className="text-center text-[#00bfff] font-medium mb-16 text-lg md:text-xl">
